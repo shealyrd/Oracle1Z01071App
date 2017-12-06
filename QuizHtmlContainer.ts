@@ -1,4 +1,4 @@
-class QuizHtmlContainer{
+class QuizHtmlContainer {
     parentElement: HTMLElement;
     containerElement: HTMLElement;
     headerElement: HTMLElement;
@@ -23,20 +23,21 @@ class QuizHtmlContainer{
 
     // answers: string[] = new Array();
     question: Question;
+    areAnswersSelected: boolean[] = new Array();
 
-    constructor(parentElement: HTMLElement, height: number, width: number){
+    constructor(parentElement: HTMLElement, height: number, width: number) {
         this.parentElement = parentElement;
         this.HEIGHT = height;
         this.WIDTH = width;
     }
 
-    initialize(){
+    initialize() {
         this.initializeContainer();
 
         this.parentElement.appendChild(this.containerElement);
 
         this.initializeHeader();
-
+        this.initializeCSS();
         this.containerElement.appendChild(this.headerElement);
         this.question = new Question("What was the question?");
         this.question.addAnswer("answer 1", false);
@@ -50,7 +51,7 @@ class QuizHtmlContainer{
 
         this.bodyElement.appendChild(this.questionElement);
 
-        for(var i = 0; i < this.answerChoices.length; i++){
+        for (var i = 0; i < this.answerChoices.length; i++) {
             this.bodyElement.appendChild(this.answerChoices[i]);
         }
 
@@ -58,30 +59,30 @@ class QuizHtmlContainer{
 
     }
 
-    setQuestion(question: Question){
+    setQuestion(question: Question) {
         this.question;
     }
 
-    initializeContainer(){
+    initializeContainer() {
         this.containerElement = document.createElement("div");
     }
 
-    initializeHeader(){
+    initializeHeader() {
         this.headerElement = document.createElement("div");
         this.headerElement.id = "header-element";
         this.headerElement.style.width = "100%";
         this.headerElement.style.height = this.getHeightPxFromPercent(this.headerHeightPercent) + "px";
-        this.headerElement.style.background= "#0275d8";
+        this.headerElement.style.background = "#0275d8";
         this.headerElement.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
     }
 
-    initializeBody(){
+    initializeBody() {
         this.bodyElement = document.createElement("div");
         this.bodyElement.style.marginTop = "0 px";
         this.bodyElement.style.marginLeft = this.getHeightPxFromPercent(this.bodyMarginLeftPercent) + "px";
     }
 
-    initializeQuestion(){
+    initializeQuestion() {
         this.questionElement = document.createElement("div");
         this.questionElement.style.font = "Helvetica";
         this.questionElement.style.fontSize = this.getHeightPxFromPercent(this.questionFontSizePercent) + "px";
@@ -90,26 +91,70 @@ class QuizHtmlContainer{
         this.questionElement.innerHTML = this.question.getQuestion();
     }
 
-    initializeAnswers(){
+    initializeAnswers() {
         this.answerChoices = new Array();
-        for(var i = 0; i < this.question.getAnswers().length; i++){
+        for (var i = 0; i < this.question.getAnswers().length; i++) {
             var answerChoice = document.createElement("div");
+            answerChoice.className = "answer";
             answerChoice.style.font = "Helvetica";
             answerChoice.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
             answerChoice.style.marginTop = this.getHeightPxFromPercent(this.answerMarginPercent) + "px";
             answerChoice.style.marginBottom = this.getHeightPxFromPercent(this.answerMarginPercent) + "px";
             answerChoice.style.background = "aliceblue";
             answerChoice.style.verticalAlign = "middle";
-            //this.answerChoice.style.height = this.getHeightPxFromPercent(this.answerBoxSizeHeightPercent) + "px";
             answerChoice.style.width = this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) + "px";
             answerChoice.style.paddingLeft = this.getHeightPxFromPercent(2) + "px";
             answerChoice.style.paddingRight = this.getHeightPxFromPercent(1) + "px";
             answerChoice.style.paddingTop = this.getHeightPxFromPercent(1) + "px";
             answerChoice.style.paddingBottom = this.getHeightPxFromPercent(1) + "px";
             answerChoice.style.border = "1px solid #84c5fe";
+            answerChoice.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
+            answerChoice.onclick = (function (element, htmlContainer) {
+                return () => {
+                    if (htmlContainer.hasAnswerSelected(element)) {
+                        htmlContainer.unselectAnswer(element);
+                    }
+                    else {
+                        htmlContainer.setAnswerSelected(element);
+                    }
+                }
+            }(answerChoice, this));
             answerChoice.innerHTML = this.question.getAnswers()[i];
+            this.areAnswersSelected[this.answerChoices.length] = false;
             this.answerChoices.push(answerChoice);
         }
+    }
+
+    hasAnswerSelected(answerElement: HTMLElement) {
+        var answerIndex: number;
+        for (var i = 0; i < this.answerChoices.length; i++){
+            if (this.answerChoices[i] == answerElement) {
+                answerIndex = i;
+            }
+        }
+        return this.areAnswersSelected[answerIndex];
+    }
+
+    unselectAnswer(answerElement: HTMLElement) {
+        var answerIndex: number;
+        for (var i = 0; i < this.answerChoices.length; i++){
+            if (this.answerChoices[i] == answerElement) {
+                answerIndex = i;
+            }
+        }
+        this.areAnswersSelected[answerIndex] = false;
+        answerElement.style.background = "aliceblue";
+    }
+
+    setAnswerSelected(answerElement: HTMLElement) {
+        var answerIndex: number;
+        for (var i = 0; i < this.answerChoices.length; i++){
+            if (this.answerChoices[i] == answerElement) {
+                answerIndex = i;
+            }
+        }
+        this.areAnswersSelected[answerIndex] = true;
+        answerElement.style.background = "#84c5fe";
     }
 
     getHeaderHeight(): number{
@@ -123,6 +168,14 @@ class QuizHtmlContainer{
     getWidthPxFromPercent(percent: number): number{
         return this.WIDTH * (percent/100);
     }
+
+    initializeCSS(){
+		var cssElement = document.createElement('style');
+		var cssText = "";
+		cssText += ".answer:active{ margin-top:" + this.getHeightPxFromPercent(this.answerMarginPercent + 0.5) + "px;}";
+		cssElement.innerHTML = cssText;
+		document.getElementsByTagName('head')[0].appendChild(cssElement);
+	}
 }
 
 document.body.style.margin = "0";
