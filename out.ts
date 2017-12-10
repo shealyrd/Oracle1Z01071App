@@ -1,17 +1,19 @@
 class Question{
     private answers: string[] = new Array();
     private question: string;
-    private correctAnswerIndexes: number[] = new Array();
+    private correctAnswerIndexes: boolean[] = new Array();
 
     constructor(question: string){
         this.question = question;
     }
 
     addAnswer(answer: string, correct: boolean){
-        if(correct){
-            this.correctAnswerIndexes.push(this.answers.length);
-        }
+        this.correctAnswerIndexes.push(correct);
         this.answers.push(answer);
+    }
+
+    getCorrectAnswerIndex():boolean[]{
+        return this.correctAnswerIndexes;
     }
 
     getAnswers(): string[]{
@@ -67,7 +69,7 @@ class Question{
         this.initializeCSS();
         this.containerElement.appendChild(this.headerElement);
         var question1 = new Question("question 1");
-        question1.addAnswer("answer 1", false);
+        question1.addAnswer("answer 1", true);
         question1.addAnswer("answer 2", false);
         question1.addAnswer("answer 3", false);
         question1.addAnswer("answer 4", false);
@@ -76,12 +78,12 @@ class Question{
         question2.addAnswer("answer 5", false);
         question2.addAnswer("answer 6", false);
         question2.addAnswer("answer 7", false);
-        question2.addAnswer("answer 8", false);
+        question2.addAnswer("answer 8", true);
 
         var question3 = new Question("question 3");
         question3.addAnswer("answer 9", false);
-        question3.addAnswer("answer 10", false);
-        question3.addAnswer("answer 11", false);
+        question3.addAnswer("answer 10", true);
+        question3.addAnswer("answer 11", true);
         question3.addAnswer("answer 12", false);
 
         this.questions.push(question1);
@@ -108,7 +110,6 @@ class Question{
     }
 
     currentQuestion(): Question{
-        alert(JSON.stringify(this.questions));
         return this.questions[this.currentQuestionIndex];
     }
 
@@ -120,7 +121,7 @@ class Question{
         this.headerElement = document.createElement("div");
         this.headerElement.id = "header-element";
         this.headerElement.style.width = "100%";
-        this.headerElement.style.height = this.getHeightPxFromPercent(1) + "px";
+        this.headerElement.style.height = this.getHeightPxFromPercent(5) + "px";
         this.headerElement.style.background = "#0275d8";
         this.headerElement.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
     }
@@ -133,6 +134,7 @@ class Question{
 
     initializeNextButton() {
         this.nextButton = document.createElement("div");
+        this.nextButton.className = "downOnClick";
         this.nextButton.style.marginTop = "0 px";
         this.nextButton.style.font = "Helvetica";
         this.nextButton.style.color = "white";
@@ -149,9 +151,11 @@ class Question{
         this.nextButton.style.border = "1px solid black";
         this.nextButton.style.display = "inline-block";
         this.nextButton.style.position = "relative";
+        this.nextButton.style.userSelect = "none";
         this.nextButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
         this.nextButton.onclick = (function (element, htmlContainer) {
             return () => {
+                alert(htmlContainer.areSelectedAnswersCorrect());
                 htmlContainer.loadNextQuestion();
             }
         }(this.nextButton, this));
@@ -160,6 +164,7 @@ class Question{
 
     initializePrevButton() {
         this.previousButton = document.createElement("div");
+        this.previousButton.className = "downOnClick";
         this.previousButton.style.marginTop = "0 px";
         this.previousButton.style.font = "Helvetica";
         this.previousButton.style.color = "white";
@@ -175,6 +180,7 @@ class Question{
         this.previousButton.style.border = "1px solid black";
         this.previousButton.style.display = "inline-block";
         this.previousButton.style.position = "relative";
+        this.previousButton.style.userSelect = "none";
         this.previousButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
         this.previousButton.innerHTML = "Prev";
         this.previousButton.onclick = (function (element, htmlContainer) {
@@ -199,7 +205,7 @@ class Question{
         this.areAnswersSelected = new Array();
         for (var i = 0; i < this.currentQuestion().getAnswers().length; i++) {
             var answerChoice = document.createElement("div");
-            answerChoice.className = "answer";
+            answerChoice.className = "downOnClick";
             answerChoice.style.font = "Helvetica";
             answerChoice.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
             answerChoice.style.marginTop = this.getHeightPxFromPercent(this.answerMarginPercent) + "px";
@@ -287,7 +293,7 @@ class Question{
         var numQuestions = this.questions.length;
         var newIndex: number;
         if(this.currentQuestionIndex == (numQuestions - 1)){
-            newIndex = 0;
+            newIndex = this.questions.length - 1;
         }
         else{
             newIndex = this.currentQuestionIndex + 1;
@@ -308,10 +314,24 @@ class Question{
         this.renderCurrentQuestion();
     }
 
+    areSelectedAnswersCorrect(): boolean{
+        var questionIndexes = this.currentQuestion().getCorrectAnswerIndex();
+        var result: boolean = true;
+        for(var i = 0; i <= questionIndexes.length - 1; i++ ){
+            if(questionIndexes[i] && !this.areAnswersSelected[i]){
+                result = false;
+            }
+            else if(!questionIndexes[i] && this.areAnswersSelected[i]){
+                result = false;
+            }
+        }
+        return result;
+    }
+
     initializeCSS(){
         var cssElement = document.createElement('style');
         var cssText = "";
-        cssText += ".answer:active {transform: translateY(4px);}";
+        cssText += ".downOnClick:active {transform: translateY(3px);}";
         cssElement.innerHTML = cssText;
         document.getElementsByTagName('head')[0].appendChild(cssElement);
     }

@@ -1,17 +1,19 @@
 class Question{
     private answers: string[] = new Array();
     private question: string;
-    private correctAnswerIndexes: number[] = new Array();
+    private correctAnswerIndexes: boolean[] = new Array();
 
     constructor(question: string){
         this.question = question;
     }
 
     addAnswer(answer: string, correct: boolean){
-        if(correct){
-            this.correctAnswerIndexes.push(this.answers.length);
-        }
+        this.correctAnswerIndexes.push(correct);
         this.answers.push(answer);
+    }
+
+    getCorrectAnswerIndex():boolean[]{
+        return this.correctAnswerIndexes;
     }
 
     getAnswers(): string[]{

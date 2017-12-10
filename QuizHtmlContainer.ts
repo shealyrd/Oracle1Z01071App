@@ -43,7 +43,7 @@ class QuizHtmlContainer {
         this.initializeCSS();
         this.containerElement.appendChild(this.headerElement);
         var question1 = new Question("question 1");
-        question1.addAnswer("answer 1", false);
+        question1.addAnswer("answer 1", true);
         question1.addAnswer("answer 2", false);
         question1.addAnswer("answer 3", false);
         question1.addAnswer("answer 4", false);
@@ -52,12 +52,12 @@ class QuizHtmlContainer {
         question2.addAnswer("answer 5", false);
         question2.addAnswer("answer 6", false);
         question2.addAnswer("answer 7", false);
-        question2.addAnswer("answer 8", false);
+        question2.addAnswer("answer 8", true);
 
         var question3 = new Question("question 3");
         question3.addAnswer("answer 9", false);
-        question3.addAnswer("answer 10", false);
-        question3.addAnswer("answer 11", false);
+        question3.addAnswer("answer 10", true);
+        question3.addAnswer("answer 11", true);
         question3.addAnswer("answer 12", false);
 
         this.questions.push(question1);
@@ -129,6 +129,7 @@ class QuizHtmlContainer {
         this.nextButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
         this.nextButton.onclick = (function (element, htmlContainer) {
             return () => {
+                alert(htmlContainer.areSelectedAnswersCorrect());
                 htmlContainer.loadNextQuestion();
             }
         }(this.nextButton, this));
@@ -285,6 +286,20 @@ class QuizHtmlContainer {
         }
         this.currentQuestionIndex = newIndex;
         this.renderCurrentQuestion();
+    }
+
+    areSelectedAnswersCorrect(): boolean{
+        var questionIndexes = this.currentQuestion().getCorrectAnswerIndex();
+        var result: boolean = true;
+        for(var i = 0; i <= questionIndexes.length - 1; i++ ){
+            if(questionIndexes[i] && !this.areAnswersSelected[i]){
+                result = false;
+            }
+            else if(!questionIndexes[i] && this.areAnswersSelected[i]){
+                result = false;
+            }
+        }
+        return result;
     }
 
     initializeCSS(){
