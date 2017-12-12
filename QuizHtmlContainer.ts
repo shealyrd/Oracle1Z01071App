@@ -1,3 +1,4 @@
+
 class QuizHtmlContainer {
     parentElement: HTMLElement;
     containerElement: HTMLElement;
@@ -68,21 +69,22 @@ class QuizHtmlContainer {
         this.initializeBody();
         this.initializeQuestion();
         this.initializeAnswers();
-        //this.initializeNextButton();
-        //this.initializePrevButton();
+        this.initializeNextButton();
+        this.initializePrevButton();
         this.initializeSubmitButton();
 
         this.bodyElement.appendChild(this.questionElement);
         this.answerContainer = document.createElement("div");
 
         for (var i = 0; i < this.answerChoices.length; i++) {
-            var newDiv = document.createElement("div");
-            newDiv.style.cssFloat = "right";
             this.answerContainer.appendChild(this.answerChoices[i]);
         }
+		
+		this.makeDivInvisible(this.nextButton);
+		
         this.bodyElement.appendChild(this.answerContainer);
         //this.bodyElement.appendChild(this.previousButton);
-        //this.bodyElement.appendChild(this.nextButton);
+        this.bodyElement.appendChild(this.nextButton);
         this.bodyElement.appendChild(this.submitButton);
         this.containerElement.appendChild(this.bodyElement);
 
@@ -114,11 +116,12 @@ class QuizHtmlContainer {
     initializeNextButton() {
         this.nextButton = document.createElement("div");
         this.nextButton.className = "downOnClick";
+		this.nextButton.id = "next-button";
         this.nextButton.style.marginTop = "0 px";
         this.nextButton.style.font = "Helvetica";
         this.nextButton.style.color = "white";
         this.nextButton.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
-        this.nextButton.style.marginLeft = (this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) - (2 * this.getHeightPxFromPercent(this.buttonWidthPercent)) - this.getHeightPxFromPercent(this.bodyMarginLeftPercent)) + "px";
+        this.nextButton.style.marginLeft = (this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) - (this.getHeightPxFromPercent(this.buttonWidthPercent))) + "px";
         this.nextButton.style.width = this.getHeightPxFromPercent(this.buttonWidthPercent) + "px";
         this.nextButton.style.verticalAlign = "middle";
         this.nextButton.style.paddingLeft = this.getHeightPxFromPercent(1) + "px";
@@ -134,8 +137,9 @@ class QuizHtmlContainer {
         this.nextButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
         this.nextButton.onclick = (function (element, htmlContainer) {
             return () => {
-                alert(htmlContainer.areSelectedAnswersCorrect());
+                //alert(htmlContainer.areSelectedAnswersCorrect());
                 htmlContainer.loadNextQuestion();
+				htmlContainer.changeNextToSubmit();
             }
         }(this.nextButton, this));
         this.nextButton.innerHTML = "Next";
@@ -168,10 +172,12 @@ class QuizHtmlContainer {
             }
         }(this.nextButton, this));
     }
+	
 
     initializeSubmitButton() {
         this.submitButton = document.createElement("div");
         this.submitButton.className = "downOnClick";
+		this.submitButton.id = "submit-button";
         this.submitButton.style.marginTop = "0 px";
         this.submitButton.style.font = "Helvetica";
         this.submitButton.style.color = "white";
@@ -195,6 +201,8 @@ class QuizHtmlContainer {
         this.submitButton.onclick = (function (element, htmlContainer) {
             return () => {
                 // htmlContainer.loadPrevQuestion();
+				htmlContainer.revealAnswers();
+				htmlContainer.changeSubmitToNext();
             }
         }(this.submitButton, this));
     }
@@ -240,11 +248,24 @@ class QuizHtmlContainer {
                 }
             }(answerChoice, this));
             answerChoice.innerHTML = this.currentQuestion().getAnswers()[i];
+            var newDiv = document.createElement("div");
+            newDiv.style.cssFloat = "right";
+            answerChoice.appendChild(newDiv);
             this.areAnswersSelected[this.answerChoices.length] = false;
             this.answerChoices.push(answerChoice);
         }
     }
-
+	
+	makeDivInvisible(elem: HTMLElement){
+		elem.style.visibility = "hidden";
+		elem.style.display = "none";
+	}
+	
+	makeDivVisible(elem: HTMLElement){
+		elem.style.visibility = "visible";
+		elem.style.display = "inline-block";
+	}
+	
     hasAnswerSelected(answerElement: HTMLElement) {
         var answerIndex: number;
         for (var i = 0; i < this.answerChoices.length; i++){
@@ -277,6 +298,16 @@ class QuizHtmlContainer {
         answerElement.style.background = "#84c5fe";
     }
 
+	changeSubmitToNext(){
+		this.makeDivInvisible(this.submitButton);
+		this.makeDivVisible(this.nextButton);
+	}
+	
+	changeNextToSubmit(){
+		this.makeDivInvisible(this.nextButton);
+		this.makeDivVisible(this.submitButton);
+	}
+	
     getHeaderHeight(): number{
         return document.getElementById("header-element").clientHeight;
     }
@@ -338,15 +369,33 @@ class QuizHtmlContainer {
     }
 
     revealAnswers(){
-        //TODO
+        for (var i = 0; i < this.answerChoices.length; i++){
+            if (this.isAnswerCorrect(this.answerChoices[i])) {
+                this.setAnswerRightDivInnerHTML(this.answerChoices[i], "c");
+				this.answerChoices[i].style.background = "#69F0AE";
+				this.answerChoices[i].style.border = "1px solid black";
+            }
+			else{
+				this.setAnswerRightDivInnerHTML(this.answerChoices[i], "x");
+				this.answerChoices[i].style.background = "#FF8A80";
+				this.answerChoices[i].style.border = "1px solid black";
+			}
+        }
     }
 
     isAnswerCorrect(answerElement: HTMLElement){
-        //TODO
+        var answerIndex: number;
+        for (var i = 0; i < this.answerChoices.length; i++){
+            if (this.answerChoices[i] == answerElement) {
+                answerIndex = i;
+            }
+        }
+		var currentQuestion = this.currentQuestion();
+		return currentQuestion.getCorrectAnswerIndex()[answerIndex];
     }
 
     setAnswerRightDivInnerHTML(answerElement: HTMLElement, content: string){
-        //TODO
+        answerElement.firstElementChild.innerHTML = content;
     }
 
     initializeCSS(){
