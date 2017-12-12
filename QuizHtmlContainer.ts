@@ -8,6 +8,7 @@ class QuizHtmlContainer {
     answerChoices: HTMLElement[];
     previousButton: HTMLElement;
     nextButton: HTMLElement;
+    submitButton: HTMLElement;
 
     headerHeightPercent: number = 8;
     bodyMarginLeftPercent: number = 2;
@@ -67,18 +68,22 @@ class QuizHtmlContainer {
         this.initializeBody();
         this.initializeQuestion();
         this.initializeAnswers();
-        this.initializeNextButton();
-        this.initializePrevButton();
+        //this.initializeNextButton();
+        //this.initializePrevButton();
+        this.initializeSubmitButton();
 
         this.bodyElement.appendChild(this.questionElement);
         this.answerContainer = document.createElement("div");
 
         for (var i = 0; i < this.answerChoices.length; i++) {
+            var newDiv = document.createElement("div");
+            newDiv.style.cssFloat = "right";
             this.answerContainer.appendChild(this.answerChoices[i]);
         }
         this.bodyElement.appendChild(this.answerContainer);
-        this.bodyElement.appendChild(this.previousButton);
-        this.bodyElement.appendChild(this.nextButton);
+        //this.bodyElement.appendChild(this.previousButton);
+        //this.bodyElement.appendChild(this.nextButton);
+        this.bodyElement.appendChild(this.submitButton);
         this.containerElement.appendChild(this.bodyElement);
 
     }
@@ -162,6 +167,36 @@ class QuizHtmlContainer {
                 htmlContainer.loadPrevQuestion();
             }
         }(this.nextButton, this));
+    }
+
+    initializeSubmitButton() {
+        this.submitButton = document.createElement("div");
+        this.submitButton.className = "downOnClick";
+        this.submitButton.style.marginTop = "0 px";
+        this.submitButton.style.font = "Helvetica";
+        this.submitButton.style.color = "white";
+        this.submitButton.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
+        this.submitButton.style.width = this.getHeightPxFromPercent(this.buttonWidthPercent + 1.5) + "px";
+        this.submitButton.style.verticalAlign = "middle";
+        this.submitButton.style.paddingLeft = this.getHeightPxFromPercent(1) + "px";
+        this.submitButton.style.paddingRight = this.getHeightPxFromPercent(1) + "px";
+        this.submitButton.style.marginLeft = ((this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) - (this.getHeightPxFromPercent(this.buttonWidthPercent + 1.5)/2)- this.getHeightPxFromPercent(this.bodyMarginLeftPercent))  + "px");
+        this.submitButton.style.paddingTop = this.getHeightPxFromPercent(1) + "px";
+        this.submitButton.style.paddingBottom = this.getHeightPxFromPercent(1) + "px";
+        this.submitButton.style.paddingLeft = this.getHeightPxFromPercent(0.5) + "px";
+        this.submitButton.style.borderRadius = "5px";
+        this.submitButton.style.background = "#2ecc71";
+        this.submitButton.style.border = "1px solid black";
+        this.submitButton.style.display = "inline-block";
+        this.submitButton.style.position = "relative";
+        this.submitButton.style.userSelect = "none";
+        this.submitButton.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
+        this.submitButton.innerHTML = "Submit";
+        this.submitButton.onclick = (function (element, htmlContainer) {
+            return () => {
+                // htmlContainer.loadPrevQuestion();
+            }
+        }(this.submitButton, this));
     }
 
 
@@ -300,6 +335,18 @@ class QuizHtmlContainer {
             }
         }
         return result;
+    }
+
+    revealAnswers(){
+        //TODO
+    }
+
+    isAnswerCorrect(answerElement: HTMLElement){
+        //TODO
+    }
+
+    setAnswerRightDivInnerHTML(answerElement: HTMLElement, content: string){
+        //TODO
     }
 
     initializeCSS(){
