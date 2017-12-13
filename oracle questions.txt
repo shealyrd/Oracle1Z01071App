@@ -1,0 +1,141 @@
+Oracle and Structured Query Language (SQL):
+
+SELECT is a _____ type of SQL command.
+INSERT is a _____ type of SQL command.
+UPDATE is a _____ type of SQL command.
+DELETE is a _____ type of SQL command.
+MERGE is a _____ type of SQL command.
+
+CREATE is a _____ type of SQL command.
+ALTER is a _____ type of SQL command.
+DROP is a _____ type of SQL command.
+RENAME is a _____ type of SQL command.
+TRUNCATE is a _____ type of SQL command.
+GRANT is a _____ type of SQL command.
+REVOKE is a _____ type of SQL command.
+FLASHBACK is a _____ type of SQL command.
+PURGE is a _____ type of SQL command.
+COMMENT is a _____ type of SQL command.
+
+COMMIT is a _____ type of SQL command.
+ROLLBACK SAVEPOINT is a _____ type of SQL command.
+
+Used to create a user, table, view, index, synonym, or other object in the database.
+
+Used on an existing object in the database to modify that object’s structure, name, or some other attribute.
+
+Used to remove a database object from the database that has already been created with the CREATE statement.
+
+Changes the name of an existing database object.
+
+Removes all the rows—in other words, data—from an existing table in the database.
+
+Provides privileges, or rights, to user objects to enable them to perform various tasks in the database.
+
+Removes privileges that have been issued with the GRANT statement.
+
+Restores an earlier version of a table or database.
+
+Irrevocably removes database objects from the recycle bin.
+
+Adds comments to the data dictionary for an existing database object.
+
+Displays data of a database table or view
+
+Adds data to a database table, either directly or, in some situations, through a view
+
+Modifies existing data in a table, either directly or, in some situations, through a view
+
+Removes existing data from a table, either directly or, in some situations, through a view
+
+Performs a combination of INSERT, UPDATE, and DELETE statements in a single statement
+
+Saves a set of DML modifications performed in the current database session
+
+Undoes a set of DML modifications performed during the current database session
+
+Marks a position in a session to prepare for a future ROLLBACK to enable that ROLLBACK to restore data at a selected point in a session other than the most recent commit event
+
+Given the following table <> which of these statements would be valid?
+
+Given the following table <> which of these statements would be invalid?
+
+Restricting and Sorting Data :
+
+Schema Objects:
+Constraints
+Sequences
+Indexes
+Private synonyms
+Tables
+Views
+
+Nonschema Objects:
+Roles
+Public synonyms
+Users
+
+Which of the following is a schema object?
+Which of the following is a nonschema object?
+
+A structure that can store data. All data is stored in columns and rows. Each column’s data type is explicitly defined.
+
+An object designed to support faster searches in a table. 
+
+A “filter” through which you can search a table and interact with a table but that stores no data itself and simply serves as a “window” onto one or more tables.
+
+A counter, often used to generate unique numbers as identifiers for new rows as they are added to a table.
+
+An alias for another object in the database, often used to specify an alternative name for a table or view.
+
+A small bit of logic defined by you to instruct a particular table about how it will accept, modify, or reject incoming data.
+
+The “owners” of database objects.
+
+A set of one or more privileges that can be granted to a user.
+
+Which statement is correct?
+CREATE TABLE my employees (company_id VARCHAR);
+CREATE TABLE my_employees (company_id VAR_CHAR);
+CREATE TABLE "my_employees" (company_id VAR_CHAR);
+CREATE TABLE "my employees" (company_id VARCHAR);
+CREATE TABLE my_employees VALUES (company id VARCHAR);
+CREATE TABLE my_employees VALUES ("company id" VARCHAR);
+
+Given table:
+CREATE TABLE my_employees (company_id NUMBER(3,2);
+
+Which statement will work?
+
+INSERT INTO VALUES...
+
+ TIMESTAMP(n) This is an extension of DATE that adds fractional second precision.
+ 
+ TIMESTAMP(n) WITH TIME ZONE This is a variation of TIMESTAMP that adds either a time zone region name or an offset for time zone. 
+ 
+ TIMESTAMP(n) WITH LOCAL TIME ZONE This is a variation of TIMESTAMP. The TIMESTAMP WITH LOCAL TIME ZONE differs from TIMESTAMP WITH TIME ZONE in that the time zone offset is not stored with the column’s value, and the value retrieved is sent to the user in the user’s local session time zone.
+ 
+ INTERVAL YEAR(n) TO MONTH This stores a span of time defined in only year and month values, where n is the number of digits used to define the YEAR value. 
+ 
+ INTERVAL DAY(n1) TO SECOND(n2) This stores a span of time defined in days, hours, minutes, and seconds, where n1 is the precision for days, and n2 is the precision for seconds. 
+ 
+ Tables may have multiple columns with LOB data types. However, LOBs cannot be primary keys, and they cannot be used with DISTINCT, GROUP BY, ORDER BY, or joins.
+ 
+ BLOB   The name BLOB is an abbreviation for “binary large object.” BLOB accepts large binary objects, such as image or video files. Declaration is made without precision or scale. (The maximum size is calculated by way of a formula that includes several items not on the exam, including a starting size of 4GB, something called the CHUNK parameter, and the setting for the database block size, which is a setting that affects all storage in the database.)
+ 
+CLOB   The name CLOB is an abbreviation for “character large object.” CLOB accepts large text data elements. Declaration is made without precision or scale, and the maximum size is calculated in the same manner that it is for the BLOB data type.
+
+NCLOB   This accepts CLOB data in Unicode. The maximum size is calculated in the same manner that it is for the BLOB data type.
+
+CREATE TABLE: In-Line Constraints
+
+CREATE TABLE: Out-of-Line Constraints
+
+The NOT NULL constraint cannot be created out of line. In other words, this is invalid:
+
+The list of certification objectives specifically states that you will be tested on the topic of creating constraints at the time of table creation. This can include any one of the in-line or out-of-line combinations for any constraint. The syntax is tricky. Study it thoroughly and know it well.
+
+      select count(*) from 
+      (select 100 + NULL as res from dual)
+      where res is NULL
+ 
