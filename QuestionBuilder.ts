@@ -31,8 +31,10 @@ class QuestionBuilder{
     createQuestionField() {
         var questionInputContainer = document.createElement('div');
         questionInputContainer.innerHTML = "Question: ";
-        var questionInput = document.createElement('input');
+        var questionInput = document.createElement('textarea');
         questionInput.id = "questionInput";
+        questionInput.cols = 100;
+        questionInput.rows = 5;
         questionInputContainer.appendChild(questionInput);
 		return questionInputContainer;
     } 
@@ -59,9 +61,9 @@ class QuestionBuilder{
 
     addAnswerField() {
         var answerFieldContainer = document.createElement('div');
-        var answerField = document.createElement('input');
-        //answerField.rows = 5;
-        //answerField.cols = 100;
+        var answerField = document.createElement('textarea');
+        answerField.rows = 5;
+        answerField.cols = 100;
         var isCorrect = document.createElement('input');
         isCorrect.type = "checkbox";
         answerFieldContainer.appendChild(answerField);
@@ -78,17 +80,16 @@ class QuestionBuilder{
     }
 
     getQuestionFromInputs(): Question{
-        var questionString = (<HTMLInputElement>this.questionField.children[0]).value;
+        var questionString = (<HTMLTextAreaElement>this.questionField.children[0]).value;
         var newQuestion: Question = new Question(questionString);
         var answerChildren = this.answersField.children; 
         for (var i = 0; i < answerChildren.length; i++){
             if (i % 2 == 1) {
-                var answerString = (<HTMLInputElement>answerChildren[i].firstChild).value;    
+                var answerString = (<HTMLTextAreaElement>answerChildren[i].firstChild).value;    
                 var correct = (<HTMLInputElement>answerChildren[i].children[1]).checked;
                 newQuestion.addAnswer(answerString, correct);
             }
         }
-        alert(JSON.stringify(newQuestion));
         return newQuestion;
     } 
 
