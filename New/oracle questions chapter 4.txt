@@ -1,0 +1,1211 @@
+Consider the following SQL statement:
+
+<div class = "code">
+SELECT my_data1
+FROM my_table
+ORDER BY my_data1, my_data2 DESC;
+</div>
+
+Which of the following is true?
+- The result will be sorted by my_data1 and then by my_data2, both in descending order.
+*- The result will be sorted by my_data1 in ascending order and then by my_data2 in descending order.
+- The statement will fail because my_data2 is not in the select list.
+- The statement will fail because there is no GROUP BY clause.
+- The statement will fail because there is no ordering defined for my_data1.
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+SELECT my_data1
+FROM my_table
+ORDER BY LIKE my_data2;
+</div>
+
+Which of the following is true?
+- The statement will fail because my_data2 is not in the select list.
+- The statement will fail because there is no GROUP BY clause.
+*- The statement will fail because the ORDER BY clause cannot use a LIKE expression.
+- The statement will fail because there is no ordering defined for my_data1.
+
+
+
+Which of the following is true about the ORDER BY clause?
+- It is required.
+*- It can only be used in a SELECT statement.
+- It can only sort on columns in the select list.
+*- If columns in an ORDER BY statement have no defined ordering, they default to ASCENDING.
+
+
+
+
+If your ORDER BY clause sorts values in a descending order, which of the following is true?
+- 1 would return before 2.
+- 'Me' would return before 'You'.
+- 'me' would return before 'You'.
+- January 2nd 2000 will return before January 1st 2000
+- '100' will return before '50'
+
+
+
+
+
+Consider the following SQL statements:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES ('my_data1');
+INSERT INTO my_table (my_data) VALUES ('my_data2');
+INSERT INTO my_table (my_data) VALUES ('my_data3');
+
+SELECT * 
+FROM my_table 
+WHERE my_data IN ('my_data1', 'my_data2', '%data3');
+</div>
+
+How many rows will be returned?
+- 3
+*- 2
+- 1
+- 0
+- Execution will fail.
+
+
+
+
+Consider the following SQL statements:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES ('my_data1');
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data3');
+
+SELECT COUNT(*) 
+FROM my_table 
+WHERE my_data = NULL OR my_data = 'my_data3';
+</div>
+
+What will be returned?
+- 3
+- 2
+*- 1
+- 0
+- Execution will fail.
+
+
+
+
+
+Consider the following SQL statements:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES ('');
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data3' || NULL);
+
+SELECT COUNT(*) 
+FROM my_table 
+WHERE my_data = NULL;
+</div>
+
+What will be returned?
+- 3
+- 2
+- 1
+*- 0
+- Execution will fail.
+
+
+
+
+
+
+Consider the following SQL statements:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES ('');
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data3' || NULL);
+
+SELECT COUNT(*) 
+FROM my_table 
+WHERE my_data IS NULL;
+</div>
+
+What will be returned?
+- 3
+*- 2
+- 1
+- 0
+- Execution will fail.
+
+
+
+
+
+
+Consider the following SQL statements:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES ('');
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data3' || NULL);
+
+SELECT COUNT(*) 
+FROM my_table 
+WHERE my_data <> NULL;
+</div>
+
+What will be returned?
+- 3
+- 2
+- 1
+*- 0
+- Execution will fail.
+
+
+
+
+
+
+Consider the following SQL statements:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES ('');
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data3' || NULL);
+
+SELECT COUNT(*) 
+FROM my_table 
+WHERE my_data IS NOT NULL;
+</div>
+
+What will be returned?
+- 3
+- 2
+*- 1
+- 0
+- Execution will fail.
+
+
+
+
+Use the ______ command to list all currently defined variables.
+*- DEFINE
+- SHOW
+- SHOW DEFINE
+- SHOW &
+- EXPLAIN &
+
+
+
+Which is true about a DEFINE substitution variable?
+- You can not replace database object names with them.
+*- You can replace clause keywords like "WHERE" with them.
+*- You can replace values in a LIKE statement with them.
+
+
+
+
+The ________ statement is used to delete the definition of a substitution variable.
+*- UNDEFINE
+- REMOVE
+- DEREFERENCE
+- DELETE
+- SET DEFINE OFF
+
+
+
+
+
+Which of the following is true about the ORDER BY clause?
+* - It is the final clause in a SELECT statement
+- It is required in a SELECT statement
+- ORDER BY changes the data stored in a table
+* - You can ORDER BY columns which are not included in the select list
+- NULL values are always sorted last
+
+ 
+
+ 
+
+ 
+
+ 
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data1');
+INSERT INTO my_table (my_data) VALUES ('my_data2'); 
+
+SELECT my_data
+FROM my_table
+ORDER BY my_data DESC;
+</div>
+ 
+
+Which value is returned first?
+
+*- NULL
+- 'my_data1'
+- 'my_data2'
+- Execution fails
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data1');
+INSERT INTO my_table (my_data) VALUES ('my_data2'); 
+
+SELECT my_data
+FROM my_table
+ORDER BY my_data ASC;
+</div> 
+
+Which value is returned first?
+
+- NULL
+*- 'my_data1'
+- 'my_data2'
+- Execution fails
+
+
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (NULL);
+INSERT INTO my_table (my_data) VALUES ('my_data1');
+INSERT INTO my_table (my_data) VALUES ('my_data2'); 
+
+SELECT my_data
+FROM my_table
+ORDER BY my_data;
+</div> 
+
+Which value is returned first?
+
+- NULL
+*- 'my_data1'
+- 'my_data2'
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_data1, my_data2;
+</div>
+ 
+ 
+Which value is returned first?
+
+- NULL
+*- 1
+- 2
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_data2, my_data1;
+</div>
+ 
+ 
+Which value is returned first?
+
+- NULL
+- 1
+*- 2
+- Execution fails
+
+
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_data2 DESC, my_data1;
+</div>
+ 
+ 
+Which value is returned first?
+
+- NULL
+*- 1
+- 2
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_data2 ASC, my_data1 DESC;
+</div> 
+ 
+Which value is returned first?
+
+- NULL
+- 1
+*- 2
+- Execution fails
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_data1 / my_data2;
+</div> 
+ 
+Which value is returned first?
+
+- NULL
+*- 1
+- 2
+- Execution fails
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY 1;
+</div>
+ 
+Which value is returned first?
+
+- NULL
+*- 1
+- 2
+- Execution fails
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY 2;
+</div> 
+ 
+Which value is returned first?
+
+- NULL
+- 1
+- 2
+*- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_data2 - ROWNUM;
+</div> 
+ 
+Which value is returned first?
+
+- NULL
+- 1
+*- 2
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id as my_column, 
+my_data1 as my_column
+FROM my_table
+ORDER BY my_column;
+</div>
+
+Which value is returned first?
+
+- NULL
+- 1
+- 2
+*- Execution fails
+
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id as "my column"
+FROM my_table
+ORDER BY "my column";
+</div>
+
+Which value is returned first?
+
+- NULL
+*- 1
+- 2
+- Execution fails
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT id 
+FROM my_table
+ORDER BY my_column;
+</div>
+
+Which value is returned first?
+
+- NULL
+- 1
+- 2
+*- Execution fails 
+ 
+ 
+ 
+
+Consider the following SQL statement:
+
+<div class = "code"> 
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data1 <> 1;
+</div>
+
+What is the returned value?
+- NULL
+*- 1
+- 2
+- 0
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data1 = ROWNUM;
+</div>
+
+What is the returned value?
+- NULL
+- 1
+*- 2
+- 0
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data1 > id;
+</div>
+
+What is the returned value?
+- NULL
+- 1
+- 2
+*- 0
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_date, id) VALUES (TO_DATE('30-DEC-2017'), 1);
+INSERT INTO my_table (my_date, id) VALUES (TO_DATE('30-DEC-2016'), 2);
+
+SELECT id
+FROM my_table
+ORDER BY my_date; 
+</div>
+
+Which value is returned first?
+
+- NULL
+- 1
+*- 2
+- Execution fails 
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data, id) VALUES ('DATA', 1);
+INSERT INTO my_table (my_data, id) VALUES ('data', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data = 'DATA'; 
+</div>
+
+Which value is returned?
+
+- NULL
+- 0
+*- 1
+- 2
+- Execution fails 
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data, id) VALUES ('DATA', 1);
+INSERT INTO my_table (my_data, id) VALUES ('data', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE UPPER(my_data) = 'DATA'; 
+</div>
+
+Which value is returned?
+
+- NULL
+- 0
+- 1
+*- 2
+- Execution fails 
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data, id) VALUES ('DATA', 1);
+INSERT INTO my_table (my_data, id) VALUES ('data', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data LIKE '_A__'; 
+</div>
+
+Which value is returned?
+
+- NULL
+- 0
+*- 1
+- 2
+- Execution fails 
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data, id) VALUES ('DATA', 1);
+INSERT INTO my_table (my_data, id) VALUES ('data', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data LIKE '%a%'; 
+</div>
+
+Which value is returned?
+
+- NULL
+- 0
+*- 1
+- 2
+- Execution fails 
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+1. INSERT INTO my_table (my_data, id) VALUES ('DATA', 1);
+2. SELECT id
+3. FROM my_table
+4. WHERE _________
+</div>
+
+At line 4, which of the following expressions can be inserted to make the query return "1"?
+
+*- 1 = 1;
+*- LOWER(my_data) LIKE '%a%';
+- my_data LIKE '_A_';
+*- my_data LIKE '%T_';
+*- my_data = 'DA' || 'TA';
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+1. INSERT INTO my_table (my_data, id) VALUES ('DATA', 1);
+2. SELECT id
+3. FROM my_table
+4. WHERE _________
+</div>
+
+At line 4, which of the following expressions can be inserted to make the query return "1"?
+
+- my_data IS 'DATA';
+- '%A%' LIKE my_data;
+- my_data LIKE 'D%A_';
+*- my_data LIKE 'DATA%';
+*- my_data LIKE 'DATA';
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 1, 3);
+
+SELECT id
+FROM my_table
+WHERE my_data1 > 0 AND my_data2 < 2;
+</div>
+
+Which value is returned?
+- 1
+*- 2
+- 3
+- Execution fails
+- NULL
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 2, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (2, 1, 2);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 1, 3);
+
+SELECT id
+FROM my_table
+WHERE NOT my_data1 > 0 AND my_data2 < 2;
+</div>
+
+Which value is returned?
+- 1
+- 2
+*- 3
+- Execution fails
+- NULL
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+1. INSERT INTO my_table (my_data, id) VALUES (0, 1);
+2. INSERT INTO my_table (my_data, id) VALUES (2, 2);
+3. SELECT id
+4. FROM my_table
+5. WHERE _________
+
+At line 5, which of the following expressions can be inserted to make the query return "2"?
+
+*- my_data != 0;
+*- my_data <> 0;
+*- NOT my_data = 0;
+- my_data NOT = 0;
+- my_data IS NOT 0;
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 1, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 2, 2);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 1, 3);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 4);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE  my_data1 = 0 OR my_data1 = 1 AND my_data2 = 2;
+</div>
+
+Which value is returned?
+- 1
+- 2
+*- 3
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 1, 1);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (0, 2, 2);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 1, 3);
+INSERT INTO my_table (my_data1, my_data2, id) VALUES (1, 2, 4);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE (my_data1 = 0 OR my_data1 = 1) AND my_data2 = 2;
+</div>
+
+Which value is returned?
+- 1
+*- 2
+- 3
+- 4
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+1. INSERT INTO my_table (my_data) VALUES (0);
+2. INSERT INTO my_table (my_data) VALUES (10);
+3. SELECT COUNT(*)
+4. FROM my_table
+5. WHERE ___________
+</div>
+
+At line 5, which of the following expressions can be inserted to make the query return "2"?
+
+- my_data BETWEEN 10 AND 0;
+*- my_data IN (0, 10);
+*- my_data NOT IN (3);
+*- my_data IN (0, '1' || '0');
+*- my_data BETWEEN 0 AND 10;
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (1);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data BETWEEN 1 AND 0;
+</div>
+
+Which value is returned?
+*- 0
+- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (1);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE NOT my_data BETWEEN 1 AND 0;
+</div>
+
+Which value is returned?
+- 0
+- 1
+*- 2
+- NULL
+- Execution fails
+
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data = NULL;
+</div>
+
+Which value is returned?
+*- 0
+- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data IS NULL;
+</div>
+
+Which value is returned?
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data != NULL;
+</div>
+
+Which value is returned?
+*- 0
+- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data IS NOT NULL;
+</div>
+
+Which value is returned?
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (0);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data NOT IN (0);
+</div>
+
+Which value is returned?
+*- 0
+- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+INSERT INTO my_table (my_data) VALUES (1);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data NOT IN (1);
+</div>
+
+Which value is returned?
+*- 0
+- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+DEFINE myVar = 1;
+
+INSERT INTO my_table (my_data) VALUES (1);
+INSERT INTO my_table (my_data) VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data = &myVar;
+</div>
+
+Which value is returned?
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+DEFINE myVar = 'WHERE';
+INSERT INTO my_table (my_data) VALUES (1);
+SELECT COUNT(*)
+FROM my_table
+&myVar my_data = 1;
+</div>
+
+Which value is returned?
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+DEFINE myVar = 'NOT';
+INSERT INTO my_table (my_data) VALUES (1);
+UNDEFINE myVar;
+SELECT COUNT(*)
+FROM my_table
+WHERE &myVar my_data = 1;
+</div>
+
+Which value is returned?
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+
+The ____ command is used to display any SQL*Plus system variable's current state.
+- VERIFY
+*- SHOW
+- DEFINE
+- DESCRIBE
+- DISPLAY
+
+
+The ____ system variable determines whether or not "old" and "new" information is displayed during variable substitution.
+*- VERIFY
+- SHOW
+- DEFINE
+- PROMPT
+- ACCEPT
+
+The _____ SQL*Plus command is used to diaplay an interactive message with the user.
+*- PROMPT
+- ACCEPT
+- VERIFY
+- DEFINE
+- SHOW
+
+
+The _____ SQL*Plus command is used to recieve input data from the user.
+- PROMPT
+*- ACCEPT
+- VERIFY
+- DEFINE
+- SHOW
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+SET DEFINE *;
+DEFINE myVar = 1;
+INSERT INTO my_table (my_data) VALUES (1);
+INSERT INTO my_table (my_data) VALUES (NULL);
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data = *myVar;
+</div>
+
+Which value is returned?
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails
+
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+SET DEFINE *;
+DEFINE myVar = 1;
+INSERT INTO my_table (my_data) VALUES (1);
+INSERT INTO my_table (my_data) VALUES (NULL);
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data = &myVar;
+</div>
+
+Which value is returned?
+- 0
+- 1
+- 2
+- NULL
+*- Execution fails
+
+
+Consider the following SQL statement:
+
+<div class = "code">
+DEFINE myVar = 1;
+SET DEFINE OFF;
+INSERT INTO my_table (my_data) VALUES (1);
+INSERT INTO my_table (my_data) VALUES (NULL);
+SELECT COUNT(*)
+FROM my_table
+WHERE my_data = &myVar;
+</div>
+
+Which value is returned?
+- 0
+- 1
+- 2
+- NULL
+*- Execution fails

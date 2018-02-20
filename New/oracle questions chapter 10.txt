@@ -1,0 +1,385 @@
+Consider the following SQL:
+
+<div class = "code">
+1. CREATE TABLE my_table 
+2. (my_data NUMBER);
+3. CREATE VIEW my_view AS
+4. SELECT my_data + 1
+5. FROM my_table;
+</div>
+
+At what line number is the syntax error?
+- 1
+- 2
+- 3
+*- 4
+- 5
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE VIEW my_view AS
+SELECT my_data + 1
+FROM my_table;
+INSERT INTO my_table VALUES (1);
+SELECT COUNT(*) FROM my_view;
+</div>
+
+What is the result?
+- 1
+- 0
+- 2
+*- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE VIEW my_view AS
+SELECT my_data + 1 as my_data
+FROM my_table;
+INSERT INTO my_table VALUES (1);
+SELECT MAX(my_data) FROM my_view;
+</div>
+
+What is the result?
+- 1
+- 0
+*- 2
+- No rows returned
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE VIEW my_view AS
+SELECT my_data FROM my_table;
+INSERT INTO my_view VALUES (1);
+SELECT MAX(my_data) FROM my_view;
+</div>
+
+What is the result?
+*- 1
+- 0
+- 2
+- No rows returned
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE VIEW my_view AS
+SELECT my_data FROM my_table;
+INSERT INTO my_view VALUES (1);
+SELECT MAX(my_data) FROM my_table;
+</div>
+
+What is the result?
+- 1
+- 0
+*- 2
+- No rows returned
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER NOT NULL);
+CREATE VIEW my_view AS
+SELECT my_data FROM my_table;
+INSERT INTO my_view VALUES (NULL);
+SELECT MAX(my_data) FROM my_view;
+</div>
+
+What is the result?
+- 1
+- 0
+- 2
+- No rows returned
+*- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE VIEW my_view AS
+SELECT DISTINCT my_data FROM my_table;
+INSERT INTO my_view VALUES (1);
+SELECT MAX(my_data) FROM my_table;
+</div>
+
+What is the result?
+- 1
+- 0
+- 2
+- No rows returned
+*- Execution fails
+
+
+
+
+In which of the following situations will you be prevented from perfroming DML operations on a VIEW?
+*- The DML operation would violate a constraint on the base table
+*- The VIEW's SELECT query uses DISTINCT
+*- The VIEW's SELECT query uses GROUP BY
+*- The VIEW's SELECT references more than one table
+- The VIEW's SELECT query uses ORDER BY
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE VIEW my_view AS
+SELECT my_data,
+my_data + 1 as calc FROM my_table;
+INSERT INTO my_view (my_data) VALUES (5);
+SELECT MAX(my_data) FROM my_table;
+</div>
+
+What is the result?
+*- 5
+- 0
+- NULL
+- No rows returned
+- Execution fails
+
+
+
+
+A ___________ is a subquery that replaces a table reference in the FROM clause of a SELECT statement.
+*- Inline View
+- View
+- Table alias
+- Synonym
+
+
+
+The ALTER VIEW .... ______; statement is used to restore an invalid VIEW to a valid state.
+*- COMPILE
+- RECOMPILE
+- CREATE OR REPLACE
+- REBUILD
+- VALIDATE
+
+
+
+Which of the following is true regarding INVISIBLE columns?
+*- They are not fetched by a SELECT * statement
+- They are not fetched when named in a select list
+*- When named in a VIEW object's select statement, they are fetched by SELECT * on that view.
+- They can never be set to VISIBLE
+
+
+
+The __________ option when creating a SEQUENCE object indicates what number the SEQUENCE increments by.
+*- INCREMENT BY
+- MAXVALUE
+- CYCLE
+- ADD
+- START WITH
+
+
+
+The __________ option when creating a SEQUENCE object indicates the frst number of the sequence.
+- INCREMENT BY
+- MAXVALUE
+- CYCLE
+- ADD
+*- START WITH
+
+
+The __________ option when creating a SEQUENCE object indicates that the counter should "rollover" the MINVALUE when MAXVALUE is reached.
+- INCREMENT
+- SET CYCLICAL
+- CYCLE
+- SET REPEAT
+- NOCYCLE
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE SEQUENCE my_seq
+MAXVALUE 10
+START WITH 5
+INCREMENT BY -1;
+SELECT my_seq.nextval FROM DUAL;
+</div>
+
+What is the result?
+*- 5
+- 6
+- 4
+- -1
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE SEQUENCE my_seq
+MAXVALUE 10
+START WITH 5
+INCREMENT BY -1;
+SELECT my_seq.currval FROM DUAL;
+</div>
+
+What is the result?
+- 5
+- 6
+- 4
+- -1
+*- Execution fails
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE SEQUENCE my_seq
+MAXVALUE 10
+START WITH 5
+INCREMENT BY -1;
+INSERT INTO my_table VALUES (my_seq.nextval);
+SELECT my_seq.nextval FROM DUAL;
+</div>
+
+What is the result?
+- 5
+- 6
+*- 4
+- -1
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+CREATE SEQUENCE my_seq
+MAXVALUE 10
+START WITH 5
+INCREMENT BY -1;
+INSERT INTO my_table VALUES (my_seq.nextval);
+SELECT my_seq.currval FROM DUAL;
+</div>
+
+What is the result?
+*- 5
+- 6
+- 4
+- -1
+- Execution fails
+
+
+Which of the following is true about indexes?
+*- They are database objects.
+- Reference a single column in a composite index does not invoke the index.
+*- They are primarily used to increase query performance.
+*- They are recorded in the data dictionary.
+- You can create multiple visible indexes on the same column set.
+
+
+When you create a _________ constraint, an INDEX is automatically created.
+*- PRIMARY KEY
+*- UNIQUE
+- FOREIGN KEY
+- CHECK
+- NOT NULL
+
+
+
+When an index is set to INVISIBLE...
+*- The Oracle query optimizer will not consider it
+- It cannot be dropped
+- Its name can be used by another index
+- Further DML modifications to the base table will not update it
+- You can create another index for the same column set.
+
+
+
+Does the following code execute successfully?
+
+<div class = "code">
+1. CREATE TABLE my_table (my_data NUMBER);
+2. CREATE INDEX my_idx_1 ON my_table(my_data) INVISIBLE;
+3. CREATE INDEX my_idx_2 ON my_table(my_data) VISIBLE;
+</div>
+
+- Yes, it completes successfully.
+- No, it fails on line 1.
+- No, it fails on line 2.
+*- No, it fails on line 3.
+
+
+
+
+The FLASHBACK TABLE command...
+*- Can recover dropped tables.
+*- Restores data from the recycle bin.
+*- Can recover dropped indexes.
+- Can recover dropped columns.
+- Can recover tables that have been PURGED.
+
+
+
+The _____ command is used to permenantly delete data from the recycle bin.
+*- PURGE
+- FLASHBACK
+- TRUNCATE
+- EMPTY
+- DROP
+
+
+True or False: FLASHBACK recovers the names of all database objects it restores.
+- True
+*- False
+
+
+
+FLASHBACK TABLE can restore a table from...
+*- A TIMESTAMP
+*- A RESTORE POINT
+- A SAVEPOINT
+*- A system change number (SCN)
+
+
+Which of the following is true regarding FLASHBACK?
+*- It can restore data from tables which have been structurally altered.
+- It invokes an implicit COMMIT.
+- It restores all names to recovered objects.
+*- It requires ROW MOVEMENT to be enabled in most cases.
+
+
+
+Which of the following is true regarding RESTORE POINTS?
+*- They are database objects.
+*- They are not owned by users but are rather in the scope of the entire databse.
+*- They can be used as a time reference to FLASHBACK a table.
+- They cannot be dropped.
+
+
+
+

@@ -1,0 +1,553 @@
+A _______ is a SELECT statement that exists within a larger SQL statement.
+*- Subquery
+- Query
+- View
+- Selector
+- Proceudre
+
+
+
+A _______ subquery returns one row of data only, regardless of the number of columns.
+*- Single-row
+- Multiple-row
+- Multiple-column
+- Correlated
+- Scalar
+
+
+A _______ subquery returns one or more rows of data, regardless of the number of columns.
+- Single-row
+*- Multiple-row
+- Multiple-column
+- Correlated
+- Scalar
+
+
+A _______ subquery returns more than one column worth of data, regardless of the number of rows.
+- Single-row
+- Multiple-row
+*- Multiple-column
+- Correlated
+- Scalar
+
+
+A _______ subquery references tables or aliases from the parent query.
+- Single-row
+- Multiple-row
+- Multiple-column
+*- Correlated
+- Scalar
+
+
+A _______ subquery returns only one row consisting of a single column.
+- Single-row
+- Multiple-row
+- Multiple-column
+- Correlated
+*- Scalar
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE EXISTS 
+(SELECT * FROM my_table_2);
+</div>
+
+What is the result?
+- 0
+- 1
+*- 2
+- 3
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE EXISTS 
+(SELECT * FROM my_table_2 b
+WHERE a.my_data = b.my_data);
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- 4
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE EXISTS 
+(SELECT * FROM my_table_2 b
+WHERE a.my_data = b.my_data);
+</div>
+
+What is the result?
+*- 0
+- 1
+- 2
+- 3
+- 4
+- Execution fails
+
+
+
+
+The ______ clause is used to assign a name to a subquery block for later reference in a SELECT statement.
+*- WITH
+- RENAME
+- RANK
+- GROUP BY
+- DEFINE
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (3);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE NOT EXISTS 
+(SELECT * FROM my_table_2 b
+WHERE a.my_data = b.my_data);
+</div>
+
+What is the result?
+- 0
+- 1
+*- 2
+- 3
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (2);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE NOT EXISTS 
+(SELECT * FROM my_table_2 b
+WHERE a.my_data = b.my_data);
+</div>
+
+What is the result?
+- 0
+- 1
+*- 2
+- 3
+- 4
+- Execution fails
+
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+WITH calc_1 AS
+(SELECT 1 as val FROM DUAL),
+calc_2 AS
+(SELECT 3 as val FROM DUAL)
+SELECT a.val + b.val
+FROM calc_1 a, calc_2 b;
+</div>
+
+What is the result?
+- 1
+- NULL
+- 3
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+WITH calc_1 AS
+(SELECT 1 as val FROM DUAL),
+calc_2 AS
+(SELECT 3 as val FROM DUAL)
+SELECT calc_1.val + calc_2.val;
+</div>
+
+What is the result?
+- 1
+- NULL
+- 3
+- 4
+*- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+WITH calc_1 AS
+(SELECT 1 as val FROM DUAL),
+calc_2 AS
+(SELECT 3 as val FROM DUAL)
+SELECT calc_1.val + calc_2.val
+FROM dual;
+</div>
+
+What is the result?
+- 1
+- NULL
+- 3
+- 4
+*- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT my_data from 
+my_table 
+WHERE my_data = (
+WITH calc_1 AS
+(SELECT 1 as val FROM DUAL)
+SELECT a.val as my_data
+FROM calc_1 a);
+</div>
+
+What is the result?
+*- 1
+- No rows selected
+- 3
+- 2
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT my_data from 
+my_table 
+WHERE NOT EXISTS (
+WITH calc_1 AS
+(SELECT 1 as val FROM DUAL)
+SELECT a.val as my_data
+FROM calc_1 a
+WHERE my_table.my_data = a.val);
+</div>
+
+What is the result?
+- 1
+- No rows selected
+- 3
+*- 2
+- Execution fails
+
+
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (2);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE a.my_data = 
+(SELECT * FROM my_table_2 b);
+</div>
+
+What is the result?
+- 1
+- 4
+- 3
+- 2
+*- Execution fails
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_1 VALUES (3);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (2);
+
+SELECT MIN(a.my_data)
+FROM my_table_1 a
+WHERE a.my_data > ALL (SELECT * from my_table_2);
+</div>
+
+What is the result?
+- 1
+- No rows returned
+*- 3
+- 2
+- Execution fails
+
+
+
+
+
+
+The _____ comparison condition returns true if a relational operator returns true for EVERY row returned by a multi-row subquery.
+*- ALL
+- SOME
+- IN
+- NOT
+- ANY
+
+
+The _____ comparison condition returns true if a relational operator returns true for at least one row returned by a multi-row subquery.
+- ALL
+*- SOME
+- IN
+- NOT
+*- ANY
+
+
+The _____ comparison condition returns true if the subject value equals at least one row returned by a multi-row subquery.
+- ALL
+- SOME
+*- IN
+- NOT
+- ANY
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_1 VALUES (3);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (2);
+
+SELECT MIN(a.my_data)
+FROM my_table_1 a
+WHERE a.my_data > SOME (SELECT * from my_table_2);
+</div>
+
+What is the result?
+- 1
+- No rows returned
+- 3
+*- 2
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_1 VALUES (3);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (2);
+
+SELECT MIN(a.my_data)
+FROM my_table_1 a
+WHERE a.my_data > ANY (SELECT * from my_table_2);
+</div>
+
+What is the result?
+- 1
+- No rows returned
+- 3
+*- 2
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_1 VALUES (3);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (2);
+
+SELECT MIN(a.my_data)
+FROM my_table_1 a
+WHERE a.my_data IN (SELECT * from my_table_2);
+</div>
+
+What is the result?
+*- 1
+- No rows returned
+- 3
+- 2
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_2 VALUES (NULL);
+
+SELECT MIN(a.my_data)
+FROM my_table_1 a
+WHERE a.my_data NOT IN (SELECT * from my_table_2);
+</div>
+
+
+What is the result?
+- 1
+*- No rows returned
+- NULL
+- 2
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (NULL);
+INSERT INTO my_table_2 VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+WHERE a.my_data IN (SELECT * from my_table_2);
+</div>
+
+What is the result?
+- 1
+*- 0
+- NULL
+- 2
+- Execution fails
+
+
+
+
+
+

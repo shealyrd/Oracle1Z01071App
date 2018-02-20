@@ -1,0 +1,1163 @@
+_______ functions return one row for each group of rows in the SELECT statement.
+*- Aggregate
+- Scalar
+- Single-Row
+- Procedural
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data1 NUMBER, my_data2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 2);
+INSERT INTO my_table VALUES (2, 3);
+
+SELECT my_data1, COUNT(my_data2)
+FROM my_table;
+</div>
+
+Which two values are returned?
+- 1, 2
+- 1, 1
+- 2, 2
+- 2, 1
+*- Execution fails.
+
+
+
+
+
+
+Which of the following aggregate functions can take in character data parameters?
+*- MIN
+*- COUNT
+- MIN
+- SUM
+- AVG
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data1 NUMBER, my_data2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 2);
+INSERT INTO my_table VALUES (2, 3);
+
+SELECT SUM(my_data1), COUNT(my_data2)
+FROM my_table;
+</div>
+
+Which two values are returned?
+*- 3, 2
+- 3, 1
+- 1, 1
+- 5, 2
+- Execution fails.
+
+
+
+
+Which of the following aggregate functions ignores NULL values in its calculations?
+- COUNT
+- MEDIAN
+- AVG
+- SUM
+- MAX
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data1 NUMBER, my_data2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 2);
+INSERT INTO my_table VALUES (2, 3);
+
+SELECT COUNT(COUNT(*))
+FROM my_table;
+</div>
+
+Which value is returned?
+- 0
+- 1
+- NULL
+- 2
+*- Execution fails.
+
+
+
+
+
+
+The _______ function returns the number of non-null values returned by the query.
+*- COUNT
+- SIZE
+- ROWNUM
+- SELECT
+- ROUND
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (NULL);
+
+SELECT COUNT(my_data)
+FROM my_table_1;
+</div>
+
+What is the result?
+*- 1
+- 2
+- 0
+- NULL
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (NULL);
+
+SELECT COUNT(*)
+FROM my_table_1;
+</div>
+
+What is the result?
+- 1
+*- 2
+- 0
+- NULL
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+
+SELECT COUNT(*)
+FROM my_table_1;
+</div>
+
+What is the result?
+*- 0
+- NULL
+- 1
+- Execution fails
+- No rows returned.
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (NULL);
+
+SELECT COUNT(DISTINCT my_data)
+FROM my_table_1;
+</div>
+
+What is the result?
+- 1
+- 2
+*- 0
+- NULL
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (NULL);
+
+SELECT SUM(my_data)
+FROM my_table_1;
+</div>
+
+What is the result?
+*- 1
+- 2
+- 0
+- NULL
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT SUM(DISTINCT my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 1
+- 2
+*- 3
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT SUM(DISTINCT my_data)
+FROM my_table
+WHERE my_data = 1;
+</div>
+
+What is the result?
+*- 1
+- 2
+- 3
+- 4
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data CHAR);
+
+INSERT INTO my_table VALUES ('a');
+INSERT INTO my_table VALUES ('b');
+INSERT INTO my_table VALUES ('c');
+
+SELECT MIN(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- a
+- b
+- c
+- NULL
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data CHAR);
+
+INSERT INTO my_table VALUES ('a');
+INSERT INTO my_table VALUES ('b');
+INSERT INTO my_table VALUES ('c');
+
+SELECT MAX(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- a
+- b
+*- c
+- NULL
+- Execution fails
+
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data CHAR);
+
+INSERT INTO my_table VALUES ('a');
+INSERT INTO my_table VALUES ('b');
+INSERT INTO my_table VALUES ('c');
+
+SELECT AVG(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- a
+- b
+- c
+- NULL
+*- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (3);
+INSERT INTO my_table VALUES (8);
+
+SELECT AVG(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 4
+- 3
+- 2
+- 1
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (3);
+INSERT INTO my_table VALUES (3);
+INSERT INTO my_table VALUES (NULL);
+
+SELECT AVG(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 2
+- NULL
+- 1
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (7);
+
+SELECT ROUND(AVG(my_data))
+FROM my_table;
+</div>
+
+
+What is the result?
+*- 4
+- 3
+- 5
+- 7
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (3);
+INSERT INTO my_table VALUES (3);
+INSERT INTO my_table VALUES (NULL);
+
+SELECT AVG(ALL my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 2
+- NULL
+- 1
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (3);
+
+SELECT MEDIAN(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 5
+- 1
+- 2
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (8);
+INSERT INTO my_table VALUES (3);
+
+SELECT MEDIAN(my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 4
+- 8
+- 1
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (8);
+INSERT INTO my_table VALUES (3);
+
+SELECT RANK(1) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+- 2
+- 8
+*- 1
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (8);
+INSERT INTO my_table VALUES (3);
+
+SELECT RANK(8) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 2
+- 8
+- 1
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (8);
+INSERT INTO my_table VALUES (3);
+
+SELECT RANK(3) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+*- 2
+- 8
+- 1
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (9);
+
+SELECT RANK(2) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 9
+*- 2
+- 5
+- 1
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (9);
+
+SELECT RANK(-100) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 0
+- NULL
+- -100
+*- 1
+- Execution fails
+
+
+
+
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (9);
+
+SELECT RANK(NULL) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+- NULL
+*- 4
+- 1
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (9);
+
+SELECT RANK() OVER (PARTITION BY my_data)
+FROM my_table;
+</div>
+
+
+What is the result?
+- 9
+- 2
+- 5
+- 1
+*- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (5);
+INSERT INTO my_table VALUES (9);
+
+SELECT SUM(my_rank) FROM 
+(
+SELECT RANK() OVER (PARTITION BY my_data ORDER BY my_data) as my_rank
+FROM my_table
+);
+</div>
+
+What is the result?
+- 15
+*- 3
+- 6
+- 1
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 10);
+INSERT INTO my_table VALUES (2, 9);
+INSERT INTO my_table VALUES (3, 10);
+
+SELECT RANK() OVER (PARTITION BY my_data_2 ORDER BY my_data_1) as my_rank
+FROM my_table;
+</div>
+
+What values are returned? (New rows are represented by commas)
+*- 1, 1, 2
+- 1, 1
+- 1, 2
+- 2, 1, 2
+- 1, 2, 1
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT RANK(2) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 1
+- 2
+- 4
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 10);
+INSERT INTO my_table VALUES (2, 9);
+INSERT INTO my_table VALUES (3, 8);
+
+SELECT MAX(my_data_1) KEEP (DENSE_RANK FIRST ORDER BY my_data_2) as my_rank
+FROM my_table;
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT DENSE_RANK(2) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+- 1
+*- 2
+- 4
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT RANK(1) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+*- 1
+- 2
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+
+SELECT DENSE_RANK(1) WITHIN GROUP (ORDER BY my_data)
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+*- 1
+- 2
+- 4
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 10);
+INSERT INTO my_table VALUES (2, 9);
+INSERT INTO my_table VALUES (3, 8);
+
+SELECT MAX(my_data_1) KEEP (DENSE_RANK FIRST ORDER BY my_data_2) as my_rank
+FROM my_table;
+</div>
+
+What is the result?
+*- 3
+- 10
+- 1
+- 8
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 10);
+INSERT INTO my_table VALUES (2, 9);
+INSERT INTO my_table VALUES (3, 8);
+
+SELECT MAX(my_data_1) KEEP (RANK LAST ORDER BY my_data_2) as my_rank
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+- 10
+- 1
+- 8
+*- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 10);
+INSERT INTO my_table VALUES (2, 9);
+INSERT INTO my_table VALUES (3, 8);
+
+SELECT MAX(my_data_1) KEEP (DENSE_RANK LAST ORDER BY my_data_2) as my_rank
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+- 10
+*- 1
+- 8
+- Execution fails
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 10);
+INSERT INTO my_table VALUES (2, 10);
+INSERT INTO my_table VALUES (3, 8);
+
+SELECT MAX(my_data_1) KEEP (DENSE_RANK LAST ORDER BY my_data_2) as my_rank
+FROM my_table;
+</div>
+
+What is the result?
+- 3
+*- 2
+- 1
+- 10
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 1);
+INSERT INTO my_table VALUES (3, 2);
+INSERT INTO my_table VALUES (4, 2);
+
+SELECT MAX(SUM(my_data_1))
+FROM my_table
+GROUP BY my_data_2;
+</div>
+
+What is the result?
+*- 7
+- 3
+- 11
+- 4
+- 2
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 1);
+INSERT INTO my_table VALUES (3, 2);
+INSERT INTO my_table VALUES (4, 2);
+
+SELECT MAX(my_data_2) FROM (
+SELECT SUM(my_data_1), my_data_2
+FROM my_table);
+</div>
+
+What is the result?
+- 7
+- 3
+- 11
+- 4
+*- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+
+SELECT SUM(my_data_1) + my_data_2
+FROM my_table;
+</div>
+
+What is the result?
+*- Execution fails
+- 1
+- 2
+- 3
+- NULL
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+
+SELECT MAX(SUM(my_data_1) + my_data_2)
+FROM my_table
+GROUP BY my_data_2;
+</div>
+
+What is the result?
+- Execution fails
+- 5
+- 2
+- 3
+*- 4
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+
+SELECT MAX(SUM(my_data_1) + my_data_2)
+FROM my_table
+GROUP BY SUM(my_data_2);
+</div>
+
+What is the result?
+*- Execution fails
+- 5
+- 2
+- 3
+- 4
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (3);
+INSERT INTO my_table VALUES (5);
+
+SELECT my_data
+FROM my_table
+WHERE SUM(my_data) = 3;
+</div>
+
+What is the result?
+*- Execution fails
+- 5
+- 2
+- 3
+- 9
+
+
+In a select statement, where can aggregate functions not be used?
+- The GROUP BY clause
+- The select list
+- The HAVING clause
+- The ORDER BY clause
+*- The WHERE clause
+
+
+
+If an aggregate function is used in the select list of a SELECT statement, all other selected expressions MUST _____________.
+*- Be at the same level of aggregation
+- Be included in the GROUP BY clause
+- Be included in the HAVING clause
+- Be scalar functions
+- NOT be included in the ORDER BY clause
+
+
+
+The ________ clause is used to transform single column references into aggregated references.
+*- GROUP BY
+- HAVING
+- ORDER BY
+- OVER
+- PARTITION BY
+
+
+
+True or False: It is required for all columns in the GROUP BY clause to be in the select list:
+- True
+*- False
+
+
+
+The _______ clause is used to filter out groups aggregated by the GROUP BY clause.
+*- HAVING
+- WHERE
+- ORDER BY
+- PARTITION BY
+- ROLLUP
+
+
+True or False: It is required that a SELECT statement have a GROUP BY clause in order the have a HAVING clause.
+*- True
+- False
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 1);
+INSERT INTO my_table VALUES (3, 2);
+INSERT INTO my_table VALUES (4, 2);
+
+SELECT MAX(my_data_1)
+FROM my_table
+GROUP BY my_data_2
+HAVING my_data_2 = 2;
+</div>
+
+What is the result?
+*- 4
+- 2
+- 3
+- 7
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data_1 NUMBER, my_data_2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 1);
+INSERT INTO my_table VALUES (3, 2);
+INSERT INTO my_table VALUES (4, 2);
+
+SELECT MAX(my_data_1)
+FROM my_table
+GROUP BY my_data_2
+HAVING SUM(my_data_1) < 5;
+</div>
+
+What is the result?
+- 4
+*- 2
+- 3
+- 7
+- Execution fails
+
+
+
+
+The _____ function is used to assign an incremental value to each row using a set of user-defined evaluations.
+*- RANK
+- COUNT
+- ROWNUM
+- SEQUENCE
+- CODIFY
+
+
+
+The difference between RANK and DENSE_RANK is _____________.
+*- DENSE_RANK does not stop incrementing for duplicates
+- DENSE_RANK includes rows not in the WHERE clause
+- RANK can be used in a KEEP function, but DENSE_RANK can not
+- DENSE_RANK includes fractional ranking
+
+
+
+
+
+
+
+
+

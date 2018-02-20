@@ -1,0 +1,633 @@
+Using DDL Statements:
+
+
+______ objects are those that can be owned by a user.
+- Schema
+- Nonschema
+
+_______ objects are those that cannot be owned by a user.
+- Schema
+- Nonschema
+
+Which of the following are true about USER objects?
+- A USER object can own itself
+- A USER object can be owned by another USER object
+* - A USER object is a nonschema object
+* - A USER object can own a PRIVATE SYNONYM
+
+A PUBLIC SYNONYM is owned by the special user account _______.
+- PUBLIC
+- DUAL
+- SYS
+- SYSTEM
+- INTERNAL
+
+Which of the following are true of UNQUOTED database object names?
+- Object names are case sensitive
+* - All database objects MUST have a name.
+* - Names can contain letters, '$', '_' or '#'.
+* - Object names MUST start with a letter.
+- Object names can contain spaces.
+
+Which of the following are true of QUOTED database object names?
+*- Quoted object names must always be referenced with their quotation marks.
+*- Quoted object names can contain spaces
+- Quoted object names MUST start with a letter.
+- Quoted object names cannot contain reserved words.
+*- Quoted object names are case-sensitive.
+
+A _______ is a logical boundry within the database which requires encompassing objects to have unique names.
+- NAMESPACE
+- SCHEMA
+- USER
+- DATABASE
+- CLUSTER
+
+Which two types of database objects occupying the same database share a namespace?
+* - USER
+* - ROLE
+- PUBLIC SYNONYM
+- TABLE
+- INDEX
+- CONSTRAINT
+
+______ objects do not share a namespace with any other type of objects.
+* - PUBLIC SYNONYM
+- TABLE
+- VIEW
+- SEQUENCE
+- PRIVATE SYNONYM
+
+Which of the following is true about namespaces?
+* - Objects in different namespaces can have the same name.
+- Schema objects of the same type in different schemas share the same namespace.
+* - In the entire database, every USER objects must have a unique name.
+- INDEX and CONSTRAINT objects in the same schema share the same namespace.
+
+
+
+CREATE TABLE my_table
+(
+	my_id NUMBER NOT NULL,
+	my_value NUMBER,
+	my_name VARCHAR2(10) DEFAULT 'RALPH',
+	CONSTRAINT my_pk PRIMARY_KEY (my_value)
+);
+
+How many CONSTRAINT objects are created with the above CREATE TABLE statement?
+- 0
+- 1
+* - 2
+- 3
+- 4
+
+
+Which of the following SQL*Plus commands will return formatted details about a given table?
+* - DESC
+- SHOW
+- DETAILS
+- EXPLAIN
+- HELP
+
+If 5.67 is entered into a column of type NUMBER(2), what value is stored?
+- 5.67
+* - 6 
+- 5.6
+- 5
+- 5.7
+- None; an exception is thrown.
+
+If 5.67 is entered into a column of type NUMBER(5,2), what value is stored?
+* - 5.67
+- 6 
+- 5.6
+- 5
+- 5.7
+- None; an exception is thrown.
+
+If 5.67 is entered into a column of type NUMBER, what value is stored?
+* - 5.67
+- 6 
+- 5.6
+- 5
+- 5.7
+- None; an exception is thrown.
+
+If 5.6789 is entered into a column of type NUMBER(5,2), what value is stored?
+- 5.6789
+- 6
+* - 5.68
+- 5.6
+- 5.67
+- None; an exception is thrown.
+
+
+If 5.67 is entered into a column of type NUMBER(4,1), what value is stored?
+- 5.67
+- 6
+* - 5.7
+- 5.6
+- 5
+- None; an exception is thrown.
+
+
+/*
+If 5.67 is entered into a column of type NUMBER(3,2), what value is stored?
+- 5.67
+- 6
+- 5.7
+- 5.6
+- 5
+- None; an exception is thrown.
+
+If 1050.67 is entered into a column of type NUMBER(5,-2), what value is stored?
+- 1100
+- 1050
+- 1050.67
+- 1000
+- 10
+- None; an exception is thrown.
+*/
+
+Which of the following datetime fields are stored in a DATE data type?
+* - YEAR
+* - SECOND
+* - MONTH
+- TIMEZONE_HOUR
+- MILLISECOND
+
+Which of the following is not a Large Data Object (LOB) used in Oracle?
+- BLOB
+- CLOB
+- NCLOB
+*- OBLOB
+
+Which of the following would be the best data type in which to store data for an image?
+*- BLOB
+- IMAGE
+- CLOB
+- FILE
+- OBJECT
+
+Which of the following is NOT a valid way to create a primary key CONSTRAINT object?
+*- In a CREATE CONSTRAINT statement
+- In an ALTER TABLE ADD CONSTRAINT statement
+- In an ALTER TABLE MODIFY statement
+- In a CREATE TABLE statement, in-line with respective columns
+- In a CREATE TABLE statement, out-of-line with respective columns
+
+Which of the following is a valid way to create a "not null" CONSTRAINT object?
+- In a CREATE CONSTRAINT statement
+- In an ALTER TABLE ADD CONSTRAINT statement
+*- In an ALTER TABLE MODIFY statement
+*- In a CREATE TABLE statement, in-line with respective columns
+- In a CREATE TABLE statement, out-of-line with respective columns
+
+
+A ______ constraint ensures that, for any row, a specified column will always be populated with data.
+*- NOT NULL
+- UNIQUE
+- FOREIGN KEY
+- CHECK
+- REF
+
+A ______ constraint ensures that a set of specified columns will never be repeated by two rows in the same table.
+- NOT NULL
+* - UNIQUE
+- FOREIGN KEY
+- CHECK
+- REF
+
+A ______ constraint is a combination of a NOT NULL constraint and a UNIQUE constraint
+* - PRIMARY KEY
+- FOREIGN KEY
+- CHECK
+- REF
+- LOCAL KEY
+
+A ______ constraint preserves referential integrity between two tables.
+*- NOT NULL
+- UNIQUE
+*- FOREIGN KEY
+- CHECK
+- PRIMARY KEY
+
+An ON DELETE _______ clause in a FOREIGN KEY definition will set the constrained column to NULL when its referenced foreign row is deleted.
+*- SET NULL
+- CASCADE
+- NULLIFY
+- SET DEFAULT
+- RESTRICT
+
+An ON DELETE _______ clause in a FOREIGN KEY definition will delete rows in the constrained table when a referenced foreign row is deleted.
+- SET NULL
+*- CASCADE
+- PURGE
+- SET DEFAULT
+- RESTRICT
+
+An ON DELETE _______ clause in a FOREIGN KEY definition will not allow any rows in the foreign table to be deleted when they are referenced by a row in the constrained table.
+- SET NULL
+- CASCADE
+- THROW EXCEPTION
+- SET DEFAULT
+*- RESTRICT
+
+Given the following CREATE TABLE statement:
+
+CREATE TABLE my_table
+(
+	my_id NUMBER,
+	my_status NUMBER CHECK (my_status IN (1,2))
+);
+
+Which of the following entries for my_status would throw a check constraint error?
+- 1
+- 2
+- NULL
+*- 0
+- 'my_value'
+
+
+
+
+Given the following CREATE TABLE statement:
+
+CREATE TABLE my_table
+(
+	my_id NUMBER,
+	my_status NUMBER(1) CHECK (my_status BETWEEN 1 AND 2)
+);
+
+Which of the following entries for my_status would throw a check constraint error?
+- 1
+- 2
+- 1.5
+- NULL
+*- 3
+
+
+Which of the following data types can NOT have UNIQUE, PRIMARY KEY or FOREIGN KEY constraints applied to them?
+- DATE
+- TIMESTAMP
+*- CLOB
+*- BLOB
+*- TIMESTAMP WITH TIME ZONE
+- TIMESTAMP WITH LOCAL TIME ZONE
+- VARCHAR2
+
+
+
+Which of the following is true regarding dropping columns from tables?
+*- You cannot drop all columns in a table.
+- You can only drop one column per ALTER TABLE statement.
+*- You can only drop parent key columns referenced a foreign key of another table using the CASCADE CONSTRAINTS clause.
+- You can only drop foreign-key-constraint columns referencing a parent table using the CASCADE CONSTRAINTS clause.
+
+
+
+Consider the following code:
+
+
+CREATE TABLE my_table_1
+(
+	my_id NUMBER PRIMARY KEY,
+	my_status NUMBER UNIQUE
+);
+
+CREATE TABLE my_table_2
+(
+	my_id NUMBER PRIMARY KEY CHECK (my_id IN (1,2)),
+	my_status NUMBER NOT NULL UNIQUE,
+	CONSTRAINT my_fk FOREIGN KEY (my_status) REFERENCES my_table_1 (my_status)
+);
+
+ALTER TABLE my_table_2 DROP COLUMN my_status;
+
+
+If the above code does not throw an error, how many constraints does my_table_2 have after execution?
+- 0
+- 1
+* - 2
+- 3
+- Code does not complete and an exception is thrown.
+
+
+
+Consider the following code:
+
+CREATE TABLE my_table_1
+(
+	my_id NUMBER,
+	my_status NUMBER,
+	CONSTRAINT my_pk_1 PRIMARY KEY (my_id, my_status)
+);
+
+CREATE TABLE my_table_2
+(
+	my_id NUMBER,
+	my_status NUMBER,
+	CONSTRAINT my_pk_2 PRIMARY KEY (my_id, my_status),
+	CONSTRAINT my_fk FOREIGN KEY (my_status, my_id) REFERENCES my_table_1 (my_status, my_id)
+);
+
+ALTER TABLE my_table_2 DROP COLUMN my_status;
+
+If the above code does not throw an error, how many named constraints does my_table_2 have?
+- 0
+- 1
+- 2
+- 3
+* - Code does not complete and an exception is thrown.
+
+
+
+Consider the following code:
+
+
+CREATE TABLE my_table_1
+(
+	my_id NUMBER,
+	my_status NUMBER,
+	CONSTRAINT my_pk_1 PRIMARY KEY (my_id, my_status)
+);
+
+CREATE TABLE my_table_2
+(
+	my_id NUMBER,
+	my_status NUMBER,
+	CONSTRAINT my_pk_2 PRIMARY KEY (my_id, my_status),
+	CONSTRAINT my_fk FOREIGN KEY (my_status, my_id) REFERENCES my_table_1 (my_status, my_id)
+);
+
+ALTER TABLE my_table_2 DROP COLUMN my_status CASCADE CONSTRAINTS;
+
+
+If the above code does not throw an error, how many named constraints does my_table_2 have?
+* - 0
+- 1
+- 2
+- 3
+- Code does not complete and an exception is thrown.
+
+
+Which of the following is true about setting a column to be UNUSED?
+- An ALTER TABLE MODIFY statement must be used to revert it back to USABLE.
+*- A ROLLBACK statement will have no effect on the column's UNUSED status.
+*- You can add a new column to the table that has the same name as the UNUSED column.
+*- Constraints and indices on the column will be dropped.
+*- An UNUSED column still counts toward a table's maximum column limit of 1000.
+
+
+Which of the following is true about setting a column to be UNUSED?
+- You can set a table's final column to be UNUSED.
+* - A column set as UNUSED can be dropped.
+* - A column that has been set as UNUSED can never be recovered.
+- Only one column can be set as UNUSED at a time.
+- A column can be set UNUSED even if it is constrained.
+
+
+A _________ is a table whose metadata is defined in the database, but whose data is stored outside the database.
+- VIEW
+- CLUSTER
+- EXTERNAL TABLE
+- DIRECTORY
+- DISTRIBUTED TABLE
+
+
+Which of the following is true about external tables?
+* - They are read-only.
+* - They will not accept CONSTRAINT objects.
+- They can have INDEX objects creates on them.
+- Their columns cannot be dropped.
+* - Their columns cannot be set to UNUSED.
+
+
+Which of the following SQL statements will fail on an external table?
+* - INSERT
+* - DELETE
+- ALTER TABLE ... SET UNUSED
+- SELECT
+- RENAME TO
+
+
+An external table's columns can be of which data types?
+- CLOB
+- BLOB
+*- TIMESTAMP WITH TIME ZONE
+*- CHAR
+- NCLOB
+
+
+A ______ object defines a location on the database's file system.
+*- DIRECTORY
+- LOCATION
+- FILE
+- FILEPATH
+- EXTERNAL TABLE
+
+
+A CONSTRAINT can be applied to which of the following?
+*- TABLE
+- EXTERNAL TABLE
+- INDEX
+- SEQUENCE
+- SYNONYM
+
+Which of the following are valid CREATE TABLE statements?
+- CREATE TABLE $my_table (my_data NUMBER);
+*- CREATE TABLE my_table (my_data NUMBER(1,1));
+*- CREATE TABLE "my table" (my_data VARCHAR2(10));
+*- CREATE TABLE myTable (my_data VARCHAR2(10));
+*- CREATE TABLE "$ create table" (my_data VARCHAR2(10));
+
+Which of the following can be instantiated with a CREATE statement?
+*- TABLE
+*- VIEW
+- CONSTRAINT
+*- SYNONYM
+- ROW
+
+
+
+Consider the following statements:
+
+1. CREATE TABLE my_table (my_data1 CHAR, my_data2 CHAR, CONSTRAINT my_obj PRIMARY KEY (my_data1));
+2. CREATE VIEW my_obj AS (select * from my_table);
+3. CREATE INDEX my#other#obj ON my_table (my_data2);
+4. CREATE TABLE my#other#obj (my_data CHAR);
+
+If these statements are executes in order, at which statement will the first "name has already been used" error be thrown?
+- 1
+- 2
+- 3
+- 4
+*- The code will execute with no errors.
+
+
+
+Consider the following statements:
+
+1. CREATE TABLE my_obj (my_data CHAR);
+2. ALTER TABLE my_obj ADD CONSTRAINT my_obj PRIMARY KEY (my_data);
+3. CREATE VIEW my_obj AS (select * from my_obj);
+
+If these statements are executes in order, at which statement will the first "name has already been used" error be thrown?
+- 1
+- 2
+*- 3
+- The code will not compile due to syntax errors.
+- The code will execute with no errors.
+
+
+
+Consider the following statements:
+
+1. CREATE TABLE my_obj (my_data CHAR);
+2. CREATE INDEX my_obj ON my_obj (my_data);
+
+If these statements are executes in order, at which statement will the first "name has already been used" error be thrown?
+- 1
+- 2
+- The code will not compile due to syntax errors.
+*- The code will execute with no errors.
+
+
+
+
+Consider the following statements:
+
+1. CREATE TABLE my_obj (my_data CHAR);
+2. ALTER TABLE my_obj ADD CONSTRAINT my_obj PRIMARY KEY (my_data);
+3. CREATE INDEX my_obj ON my_obj (my_data);
+
+If these statements are executes in order, at which statement will the first "name has already been used" error be thrown?
+- 1
+- 2
+*- 3
+- The code will not compile due to syntax errors.
+- The code will execute with no errors.
+
+
+Consider the following statements:
+
+1. CREATE TABLE my_obj (my_data CHAR);
+2. ALTER TABLE my_obj ADD CONSTRAINT my_obj CHECK (my_data in (1,2));
+3. CREATE INDEX my_obj ON my_obj (my_data);
+
+If these statements are executes in order, at which statement will the first "name has already been used" error be thrown?
+- 1
+- 2
+- 3
+- The code will not compile due to syntax errors.
+*- The code will execute with no errors.
+
+
+Consider the following statements:
+
+1. CREATE TABLE my_obj (my_data CHAR);
+2. ALTER TABLE my_obj ADD CONSTRAINT my_obj PRIMARY KEY (my_data);
+
+If these statements are executes in order, at which statement will the first "name has already been used" error be thrown?
+- 1
+- 2
+- The code will not compile due to syntax errors.
+*- The code will execute with no errors.
+
+
+Which of the following is true about ROLES?
+- Roles can be schema objects or nonschema objects, depending on where they are created.
+- Roles are in the same namespace as VIEW objects in the same schema.
+*- Roles are in the same namespace as USER objects.
+- Roles are in the same namespace as PUBLIC SYNONYM objects.
+- Roles are in the same namespace as CONSTRAINT objects.
+
+
+
+Consider the following SQL:
+
+1. CREATE TABLE my_table
+2. (my_id NUMBER,
+3.	my_name CHAR(2),
+4.	my_key VARCHAR2(10));
+
+At which lines are there errors?
+- 1
+- 2
+- 3
+- 4
+*- There is no error.
+
+
+Consider the following SQL:
+
+1. CREATE TABLE my_table
+2. (my_id BLOB NOT NULL,
+3.	my_name CHAR,
+4.	my_key VARCHAR2);
+
+At which lines are there errors?
+- 1
+- 2
+- 3
+*- 4
+- There is no error.
+
+
+
+Consider the following SQL:
+
+1. CREATE TABLE my_table
+2. (my_id BLOB PRIMARY KEY,
+3.	my_name CLOB,
+4.	my_key VARCHAR2);
+
+At which lines are there errors?
+- 1
+*- 2
+- 3
+*- 4
+- There is no syntax error.
+
+
+
+Consider the following SQL:
+
+1. CREATE TABLE my_table
+2. (my_id NUMBER(10,-3),
+3.	my_name CLOB UNIQUE,
+4.	my_key VARCHAR2(10));
+
+At which lines are there errors?
+- 1
+- 2
+*- 3
+- 4
+- There is no syntax error.
+
+
+
+Which of the following SQL statements creates a table which does not accept rows where my_data is NULL?
+
+- CREATE TABLE my_table (my_data CHAR, CONSTRAINT my_c UNIQUE (my_data));
+*- CREATE TABLE my_table (my_data CHAR, CONSTRAINT my_c PRIMARY KEY (my_data));
+- CREATE TABLE my_table (my_data CHAR, CONSTRAINT my_c NOT NULL (my_data));
+*- CREATE TABLE my_table (my_data CHAR, CONSTRAINT my_c CHECK (my_data IS NOT NULL));
+
+
+
+
+
+Consider the following SQL:
+
+1. CREATE TABLE my_table
+2. (my_id BLOB PRIMARY KEY,
+3.	my_name CLOB,
+4.	my_key VARCHAR2);
+
+At which lines are there syntax errors?
+- 1
+*- 2
+- 3
+*- 4
+- There is no syntax error.

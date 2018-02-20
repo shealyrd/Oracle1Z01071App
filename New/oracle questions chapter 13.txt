@@ -1,0 +1,406 @@
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    WHEN val = 1 THEN
+    INTO my_table VALUES (1)
+    WHEN val <= 1 THEN
+    INTO my_table VALUES (1)
+    WHEN val >= 1 THEN
+    INTO my_table VALUES (1)
+SELECT 1 as val FROM DUAL;
+
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+*- 3
+- Execution fails.
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT FIRST
+    WHEN val = 1 THEN
+    INTO my_table VALUES (1)
+    WHEN val <= 1 THEN
+    INTO my_table VALUES (1)
+    WHEN val >= 1 THEN
+    INTO my_table VALUES (1)
+SELECT 1 as val FROM DUAL;
+
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT FIRST
+    WHEN val = 1 THEN
+    INTO my_table VALUES (1)
+    WHEN val != 1 THEN
+    INTO my_table VALUES (1)
+    ELSE
+    INTO my_table VALUES (1)
+SELECT 1 as val FROM DUAL;
+
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    WHEN val = 1 THEN
+    INTO my_table VALUES (1)
+    WHEN val != 1 THEN
+    INTO my_table VALUES (1)
+    ELSE
+    INTO my_table VALUES (1)
+SELECT 1 as val FROM DUAL;
+
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- Execution fails.
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    WHEN 1 = 1 THEN
+    INTO my_table VALUES (1)
+    WHEN (2 - 1) = 1 THEN
+    INTO my_table VALUES (1);
+
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+- 3
+*- Execution fails.
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    INTO my_table VALUES (1)
+    INTO my_table VALUES (1);
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+- 3
+*- Execution fails.
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    INTO my_table VALUES (1)
+    INTO my_table VALUES (1)
+SELECT NULL as nonsense FROM DUAL;
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+*- 2
+- 3
+- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    INTO my_table
+    INTO my_table
+    INTO my_table
+SELECT 1 as data FROM DUAL;
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+*- 3
+- Execution fails.
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    INTO my_table
+SELECT 1 as data FROM DUAL;
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- Execution fails.
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT
+    INTO my_table
+    INTO my_table
+SELECT 1 as data FROM DUAL;
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+- 3
+*- Execution fails.
+
+
+
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    INTO my_table(calc_1.val)
+    INTO my_table(calc_2.val)
+WITH 
+calc_1 AS (SELECT 1 as val FROM DUAL),
+calc_2 AS (SELECT 2 as val FROM DUAL)
+SELECT * 
+FROM calc_1, calc_2;
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+- 3
+*- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT ALL
+    INTO my_table VALUES (val_1)
+    INTO my_table VALUES (val_2)
+WITH 
+calc_1 AS (SELECT 1 as val FROM DUAL),
+calc_2 AS (SELECT 2 as val FROM DUAL)
+SELECT calc_1.val as val_1, 
+calc_2.val as val_2
+FROM calc_1, calc_2;
+    
+SELECT COUNT(*) FROM my_table;
+</div>
+
+What is the result?
+- 0
+- 1
+*- 2
+- 3
+- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+INSERT INTO my_table_2 VALUES (1);
+
+MERGE INTO my_table_1 a
+USING my_table_2 b
+ON (b.my_data NOT IN a.my_data)
+WHEN NOT MATCHED THEN INSERT (my_data)
+VALUES (b.my_data);
+    
+SELECT COUNT(*) FROM my_table_1;
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- Execution fails.
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+INSERT INTO my_table_2 VALUES (1);
+
+MERGE INTO my_table_1 a
+USING my_table_2 b
+ON (b.my_data IN a.my_data)
+WHEN NOT MATCHED THEN INSERT (my_data)
+VALUES (b.my_data);
+    
+SELECT COUNT(*) FROM my_table_1;
+</div>
+
+What is the result?
+- 0
+*- 1
+- 2
+- 3
+- Execution fails.
+
+
+
+
+
+Consider the following SQL:
+
+<div class = "code">
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+
+MERGE INTO my_table_1 a
+USING my_table_2 b
+ON (b.my_data IN a.my_data)
+WHEN MATCHED THEN UPDATE SET
+my_data = b.my_data + 1;
+    
+SELECT my_data FROM my_table_1;
+</div>
+
+What is the result?
+- 0
+- 1
+- 2
+- 3
+*- Execution fails.
+
+
+
