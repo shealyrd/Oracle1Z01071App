@@ -1,7 +1,6 @@
 class QuestionBuilder{
     parentElement: HTMLElement;
     questionField: HTMLElement;
-	categoryDropDown: HTMLElement;
     answersField: HTMLElement;
     addAnswerButton: HTMLElement;
     compileQuestionButton: HTMLElement;
@@ -13,15 +12,12 @@ class QuestionBuilder{
 
     initialize() {
         this.questionField = this.createQuestionField();
-		this.categoryDropDown = this.createCategoryDropDown();
         this.answersField = this.createAnswersField();
         this.addAnswerButton = this.createAddAnswerButton();
         this.compileQuestionButton = this.createCompileQuestionButton();
         this.outputArea = this.createOutputArea();
 
         this.parentElement.appendChild(this.questionField);
-        this.parentElement.appendChild(document.createElement('br'));
-		this.parentElement.appendChild(this.categoryDropDown);
         this.parentElement.appendChild(document.createElement('br'));
         this.parentElement.appendChild(this.answersField);
         this.parentElement.appendChild(document.createElement('br'));
@@ -55,18 +51,6 @@ class QuestionBuilder{
         compileButton.onclick = () => { var q = this.getQuestionFromInputs(); this.setOutputText(JSON.stringify(q));};
 		return compileButton;
     }
-	
-	createCategoryDropDown() {
-        var catergoryDropDown = document.createElement('select');
-        for(var each in QuestionCategory){
-			if(isNaN(Number(each))){
-				var eachOption = document.createElement('option');
-				eachOption.innerHTML = each;
-				catergoryDropDown.appendChild(eachOption);
-			}
-		}
-		return catergoryDropDown;
-    }
     
     createAddAnswerButton() {
         var addAnswerButton = document.createElement('button');
@@ -97,8 +81,7 @@ class QuestionBuilder{
 
     getQuestionFromInputs(): Question{
         var questionString = (<HTMLTextAreaElement>this.questionField.children[0]).value;
-        var category = (<HTMLSelectElement> this.categoryDropDown).options[(<HTMLSelectElement> this.categoryDropDown).selectedIndex].innerHTML;
-        var newQuestion: Question = new Question(questionString, QuestionCategory[category]);
+        var newQuestion: Question = new Question(questionString);
         var answerChildren = this.answersField.children; 
         for (var i = 0; i < answerChildren.length; i++){
             if (i % 2 == 1) {
@@ -116,6 +99,5 @@ class QuestionBuilder{
 
 }
 
-//var q = new QuestionBuilder(document.body);
-//q.initialize();
-
+var q = new QuestionBuilder(document.body);
+q.initialize();
