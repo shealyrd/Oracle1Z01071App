@@ -1,0 +1,321 @@
+Consider the following SQL:
+
+SELECT 'TRUE' FROM DUAL WHERE ________;
+
+What could be inserted into the WHERE clause to make this statement return 'TRUE'?
+- '1' > '2'
+*- '2' > '1'
+- 1 > '2'
+*- '2' > 1
+- '1' > 2
+
+
+
+
+Consider the following SQL:
+
+SELECT 'TRUE' FROM DUAL WHERE ________;
+
+What could be inserted into the WHERE clause to make this statement return 'TRUE'?
+- '2' > 10
+*- '10' > 1
+- '10' > '2'
+*- '10' > 2
+- '10' > 10
+
+
+
+
+Consider the following SQL:
+
+SELECT TO_NUMBER('$100.00', '$999.99') FROM DUAL;
+
+What is the result?
+*- 100
+- $100
+- 999
+- $999
+- Execution fails.
+
+
+Consider the following SQL:
+
+SELECT TO_NUMBER('$100.00', '999.99') FROM DUAL;
+
+What is the result?
+*- 100
+- $100
+- 999
+- $999
+- Execution fails.
+
+
+
+
+Consider the following SQL:
+
+SELECT TO_CHAR('100.00', '$999.99') FROM DUAL;
+
+What is the result?
+- 100
+- $100.00
+- 999
+- $999
+- Execution fails.
+
+
+Consider the following SQL:
+
+SELECT TO_CHAR(TO_DATE('30-DEC-2016'), '"Day: " DAY " Month: " MONTH " Year: "  RRRR') FROM DUAL;
+
+What is the result?
+
+*- Day: FRIDAY Month: DECEMBER Year: 2016
+-  Day: 30 Month: DECEMBER Year: 2016
+- "Day: " DAY " Month: " MONTH " Year: "  RRRR
+-  Day: 30 Month: DEC Year: 2016
+-  Day: FRIDAY Month: DEC Year: 2016
+
+
+
+Consider the following SQL:
+
+SELECT TO_CHAR(TO_DATE('30-DEC-2016'), '"Day: " DD " Month: " MONTH " Year: "  RRRR') FROM DUAL;
+
+What is the result?
+
+- Day: FRIDAY Month: DECEMBER Year: 2016
+*-  Day: 30 Month: DECEMBER Year: 2016
+- "Day: " DAY " Month: " MONTH " Year: "  RRRR
+-  Day: 30 Month: DEC Year: 2016
+-  Day: FRIDAY Month: DEC Year: 2016
+
+
+
+Consider the following SQL:
+
+SELECT TO_CHAR(TO_DATE('30-DEC-2016'), '"Day: " DD " Month: " MON " Year: "  RRRR') FROM DUAL;
+
+What is the result?
+
+- Day: FRIDAY Month: DECEMBER Year: 2016
+-  Day: 30 Month: DECEMBER Year: 2016
+- "Day: " DAY " Month: " MONTH " Year: "  RRRR
+*-  Day: 30 Month: DEC Year: 2016
+-  Day: FRIDAY Month: DEC Year: 2016
+
+
+Consider the following SQL:
+
+SELECT 
+    CASE 'my_data1'
+    WHEN 'my_data1' THEN '1'
+    WHEN 'my_data2' THEN '2'
+    END
+FROM DUAL;
+
+What is the result?
+
+*- 1
+- 2
+- my_data1
+- my_data2
+
+
+
+
+
+Consider the following SQL:
+
+SELECT 
+    CASE 'my_data1'
+    WHEN 'my_data1' THEN '1'
+    WHEN 'my_data2' THEN '2'
+    END AS "my_data2"
+FROM DUAL;
+
+What is the result?
+
+*- 1
+- 2
+- my_data1
+- my_data2
+
+
+
+
+
+
+Consider the following SQL:
+
+SELECT 
+    DECODE('my_data1', 
+    'my_data1', 1,
+    'my_data2', 2,
+    3)
+FROM DUAL;
+
+What is the result?
+
+*- 1
+- 2
+- 3
+- my_data1
+- my_data2
+
+
+
+Consider the following SQL:
+
+SELECT 
+    DECODE(NULL, 
+    NULL, 1,
+    2)
+FROM DUAL;
+
+What is the result?
+
+*- 1
+- 2
+- NULL
+- Execution fails.
+
+
+
+Consider the following SQL:
+
+SELECT 1 + NULL FROM DUAL;
+
+What is the result?
+
+- 1
+- 0
+*- NULL
+- Execution fails.
+
+
+
+
+Consider the following SQL:
+
+SELECT 1 + NVL(NULL, 0) FROM DUAL;
+
+What is the result?
+
+- 1
+*- 0
+- NULL
+- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data1 NUMBER, my_data2 NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (1, 2);
+
+SELECT COUNT(*) 
+FROM my_table
+WHERE NULLIF(my_data1, my_data2) IS NULL;
+
+What is the result?
+
+- 0
+*- 1
+- 2
+- NULL
+- Execution fails.
+
+
+
+
+
+Consider the following SQL:
+
+SELECT NULLIF(3, 4) FROM DUAL;
+
+What is the result?
+- 0
+*- 3
+- 4
+- NULL
+- Execution fails.
+
+
+
+
+Which of the following SQL statements will display the current time in hours, minutes and seconds?
+- SELECT TO_CHAR(SYSDATE) FROM DUAL;
+- SELECT TO_CHAR(SYSDATE, 'HR:MI:SE') FROM DUAL;
+*- SELECT TO_CHAR(SYSDATE, 'HH:MI:SS') FROM DUAL;
+- SELECT TO_CHAR(SYSDATE, 'HH:MM:SS') FROM DUAL;
+- SELECT TO_CHAR(SYSDATE, 'HH:mm:SS') FROM DUAL;
+
+
+Which of the following will execute correctly?
+- SELECT TO_YMINTERVAL('01:03') FROM DUAL;
+*- SELECT TO_YMINTERVAL('01-03') FROM DUAL;
+- SELECT TO_INTERVALYM('01:03') FROM DUAL;
+- SELECT TO_INTERVALYM('01-03') FROM DUAL;
+- None of the above
+
+
+
+The ______ function can be used to display the day of the week for a particular date in the future.
+*- TO_CHAR
+- TO_DATE
+- DAY_OF_WEEK
+- NEXT_DAY
+- None of the above
+
+
+
+
+Which of the following SQL statements will display the current time in hours and minutes?
+*- SELECT TO_CHAR(SYSDATE, 'HR:MI') FROM DUAL;
+- SELECT TO_CHAR(SYSDATE, 'HH:MM') FROM DUAL;
+- SELECT TO_CHAR(SYSDATE, 'HH:mm') FROM DUAL;
+- SELECT TO_DATE(SYSDATE, 'HR:MI') FROM DUAL;
+- SELECT TO_DATE(SYSDATE, 'HH:MM') FROM DUAL;
+
+
+
+
+Which number format element returns the local currency symbol?
+*- L
+- C
+- $
+- LC
+- U
+
+
+
+
+
+The number format element ___ is used to represent any digit.
+*- 9
+- D
+- X
+- 0
+- *
+
+
+
+
+The number format element ___ is used to represent a leading blank for integers.
+*- B
+- D
+- X
+- 0
+- .
+
+
+
+
+
+

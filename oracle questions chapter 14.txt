@@ -1,0 +1,244 @@
+A ____________ is a privilege which allows a user to to perform a particular task in the database.
+*- System privilege
+- Object privilege
+- Role
+- User privilege
+- Session privilege
+
+
+A ____________ is a privilege which allows a user to to perform a particular task on a particular database object.
+- System privilege
+*- Object privilege
+- Role
+- User privilege
+- Session privilege
+
+
+The __________ system privilege allows a user to connect to the database.
+*- CREATE SESSION
+- CONNECT
+- ACCESS DATABASE
+- READ ACCESS
+- READ ONLY
+
+
+The __________ system privilege allows a user to create a synonym in the PUBLIC account.
+- CREATE SYNONYM
+- CREATE PUBLIC SYNONYM
+- ALTER ANY SYNONYM
+- GRANT ANY PRIVILEGE
+- SET SYNONYM PUBLIC
+
+
+
+The __________ system privilege allows a user to create a TABLE in any user account.
+*- CREATE ANY TABLE
+- CREATE TABLE
+- CREATE TABLE GLOBAL
+- ALTER ANY TABLE
+- CREATE PUBLIC TABLE
+
+
+The __________ system privilege allows a user to grant any system privilege to any user account in the database.
+*- GRANT ANY PRIVILEGE
+- GRANT PRIVILEGES
+- GRANT SYSTEM PRIVILEGE
+- GRANT PUBLIC PRIVILEGE
+- GRANT ANY OBJECT PRIVILEGE
+
+
+The __________ system privilege allows a user to grant any object privilege that the object's owner is able to grant.
+- GRANT ANY PRIVILEGE
+- GRANT PRIVILEGES
+- GRANT SYSTEM PRIVILEGE
+- GRANT PUBLIC PRIVILEGE
+*- GRANT ANY OBJECT PRIVILEGE
+
+
+When a system privilege is granted with the _________ option, then the recipient also becomes able to grant that system privilege to another user.
+*- WITH ADMIN OPTION
+- WITH GRANT OPTION
+- AS ADMIN
+- GRANT AS ADMIN
+- GRANT
+
+When an object privilege is granted with the _________ option, then the recipient also becomes able to grant that object privilege to another user.
+- WITH ADMIN OPTION
+*- WITH GRANT OPTION
+- AS ADMIN
+- GRANT AS ADMIN
+- GRANT
+
+
+
+Consider the following SQL:
+
+CREATE USER USER_1 IDENTIFIED BY PASS1;
+GRANT CREATE SESSION TO USER_1;
+GRANT CREATE TABLE TO USER_1 WITH ADMIN OPTION;
+CREATE USER USER_2 IDENTIFIED BY PASS2;
+GRANT CREATE SESSION TO USER_2;
+CONNECT USER_1 / PASS1;
+GRANT CREATE TABLE TO USER_2;
+CONNECT SYSTEM / SYSPASS;
+REVOKE CREATE TABLE FROM USER_1;
+
+Does USER_2 have the CREATE TABLE privilege?
+*- Yes
+- No
+
+
+
+Consider the following SQL:
+
+1. CREATE USER USER_1 IDENTIFIED BY PASS1;
+2. GRANT CREATE SESSION TO USER_1;
+3. GRANT CREATE TABLE TO USER_1 WITH ADMIN OPTION;
+4. REVOKE ALL PRIVILEGES FROM USER_1;
+
+At what line does the error occur?
+- 1
+- 2
+- 3
+*- 4
+- Execution completes successfully.
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER);
+CREATE USER USER_1 IDENTIFIED BY PASS1;
+GRANT CREATE SESSION TO USER_1;
+CREATE USER USER_2 IDENTIFIED BY PASS2;
+GRANT CREATE SESSION TO USER_2;
+GRANT SELECT ON my_table TO USER_1 WITH GRANT OPTION;
+CONNECT USER_1 / PASS1;
+GRANT SELECT ON SYSTEM.my_table TO USER_2;
+CONNECT SYSTEM / ORA123;
+REVOKE SELECT ON my_table FROM USER_1;
+
+Does USER_2 have the SELECT ON my_table privilege?
+- Yes
+*- No
+
+
+
+Which of the following is true regarding system privileges vs object privileges?
+*- Revoking an object privilege cascades
+*- Revoking a system privilege does not cascade
+- GRANTing either optionally uses the WITH ADMIN OPTION clause.
+*- Revoking an object privilege does not require the PRIVILEGE keyword.
+*- Revoking a system privilege does require the PRIVILEGE keyword.
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER);
+CREATE USER USER_1 IDENTIFIED BY PASS1;
+GRANT SELECT ON my_table TO USER_1;
+DROP TABLE my_table;
+
+Does USER_1 have the SELECT ON my_table privilege?
+- Yes
+*- No
+
+
+
+USER_SYS_PRIVS
+DBA_SYS_PRIVS
+USER_TAB_PRIVS
+DBA_TAB_PRIVS
+ALL_TAB_PRIVS_RECD
+SESSION_PRIVS
+
+
+The _______ data dictionary view shows all system privileges granted to the current user.
+- USER_SYS_PRIVS
+- DBA_SYS_PRIVS
+- USER_TAB_PRIVS
+- DBA_TAB_PRIVS
+- ALL_TAB_PRIVS_RECD
+
+
+
+
+The _______ data dictionary view shows all object privileges granted to every user in the database.
+- USER_SYS_PRIVS
+- DBA_SYS_PRIVS
+- USER_TAB_PRIVS
+*- DBA_TAB_PRIVS
+- ALL_TAB_PRIVS_RECD
+
+
+
+
+
+The _______ data dictionary view shows all privileges granted to the current user.
+- USER_SYS_PRIVS
+- DBA_SYS_PRIVS
+- USER_TAB_PRIVS
+*- SESSION_PRIVS
+- ALL_TAB_PRIVS_RECD
+
+
+Which of the following privileges is contained in the CONNECT role?
+*- CREATE SESSION
+- CREATE TABLE
+- GRANT ANY PRIVILEGE
+- CREATE PROCEDURE
+- CREATE ANY TABLE
+
+
+Which of the following privileges is contained in the RESOURCE role?
+- CREATE SESSION
+*- CREATE TABLE
+- GRANT ANY PRIVILEGE
+*- CREATE PROCEDURE
+- CREATE ANY TABLE
+
+
+Which of the following privileges is contained in the DBA role?
+*- CREATE USER
+*- CREATE PUBLIC SYNONYM
+*- GRANT ANY PRIVILEGE
+*- CREATE SEQUENCE
+*- CREATE ANY TABLE
+
+ 
+ 
+ 
+Consider the following SQL:
+
+CREATE ROLE my_role;
+GRANT CREATE TABLE TO my_role;
+CREATE USER USER_1 IDENTIFIED BY PASS1;
+GRANT CREATE TABLE TO USER_1;
+GRANT my_role TO USER_1;
+REVOKE CREATE TABLE FROM USER_1;
+
+
+Does USER_1 have the CREATE TABLE privilege?
+- Yes
+*- No
+
+
+
+Consider the following SQL:
+
+CREATE ROLE my_role;
+GRANT CREATE TABLE TO my_role;
+CREATE USER USER_1 IDENTIFIED BY PASS1;
+GRANT CREATE TABLE TO USER_1;
+GRANT my_role TO USER_1;
+REVOKE my_role FROM USER_1;
+
+
+Does USER_1 have the CREATE TABLE privilege?
+*- Yes
+- No
+

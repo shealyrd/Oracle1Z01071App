@@ -1,0 +1,1153 @@
+Consider the following SQL:
+
+SELECT MOD(8,3) FROM DUAL;
+
+What is the result?
+- 8
+*- 2
+- 3
+- 0
+- 1
+
+
+Consider the following SQL:
+
+SELECT REMAINDER(8,3) FROM DUAL;
+
+What is the result?
+- 1
+- 2
+- 5
+- 0
+*- -1
+
+
+
+Consider the following SQL:
+
+SELECT SOUNDEX('Oracle') FROM DUAL;
+
+What is the result?
+
+- O624
+- Ora4
+- Oragle
+- Orcl
+- O1R1A1C1L1E1
+
+
+
+The ______ function can be used to subtract months from a given date value.
+
+*- ADD_MONTHS
+- SUBTRACT_MONTHS
+- REDUCE
+- LAG
+- OFFSET
+
+
+
+Consider the following SQL:
+
+SELECT SUBSTR('Oracle', 1, 2) FROM DUAL;
+
+What is the result?
+*- Or
+- Ora
+- ra
+- rac
+- Oracle
+
+
+
+
+
+Consider the following SQL:
+
+SELECT LTRIM('Oracle', 'O') FROM DUAL;
+
+What is the result?
+*- O
+- racle
+- 1
+- 5
+- Oracle
+
+
+
+Consider the following SQL:
+
+SELECT LTRIM('12345', '3') FROM DUAL;
+
+What is the result?
+- 2
+- 345
+- 45
+- 12
+*- 12345
+
+
+
+Consider the following SQL:
+
+SELECT TRUNC(123.45) FROM DUAL;
+
+What is the result?
+*- 123
+- 45
+- 123.0
+- 3
+- 123.45
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(123.45, 1) FROM DUAL;
+
+What is the result?
+*- 123.5
+- 123.4
+- 123.0
+- 123
+- 120
+- 100
+- 1
+
+
+
+Consider the following SQL:
+
+SELECT DB_NAME FROM DATABASES WHERE DB_NAME = SOUNDEX('Oracle');
+
+Which of the following is a possible result from this query?
+- Oracle
+- Oragle
+- Aracle
+- SQL Server
+*- None of the above
+
+
+
+
+Consider the following SQL:
+
+SELECT DB_NAME FROM DATABASES WHERE SOUNDEX(DB_NAME) = SOUNDEX('Oracle');
+
+Which of the following is a possible result from this query?
+*- Oracle
+*- Oragle
+- Oracne
+- SQL Server
+- None of the above
+
+
+
+Consider the following SQL:
+
+SELECT MONTHS_BETWEEN('01-JAN-17', '01-DEC-17') FROM DUAL;
+
+What is the result?
+*- -11
+- 1
+- -1
+- 2
+- 11
+
+
+Consider the following SQL:
+
+SELECT LAST_DAY('01-JAN-17') FROM DUAL;
+
+What is the result?
+*- 31-JAN-17
+- 01-JAN-17
+- 31-DEC-17
+- Execution fails
+- TUESDAY
+
+
+
+The ______ function takes a VARCHAR parameter and capitalizes only the first letter.
+*- INITCAP
+- UPPER
+- HEAD
+- INSTR
+- LPAD
+
+
+Consider the following SQL:
+
+SELECT INITCAP('oracle') FROM DUAL;
+
+What is the result?
+*- Oracle
+- oracle
+- ORACLE
+- 6
+- oraclE
+
+
+
+The ______ function returns the number of characters in a string.
+* - LENGTH
+- SOUNDEX
+- SIZE
+- INSTR
+- TRIM
+
+
+
+The _____ function pads a VARCHAR with extra characters.
+*- RPAD
+*- LPAD
+- PAD
+- LAG
+- TRIM
+
+
+
+The ______ function removes unwanted characters from the extremities of a VARCHAR.
+*- TRIM
+*- RTRIM
+*- LTRIM
+- INSTR
+- SOUNDEX
+
+
+
+The ______ function locates a given string inside of a larger string.
+*- INSTR
+- SUBSTR
+- REPLACE
+- OFFSET
+- INDEXOF
+
+
+
+The ______ function extracts a given string inside of a larger string.
+- INSTR
+*- SUBSTR
+- REPLACE
+- OFFSET
+- INDEXOF
+
+
+The ______ function replaces a given string inside of a larger string.
+- INSTR
+- SUBSTR
+*- REPLACE
+- OFFSET
+- INDEXOF
+
+
+The ______ function converts a string into a phonetic representation in order to match it with strings which sound alike.
+- INSTR
+- SIGN
+*- SOUNDEX
+- OFFSET
+- INDEXOF
+
+
+The ______ function gives the absolute value of a number.
+*- ABS
+- ABV
+- SIGN
+- MAG
+- MAGNITUDE
+
+
+The _____ function determines whether a number is positive or negative.
+*- SIGN
+- ABS
+- PARITY
+- MAG
+- TRUNC
+
+
+The _____ function is used to abbreviate numbers or dates.
+- ABBR
+*- TRUNC
+- ROUND
+- INSTR
+- TRIM
+
+
+
+The _____ function converts a string to its uppercase representation.
+*- UPPER
+- UPCASE
+- INITCAP
+- TO_UPPER
+- CAPITALIZE
+
+
+
+The _____ function converts a string to its lowercase representation.
+*- LOWER
+- TO_LOWER
+- INITDECAP
+- DECAPTIALIZE
+- DOWNCASE
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
+
+INSERT INTO my_table VALUES ('my_data', 1);
+INSERT INTO my_table VALUES ('MY_DATA', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE my_column = UPPER('my_data');
+
+
+What is the result?
+- 0
+*- 1
+- 2
+- Execution fails.
+
+
+
+
+
+
+Consider the following SQL:
+
+
+CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
+
+INSERT INTO my_table VALUES ('my_data', 1);
+INSERT INTO my_table VALUES ('MY_DATA', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE UPPER(my_column) = UPPER('my_data');
+
+
+What is the result?
+- 0
+- 1
+*- 2
+- Execution fails.
+
+
+
+
+
+Consider the following SQL:
+
+
+CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
+
+INSERT INTO my_table VALUES ('my_data', 1);
+INSERT INTO my_table VALUES ('MY_DATA', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE LOWER(my_column) = 'my_data';
+
+
+What is the result?
+- 0
+- 1
+*- 2
+- Execution fails.
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
+
+INSERT INTO my_table VALUES ('My_data', 1);
+INSERT INTO my_table VALUES ('MY_DATA', 2);
+
+SELECT COUNT(*) 
+FROM my_table
+WHERE INITCAP(my_column) = 'My_data';
+
+What is the result?
+*- 0
+- 1
+- 2
+- Execution fails.
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
+
+INSERT INTO my_table VALUES ('Mydata', 1);
+INSERT INTO my_table VALUES ('MYDATA', 2);
+
+SELECT COUNT(*)
+FROM my_table
+WHERE INITCAP(my_column) = 'Mydata';
+
+What is the result?
+- 0
+- 1
+*- 2
+- Execution fails.
+
+
+
+Consider the following SQL:
+
+SELECT INITCAP('ellison''s') FROM DUAL;
+
+What is the result?
+*- Ellison'S
+- Ellison's
+- Ellison''s
+- Ellisons
+- Execution fails due to syntax error.
+
+
+
+Consider the following SQL:
+
+SELECT RPAD('my_text', 3, '.') FROM DUAL;
+
+What is the result?
+*- my_
+- my_text...
+- my_text
+- my_...
+- ...text
+
+
+
+Consider the following SQL:
+
+SELECT LPAD('txt', 5, '.') FROM DUAL;
+
+What is the result?
+*- ..txt
+- txt..
+- txt
+- txt.....
+- .....txt
+
+
+Consider the following SQL:
+
+SELECT LTRIM('...txt', '.') FROM DUAL;
+
+What is the result?
+- ..txt
+- txt..
+*- txt
+- ...
+- ...txt
+
+
+
+
+Consider the following SQL:
+
+SELECT RTRIM('...txt', '.') FROM DUAL;
+
+What is the result?
+*- ...txt
+- txt
+- txt...
+- ...
+- ..txt
+
+
+
+Consider the following SQL:
+
+SELECT TRIM( TRAILING '.' FROM '...txt') FROM DUAL;
+
+What is the result?
+*- ...txt
+- txt
+- txt...
+- ...
+- ..txt
+
+
+
+Consider the following SQL:
+
+SELECT TRIM( LEADING '.' FROM '...txt') FROM DUAL;
+
+What is the result?
+- ...txt
+*- txt
+- txt...
+- ...
+- ..txt
+
+
+
+
+Consider the following SQL:
+
+SELECT INSTR('my_data', 'my') FROM DUAL;
+
+What is the result?
+*- 1
+- 0
+- 2
+- -1
+- 3
+
+
+
+Consider the following SQL:
+
+SELECT INSTR('data data', 'data', 1, 2) FROM DUAL;
+
+What is the result?
+
+*- 6
+- 0
+- 1
+- 5
+- 7
+
+
+
+Consider the following SQL:
+
+SELECT INSTR('data data', 'data', 7, 2) FROM DUAL;
+
+What is the result?
+
+- 6
+*- 0
+- 1
+- 5
+- 7
+
+
+Consider the following SQL:
+
+SELECT SUBSTR('my_data', 2) FROM DUAL;
+
+What is the result?
+*- y_data
+- my_data
+- data
+- my
+- _data
+
+
+
+Consider the following SQL:
+
+SELECT SUBSTR('my_data', 1) FROM DUAL;
+
+What is the result?
+- y_data
+*- my_data
+- data
+- my
+- _data
+
+
+
+
+
+Consider the following SQL:
+
+SELECT SUBSTR('my_data', 0) FROM DUAL;
+
+What is the result?
+- y_data
+*- my_data
+- data
+- my
+- An empty string.
+
+
+
+Consider the following SQL:
+
+SELECT SUBSTR('my_data', 100) FROM DUAL;
+
+What is the result?
+- my_data
+- An empty string.
+*- NULL
+- a
+- Execution fails
+
+
+
+Consider the following SQL:
+
+SELECT CEIL(1.2) FROM DUAL;
+
+What is the result?
+*- 2
+- 1
+- 0
+- 1.2
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+SELECT FLOOR(1.2) FROM DUAL;
+
+What is the result?
+- 2
+*- 1
+- 0
+- 1.2
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(1.234, 2) FROM DUAL;
+
+What is the result?
+*- 1.23
+- 1.2
+- 1.234
+- 1.0
+- 1.3
+
+
+Consider the following SQL:
+
+SELECT ROUND(1.2345, 3) FROM DUAL;
+
+What is the result?
+*- 1.235
+- 1.234
+- 1.23
+- 1.24
+- 1
+
+
+Consider the following SQL:
+
+SELECT ROUND(567.89, -1) FROM DUAL;
+
+What is the result?
+*- 570
+- 567.9
+- 600
+- 567.8
+- 567
+
+
+
+Consider the following SQL:
+
+SELECT TRUNC(123.456, 1) FROM DUAL;
+
+What is the result?
+*- 123.4
+- 123.45
+- 1
+- 123.5
+- 123
+
+
+Consider the following SQL:
+
+SELECT TRUNC(123.456, -1) FROM DUAL;
+
+What is the result?
+*- 120
+- Execution fails
+- 12
+- 123.4
+- 123.456
+
+
+
+
+
+The ________ function takes in two numbers, n1 and n2, and determines the multiple of n2 which is closest to n1 and returns the difference of those two values.
+*- REMAINDER
+- MOD
+- STD
+- CLOSEST
+- INTERVAL
+
+
+
+Consider the following SQL:
+
+SELECT REMAINDER(11, 4) FROM DUAL;
+
+What is the result?
+*- -1
+- 3
+- 4
+- 11
+- 1
+
+
+
+Consider the following SQL:
+
+SELECT REMAINDER(14, 4) FROM DUAL;
+
+What is the result?
+*- -2
+- 14
+- 4
+- 2
+- 1
+
+
+
+
+Consider the following SQL:
+
+SELECT REMAINDER(17, 5) FROM DUAL;
+
+What is the result?
+*- 2
+- -3
+- 17
+- 5
+- 2
+
+
+
+
+
+
+Consider the following SQL:
+
+SELECT MOD(17, 5) FROM DUAL;
+
+What is the result?
+*- 2
+- -3
+- 17
+- 5
+- 2
+
+
+
+Consider the following SQL:
+
+SELECT MOD(15, 1) FROM DUAL;
+
+What is the result?
+*- 0
+- 1
+- 15
+- 14
+- -14
+
+
+
+
+The ______ function returns the current time and date of the operating system on which the Oracle server resides
+- SYSDATE
+- CURRENT_DATE
+- ORADATE
+- TO_DATE
+- LAST_DAY
+
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(TO_DATE('30-DEC-2016'), 'MM') FROM DUAL;
+
+What is the result?
+*- 01-JAN-2017
+- 01-JAN-2016
+- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(TO_DATE('15-DEC-2016'), 'MM') FROM DUAL;
+
+What is the result?
+- 01-JAN-2017
+- 01-JAN-2016
+*- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+Consider the following SQL:
+
+SELECT ROUND(TO_DATE('14-DEC-2016'), 'MM') FROM DUAL;
+
+What is the result?
+- 01-JAN-2017
+- 01-JAN-2016
+*- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(TO_DATE('16-DEC-2016'), 'MM') FROM DUAL;
+
+What is the result?
+*- 01-JAN-2017
+- 01-JAN-2016
+- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(TO_DATE('14-DEC-2016'), 'RR') FROM DUAL;
+
+What is the result?
+*- 01-JAN-2017
+- 01-JAN-2016
+- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+
+Consider the following SQL:
+
+SELECT ROUND(TO_DATE('01-JAN-2017'), 'RR') FROM DUAL;
+
+What is the result?
+*- 01-JAN-2017
+- 01-JAN-2016
+- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+Consider the following SQL:
+
+SELECT TRUNC(TO_DATE('30-DEC-2016'), 'RR') FROM DUAL;
+
+What is the result?
+- 01-JAN-2017
+*- 01-JAN-2016
+- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+
+Consider the following SQL:
+
+SELECT TRUNC(TO_DATE('30-DEC-2016'), 'MM') FROM DUAL;
+
+What is the result?
+- 01-JAN-2017
+- 01-JAN-2016
+*- 01-DEC-2016
+- 31-DEC-2016
+- 01-DEC-2017
+
+
+Consider the following SQL:
+
+SELECT NEXT_DAY(TO_DATE('30-DEC-2016'), 'SATURDAY') FROM DUAL;
+
+Knowing '30-DEC-2016' was a Friday, what is the result?
+- 01-JAN-2017
+- 01-JAN-2016
+- 01-DEC-2016
+*- 31-DEC-2016
+- 01-DEC-2017
+
+
+
+
+
+Consider the following SQL:
+
+SELECT LAST_DAY(TO_DATE('29-DEC-2016')) FROM DUAL;
+
+What is the result?
+- 01-JAN-2017
+- 01-JAN-2016
+- 01-DEC-2016
+*- 31-DEC-2016
+- 29-DEC-2016
+
+
+
+Consider the following SQL:
+
+SELECT ADD_MONTHS(TO_DATE('30-DEC-2016'), 1) FROM DUAL;
+
+What is the result?
+*- 30-JAN-2017
+- 30-JAN-2016
+- 01-DEC-2016
+- 31-DEC-2016
+- 01-JAN-2017
+
+
+
+Consider the following SQL:
+
+SELECT ADD_MONTHS(TO_DATE('30-DEC-2016'), -1) FROM DUAL;
+
+What is the result?
+*- 30-NOV-2016
+- 30-JAN-2016
+- 01-DEC-2016
+- 01-NOV-2016
+- 30-JAN-2017
+
+
+
+Consider the following SQL:
+
+SELECT ADD_MONTHS(TO_DATE('31-DEC-2016'), -1) FROM DUAL;
+
+What is the result?
+*- 30-NOV-2016
+- 30-JAN-2016
+- 01-DEC-2016
+- 01-NOV-2016
+- 30-JAN-2017
+
+
+
+Consider the following SQL:
+
+SELECT MONTHS_BETWEEN(TO_DATE('31-DEC-2016'), TO_DATE('31-DEC-2017')) FROM DUAL;
+
+What is the result?
+*- -12
+- 12
+- 0
+- 11
+- -11
+
+
+
+Consider the following SQL:
+
+SELECT MONTHS_BETWEEN(TO_DATE('31-DEC-2017'), TO_DATE('31-DEC-2016')) FROM DUAL;
+
+What is the result?
+- -12
+*- 12
+- 0
+- 11
+- -11
+
+
+Consider the following SQL:
+
+SELECT ROUND(MONTHS_BETWEEN(TO_DATE('30-NOV-2017'), TO_DATE('15-NOV-2017')), 1) FROM DUAL;
+
+What is the result?
+*- 0.5
+- -0.5
+- 1
+- 0
+- -1
+
+
+
+Consider the following SQL:
+
+SELECT NUMTOYMINTERVAL(13, 'MONTH') FROM DUAL;
+
+What is the result?
+*- 1-1
+- 0-1
+- 1-0
+- 13-0
+- 12-1
+
+
+
+
+Consider the following SQL:
+
+SELECT NUMTOYMINTERVAL(13, 'YEAR') FROM DUAL;
+
+What is the result?
+- 1-1
+- 0-1
+- 1-0
+*- 13-0
+- 12-1
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER, id NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+INSERT INTO my_table VALUES (3, 3);
+INSERT INTO my_table VALUES (4, 4);
+INSERT INTO my_table VALUES (5, 5);
+
+SELECT ANALYTICS FROM (
+    SELECT ROWNUM as MY_ROW, SUM(my_data) OVER (ORDER BY id) as ANALYTICS
+    FROM my_table
+) 
+WHERE MY_ROW = 4;
+
+What is the result?
+*- 10
+- 15
+- 7
+- 35
+- 0
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER, id NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+INSERT INTO my_table VALUES (3, 3);
+INSERT INTO my_table VALUES (4, 4);
+INSERT INTO my_table VALUES (5, 5);
+
+SELECT ANALYTICS FROM (
+    SELECT ROWNUM as MY_ROW,
+	SUM(my_data) OVER (ORDER BY id
+		ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING) as ANALYTICS
+    FROM my_table
+)
+WHERE MY_ROW = 5;
+
+What is the result?
+*- 9
+- 12
+- 1
+- 3
+- 0
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER, id NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+INSERT INTO my_table VALUES (3, 1);
+INSERT INTO my_table VALUES (4, 2);
+INSERT INTO my_table VALUES (5, 1);
+
+SELECT ANALYTICS FROM (
+    SELECT ROWNUM as MY_ROW,
+	SUM(my_data) OVER (PARTITION BY ID
+		ORDER BY id 
+		ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING) as ANALYTICS
+    FROM my_table
+)
+WHERE MY_ROW = 3;
+
+What is the result?
+*- 9
+- 8
+- 6
+- 3
+- 0
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER, id NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+INSERT INTO my_table VALUES (3, 1);
+INSERT INTO my_table VALUES (4, 2);
+INSERT INTO my_table VALUES (5, 1);
+
+SELECT ANALYTICS FROM (
+    SELECT ROWNUM as MY_ROW, 
+        LAG(my_data) OVER (PARTITION BY ID ORDER BY id) as ANALYTICS
+    FROM my_table
+) WHERE MY_ROW = 2;
+
+What is the result?
+- 5
+*- 4
+- 3
+- 2
+- 1
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER, id NUMBER);
+
+INSERT INTO my_table VALUES (1, 1);
+INSERT INTO my_table VALUES (2, 2);
+INSERT INTO my_table VALUES (3, 1);
+INSERT INTO my_table VALUES (4, 2);
+INSERT INTO my_table VALUES (5, 1);
+
+SELECT ANALYTICS FROM (
+    SELECT ROWNUM as MY_ROW, 
+        LEAD(my_data) OVER (PARTITION BY ID ORDER BY id) as ANALYTICS
+    FROM my_table
+) WHERE MY_ROW = 3;
+
+What is the result?
+*- 5
+- 4
+- 3
+- 2
+- 1
+
+
+
+The _____ function is an analytic function which returns the previous row's value.
+*- LAG
+- LEAD
+- PARTITION
+- OVER
+- SUM
+
+
+The _____ function is an analytic function which returns the next row's value.
+- LAG
+*- LEAD
+- PARTITION
+- OVER
+- SUM

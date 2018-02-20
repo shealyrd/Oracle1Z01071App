@@ -1,0 +1,76 @@
+The ______ set operator combines two row sets and removes all duplicates.
+*- UNION
+- UNION ALL
+- INTERSET
+- MINUS
+- LEFT JOIN
+
+
+The ______ set operator combines two row sets and keeps all duplicates.
+- UNION
+*- UNION ALL
+- INTERSET
+- MINUS
+- WITH
+
+
+
+The ______ set operator includes only rows which are present in both sets.
+- UNION
+- UNION ALL
+*- INTERSET
+- MINUS
+- WITH
+
+
+The ______ set operator removes all rows from the first set which exist in the second set.
+- UNION
+- UNION ALL
+- INTERSET
+*- MINUS
+- WITH
+
+
+Which of the following is true about using set operators in a SELECT statement?
+*- The number of entries in the select lists must be equivalent.
+- The data types of the entries in the select lists do not matter.
+- Large data types such as BLOB and CLOB can be used.
+*- The ORDER BY clause cannot be used until the end of all set operations.
+*- Set operators have equal precedence and will execute in the order which they appear.
+
+
+
+
+Consider the following SQL statement:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+SELECT COUNT(*) FROM
+((SELECT * FROM my_table_1)
+INTERSECT
+(SELECT * FROM my_table_2));
+
+
+What is the result?
+*- 1
+- 0
+- 2
+- 4
+- 3
+
+
+
+Which set operator would produce different outputs if you swapped the SELECT statements which proceed and follow it?
+*- MINUS
+- UNION
+- UNION ALL
+- INTERSECT
+
+
+
+
+

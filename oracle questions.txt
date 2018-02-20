@@ -1,0 +1,382 @@
+Oracle and Structured Query Language (SQL):
+
+SELECT is a _____ type of SQL command.
+INSERT is a _____ type of SQL command.
+UPDATE is a _____ type of SQL command.
+DELETE is a _____ type of SQL command.
+MERGE is a _____ type of SQL command.
+
+CREATE is a _____ type of SQL command.
+ALTER is a _____ type of SQL command.
+DROP is a _____ type of SQL command.
+RENAME is a _____ type of SQL command.
+TRUNCATE is a _____ type of SQL command.
+GRANT is a _____ type of SQL command.
+REVOKE is a _____ type of SQL command.
+FLASHBACK is a _____ type of SQL command.
+PURGE is a _____ type of SQL command.
+COMMENT is a _____ type of SQL command.
+
+COMMIT is a _____ type of SQL command.
+ROLLBACK SAVEPOINT is a _____ type of SQL command.
+
+--Used to create a user, table, view, index, synonym, or other object in the database.
+Which SQL command is used to instantiate a new database object, such as a user, table, view, index, or synonym?
+- SELECT
+- UPDATE
+- ALTER
+- CREATE
+- GRANT
+
+--Used on an existing object in the database to modify that object’s structure, name, or some other attribute.
+Which SQL command is used to modify an existing database object's structure or attributes?
+- SELECT
+- UPDATE
+- ALTER
+- CREATE
+- GRANT
+
+
+
+Used to remove a database object from the database that has already been created with the CREATE statement.
+Which SQL command is used to remove an object from the database?
+- DELETE
+- DROP
+- ALTER
+- PURGE
+- REVOKE
+- ROLLBACK
+
+
+
+Changes the name of an existing database object.
+Which SQL command is used to alter the name of an existing database object?
+- ALTER
+- UPDATE
+- RENAME
+- COMMENT
+- CREATE
+
+
+
+Removes all the rows—in other words, data—from an existing table in the database.
+Which SQL command is used to immediately remove all records from a table, partition or subpartition?
+- TRUNCATE
+- DELETE
+- ROLLBACK
+- DROP
+- PURGE
+
+
+
+Provides privileges, or rights, to user objects to enable them to perform various tasks in the database.
+Which SQL command is used to provide privileges, or rights, to user objects?
+- REVOKE
+- ALTER
+- CREATE
+- SELECT
+- GRANT
+
+
+
+Removes privileges that have been issued with the GRANT statement.
+Which SQL command is used to remove privileges that have been issued to a user object?
+- DELETE
+- TRUNCATE
+- REVOKE
+- DROP
+- REMOVE
+
+
+
+Restores an earlier version of a table or database.
+Which SQL command is used to restore a table or database to a previous version?
+- RESTORE
+- FLASHBACK
+- ROLLBACK
+- UPDATE
+- REVERT
+
+
+
+Irrevocably removes database objects from the recycle bin.
+Which SQL command is used to irreversibly remove an object from the recycle bin?
+- TRUNCATE
+- EMPTY
+- PURGE
+- DROP
+- COMMIT
+
+
+
+Adds comments to the data dictionary for an existing database object.
+Which SQL command is used to add a comment to the data dictionary for a database object?
+- ALTER
+- COMMENT
+- UPDATE
+- REFERENCE
+- ANNOTATE
+
+
+
+Displays data of a database table or view
+Which SQL command is used to display data in a table or view?
+- INSERT
+- DATA
+- SELECT
+- SHOW
+- DISPLAY
+
+
+
+Adds data to a database table, either directly or, in some situations, through a view
+Which SQL command is used to add new rows to a table?
+- CREATE
+- INSERT
+- ALTER
+- UPDATE
+- ROW
+
+
+
+Modifies existing data in a table, either directly or, in some situations, through a view
+Which SQL command modifies existing rows in a table?
+- UPDATE
+- ALTER
+- MODIFY
+- INSERT
+- RENAME
+
+
+
+Removes existing data from a table, either directly or, in some situations, through a view
+Which SQL command iteratively removes a subset of existing rows from a table, as optionally defined by a WHERE clause?
+- TRUNCATE
+- DROP
+- DELETE
+- REMOVE
+- PURGE
+
+
+
+Performs a combination of INSERT, UPDATE, and DELETE statements in a single statement
+Which SQL command selects rows from one or more sources for update, insertion, or exclusion into a table?
+- UPDATE
+- INSERT
+- ALTER
+- MERGE
+- DELETE
+
+
+
+Saves a set of DML modifications performed in the current database session
+Which SQL command saves the set of DML statements executed in the current database session?
+- SAVE
+- SAVEPOINT
+- COMMIT
+- ROLLBACK
+- EXECUTE IMMEDIATE
+
+
+
+Undoes a set of DML modifications performed during the current database session
+Which SQL command revokes the set of DML statements executed in the current databse session?
+- DELETE
+- FLASHBACK
+- REVOKE
+- RESET
+- ROLLBACK
+
+
+
+Marks a position in a session to prepare for a future ROLLBACK to enable that ROLLBACK to restore data at a selected point in a session other than the most recent commit event
+Which SQL command marks a position in the current session to which a future ROLLBACK will revert?
+- FLASHBACK
+- SAVEPOINT
+- COMMIT
+- TRANSACTION
+- ROLLBACK
+
+
+
+Given the following table <> which of these statements would be valid?
+
+Given the following table <> which of these statements would be invalid?
+
+
+
+Restricting and Sorting Data :
+
+Schema Objects:
+Constraints
+Sequences
+Indexes
+Private synonyms
+Tables
+Views
+
+Nonschema Objects:
+Roles
+Public synonyms
+Users
+
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[true,false],"question":"A CONSTRAINT is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[true,false],"question":"A SEQUENCE is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[true,false],"question":"An INDEX is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[true,false],"question":"An PRIVATE SYNONYM is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[true,false],"question":"An TABLE is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[true,false],"question":"An VIEW is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[false,true],"question":"A ROLE is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[false,true],"question":"A PUBLIC SYNONYM is a _______ object.","category":9}
+{"answers":["Schema","Non-Schema"],"correctAnswerIndexes":[false,true],"question":"A USER is a _______ object.","category":9}
+
+
+
+Which of the following is a schema object?
+
+A CONSTRAINT is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A SEQUENCE is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+An INDEX is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A PRIVATE SYNONYM is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A TABLE is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A VIEW is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A ROLE is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A PUBLIC SYNONYM is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+A USER is a _______ object.
+- SCHEMA 
+- NON-SCHEMA
+
+
+A structure that can store data. All data is stored in columns and rows. Each column’s data type is explicitly defined.
+A ______ is a database structure that stores data in columns and rows.
+- PACKAGE
+- TABLE
+- SEQUENCE
+- TABLESPACE
+- SPREADSHEET
+
+An object designed to support faster searches in a table. 
+A ______  is an object that provides lookup assistance for a table in order to improve query performance.
+- INDEX 
+- SEQUENCE
+- TABLESPACE
+- VIEW
+- CONSTRAINT
+
+A “filter” through which you can search a table and interact with a table but that stores no data itself and simply serves as a “window” onto one or more tables.
+A ______ object is a virtual table which does not store any data but is instead comprised of a query filtering on one or more base tables.
+- INDEX
+- TABLESPACE
+- VIEW
+- PARTITION
+- SEQUENCE
+
+A counter, often used to generate unique numbers as identifiers for new rows as they are added to a table.
+A ______ is an object which is solely used to generate unique numbers.
+- SEQUENCE
+- INDEX
+- SYNONYM
+- CLOB
+- PRIMARY KEY
+
+An alias for another object in the database, often used to specify an alternative name for a table or view.
+A ______ object defines an alias for another specified database object.
+- SYNONYM
+- PARTITION
+- PRIMARY KEY
+- FOREIGN KEY
+- INDEX
+
+A small bit of logic defined by you to instruct a particular table about how it will accept, modify, or reject incoming data.
+A ______ object is a rule which restricts how a table handles data.
+- CONSTRAINT
+- INDEX
+- PRIMARY KEY
+- FOREIGN KEY
+- ROLE
+
+The “owners” of database objects.
+A ______ object represents the owner of other database objects.
+- ROLE
+- ACCOUNT
+- USER
+- PRIVILEGE
+- CONSTRAINT
+
+A set of one or more privileges that can be granted to a user.
+A ______ object is a collection of privileges which can be granted to a user.
+- TABLESPACE
+- CONSTRAINT
+- ROLE
+- USER
+- SCHEMA
+
+Which statement is correct?
+CREATE TABLE my employees (company_id VARCHAR);
+CREATE TABLE my_employees (company_id VAR_CHAR);
+CREATE TABLE "my_employees" (company_id VAR_CHAR);
+CREATE TABLE "my employees" (company_id VARCHAR);
+CREATE TABLE my_employees VALUES (company id VARCHAR);
+CREATE TABLE my_employees VALUES ("company id" VARCHAR);
+
+Given table:
+CREATE TABLE my_employees (company_id NUMBER(3,2);
+
+Which statement will work?
+
+INSERT INTO VALUES...
+
+ TIMESTAMP(n) This is an extension of DATE that adds fractional second precision.
+ 
+ TIMESTAMP(n) WITH TIME ZONE This is a variation of TIMESTAMP that adds either a time zone region name or an offset for time zone. 
+ 
+ TIMESTAMP(n) WITH LOCAL TIME ZONE This is a variation of TIMESTAMP. The TIMESTAMP WITH LOCAL TIME ZONE differs from TIMESTAMP WITH TIME ZONE in that the time zone offset is not stored with the column’s value, and the value retrieved is sent to the user in the user’s local session time zone.
+ 
+ INTERVAL YEAR(n) TO MONTH This stores a span of time defined in only year and month values, where n is the number of digits used to define the YEAR value. 
+ 
+ INTERVAL DAY(n1) TO SECOND(n2) This stores a span of time defined in days, hours, minutes, and seconds, where n1 is the precision for days, and n2 is the precision for seconds. 
+ 
+ Tables may have multiple columns with LOB data types. However, LOBs cannot be primary keys, and they cannot be used with DISTINCT, GROUP BY, ORDER BY, or joins.
+ 
+ BLOB   The name BLOB is an abbreviation for “binary large object.” BLOB accepts large binary objects, such as image or video files. Declaration is made without precision or scale. (The maximum size is calculated by way of a formula that includes several items not on the exam, including a starting size of 4GB, something called the CHUNK parameter, and the setting for the database block size, which is a setting that affects all storage in the database.)
+ 
+CLOB   The name CLOB is an abbreviation for “character large object.” CLOB accepts large text data elements. Declaration is made without precision or scale, and the maximum size is calculated in the same manner that it is for the BLOB data type.
+
+NCLOB   This accepts CLOB data in Unicode. The maximum size is calculated in the same manner that it is for the BLOB data type.
+
+CREATE TABLE: In-Line Constraints
+
+CREATE TABLE: Out-of-Line Constraints
+
+The NOT NULL constraint cannot be created out of line. In other words, this is invalid:
+
+The list of certification objectives specifically states that you will be tested on the topic of creating constraints at the time of table creation. This can include any one of the in-line or out-of-line combinations for any constraint. The syntax is tricky. Study it thoroughly and know it well.
+
+      select count(*) from 
+      (select 100 + NULL as res from dual)
+      where res is NULL
+ 

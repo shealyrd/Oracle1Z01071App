@@ -1,4 +1,3 @@
-
 class QuizHtmlContainer {
     parentElement: HTMLElement;
     containerElement: HTMLElement;
@@ -40,7 +39,7 @@ class QuizHtmlContainer {
         this.WIDTH = width;
     }
 
-    initialize() {
+    initialize(category: QuestionCategory) {
         this.initializeContainer();
 
         this.parentElement.appendChild(this.containerElement);
@@ -48,27 +47,10 @@ class QuizHtmlContainer {
         this.initializeHeader();
         this.initializeCSS();
         this.containerElement.appendChild(this.headerElement);
-        var question1 = new Question("question 1");
-        question1.addAnswer("answer 1", true);
-        question1.addAnswer("answer 2", false);
-        question1.addAnswer("answer 3", false);
-        question1.addAnswer("answer 4", false);
-
-        var question2 = new Question("question 2");
-        question2.addAnswer("answer 5", false);
-        question2.addAnswer("answer 6", false);
-        question2.addAnswer("answer 7", false);
-        question2.addAnswer("answer 8", true);
-
-        var question3 = new Question("question 3");
-        question3.addAnswer("answer 9", false);
-        question3.addAnswer("answer 10", true);
-        question3.addAnswer("answer 11", true);
-        question3.addAnswer("answer 12", false);
-
-        this.questions.push(question1);
-        this.questions.push(question2);
-        this.questions.push(question3);
+		
+		this.questions = Question.fromJSONArray(QuestionDatabase, category);
+		
+		Algorithms.shuffle(this.questions);
 
         this.initializeBody();
         this.initializeQuestion();
@@ -444,13 +426,10 @@ class QuizHtmlContainer {
     }
 
     initializeCSS(){
-        var cssElement = document.createElement('style');
+        var cssElement = this.parentElement.ownerDocument.createElement('style');
         var cssText = "";
         cssText += ".downOnClick:active {transform: translateY(2px);}";
         cssElement.innerHTML = cssText;
-        document.getElementsByTagName('head')[0].appendChild(cssElement);
+        this.parentElement.ownerDocument.getElementsByTagName('head')[0].appendChild(cssElement);
     }
 }
-
-document.body.style.margin = "0";
-new QuizHtmlContainer(document.body, screen.height, screen.width).initialize();

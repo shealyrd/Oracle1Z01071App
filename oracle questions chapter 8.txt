@@ -1,0 +1,730 @@
+Which of the following relational operators would be used in a non-equijoin?
+- !=
+- <>
+*- <=
+- =
+- None of the above
+
+
+Consider the following SQL:
+
+SELECT *
+FROM my_table_1 one
+INNER JOIN my_table_2 two
+ON one.my_data = two.my_data;
+
+Which of the following keywords in the above statement can be removed?
+*- INNER
+- JOIN
+- ON
+- FROM
+- SELECT
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+
+SELECT my_data
+FROM my_table_1
+JOIN my_table_2
+USING (my_data);
+
+What is the result?
+- 1
+- NULL
+- Execution fails
+- No row selected
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER, my_data2 NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER, my_data2 NUMBER);
+
+INSERT INTO my_table_1 VALUES (1, 1);
+INSERT INTO my_table_2 VALUES (1, 2);
+
+SELECT my_data2
+FROM my_table_1
+JOIN my_table_2
+USING (my_data);
+
+What is the result?
+- 1
+- 2
+- NULL
+- No rows selected
+*- Execution fails
+
+
+
+
+
+Which of the following is true about table aliases?
+- They rename a table in the data dictionary
+- They are equivalent to a SYNONYM
+*- Exist only in the scope of the immediate query
+*- Can be used to clarify table references in a join
+- They are database objects
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_2 VALUES (1);
+
+SELECT my_data
+FROM my_table_1
+JOIN my_table_2
+USING (my_data);
+
+What kind of join is this?
+*- Equijoin
+*- Inner join
+- Outer join
+- Nonequijoin
+- Natural join
+
+
+
+
+
+_______ joins connect rows only if they are matched in all joined tables.
+*- INNER
+- OUTER
+- NATURAL
+- LEFT
+- CROSS
+
+
+_______ joins can connect rows as long as they exist in at least one of the joined tables.
+*- OUTER
+- INNER
+- NATURAL
+- LEFT
+- CROSS
+
+
+
+An _________ is a join that connects only on exact data matching.
+- Equijoin
+- Non-equijoin
+- Cartesian join
+
+
+An _________ is a join that connects on relational operators rather than exact data matching.
+- Equijoin
+*- Non-equijoin
+- Cartesian join
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+INNER JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+*- 1
+- 2
+- 4
+- 0
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+*- 1
+- 2
+- 4
+- 0
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+LEFT JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+*- 2
+- 4
+- 0
+- Execution fails
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+LEFT OUTER JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+*- 2
+- 4
+- 0
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+RIGHT JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+*- 2
+- 4
+- 0
+- Execution fails
+
+
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (3);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+RIGHT JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+- 2
+- 4
+- 0
+*- 3
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (3);
+INSERT INTO my_table_2 VALUES (1);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+RIGHT JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+- 2
+- 4
+- 0
+*- 3
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a,
+my_table_2 b
+WHERE a.my_data = b.my_data;
+
+What is the result?
+*- 1
+- 2
+- 4
+- 0
+- Execution fails
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+FULL OUTER JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+- 2
+- 4
+*- 3
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (3);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+FULL OUTER JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+- 2
+- 4
+*- 3
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (3);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+FULL OUTER JOIN my_table_2 b
+ON a.my_data = b.my_data;
+
+What is the result?
+- 1
+- 2
+*- 4
+- 3
+- Execution fails
+
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+JOIN my_table_2 b
+USING(my_data);
+
+What is the result?
+*- 1
+- 2
+- 4
+- 3
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+JOIN my_table_2 b
+USING(a.my_data);
+
+What is the result?
+- 1
+- 2
+- 4
+- 3
+*- Execution fails
+
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_other_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+JOIN my_table_2 b
+USING(my_data);
+
+What is the result?
+- 1
+- 2
+- 4
+- 3
+*- Execution fails
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+JOIN my_table_2 b
+ON a.my_data < b.my_data;
+
+What is the result?
+- 1
+*- 2
+- 4
+- 3
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+FULL OUTER JOIN my_table_2 b
+ON a.my_data < b.my_data;
+
+What is the result?
+- 1
+- 2
+- 4
+*- 3
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+INSERT INTO my_table VALUES (3);
+
+SELECT *
+FROM my_table a
+JOIN my_table b
+ON a.my_data < b.my_data;
+
+What is the result?
+- 1
+- 2
+- 4
+*- 3
+- Execution fails
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table (my_data NUMBER);
+
+INSERT INTO my_table VALUES (1);
+INSERT INTO my_table VALUES (2);
+INSERT INTO my_table VALUES (3);
+
+SELECT *
+FROM my_table a
+FULL OUTER JOIN my_table 
+ON a.my_data < b.my_data;
+
+What is the result?
+*- 5
+- 6
+- 4
+- 3
+- Execution fails
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a,
+my_table_2 b
+WHERE a.my_data = b.my_data(+);
+
+
+What is the result?
+- 1
+*- 2
+- 4
+- 3
+- Execution fails
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data NUMBER);
+CREATE TABLE my_table_2 (my_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1);
+INSERT INTO my_table_1 VALUES (2);
+INSERT INTO my_table_2 VALUES (1);
+INSERT INTO my_table_2 VALUES (4);
+
+SELECT COUNT(*)
+FROM my_table_1 a,
+my_table_2 b
+WHERE a.my_data(+) < b.my_data;
+
+
+What is the result?
+- 1
+- 2
+- 4
+*- 3
+- Execution fails
+
+
+
+Which of the following is true about joins?
+- Primary key constraints are necessary on joined tables
+- Foreign key constraints are necessary on joined tables
+*- Columns from any of the joined tables can be selected
+
+
+A _________ join is used to automatically connect equivalently spelled columns among all joined tables.
+- INNER
+- OUTER
+- CROSS
+*- NATURAL
+- SELF
+
+
+
+NATURAL joins are _________ by default.
+*- INNER joins
+- OUTER joins
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data_1 NUMBER, my_data_2 NUMBER);
+CREATE TABLE my_table_2 (my_data_1 NUMBER, my_other_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1, 1);
+INSERT INTO my_table_1 VALUES (2, 2);
+INSERT INTO my_table_2 VALUES (1, 1);
+INSERT INTO my_table_2 VALUES (4, 1);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+NATURAL JOIN my_table_2 b;
+
+What is the result?
+*- 1
+- 2
+- 4
+- 3
+- Execution fails
+
+
+
+
+
+
+Consider the following SQL:
+
+CREATE TABLE my_table_1 (my_data_1 NUMBER, my_data_2 NUMBER);
+CREATE TABLE my_table_2 (my_data_1 NUMBER, my_other_data NUMBER);
+
+INSERT INTO my_table_1 VALUES (1, 1);
+INSERT INTO my_table_1 VALUES (2, 2);
+INSERT INTO my_table_2 VALUES (1, 1);
+INSERT INTO my_table_2 VALUES (4, 1);
+
+SELECT COUNT(*)
+FROM my_table_1 a
+NATURAL LEFT JOIN my_table_2 b;
+
+What is the result?
+- 1
+*- 2
+- 4
+- 3
+- Execution fails
+
+
+
+
+

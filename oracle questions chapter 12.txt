@@ -1,0 +1,258 @@
+The _________ data dictionary table contains information regarding all tables owned by the current user.
+- USER_TABLES
+- ALL_TABLES
+- DBA_TABLES
+- USER_ALL_TAB
+- DBA_TABS
+
+
+The _________ data dictionary table contains information regarding all tables visible to the current user.
+- USER_TABLES
+*- ALL_TABLES
+- DBA_TABLES
+- USER_ALL_TAB
+- DBA_TABS
+
+
+The _________ data dictionary table contains information regarding all tables in the database.
+- USER_TABLES
+- ALL_TABLES
+*- DBA_TABLES
+- USER_ALL_TAB
+- DBA_TABS
+
+
+The _________ data dictionary table contains information regarding all tables, views, synonyms and sequences owned by the user.
+*- USER_CATALOG
+- USER_COL_PRIVS
+- USER_CONSTRAINTS
+- USER_CONS_COLUMNS
+- USER_DEPENDENCIES
+
+
+
+
+The _________ data dictionary table contains information regarding all grants on columns of tables owned by USER.
+*- USER_COL_PRIVS
+- USER_CONSTRAINTS
+- USER_CONS_COLUMNS
+- USER_DEPENDENCIES
+- USER_ERRORS
+
+
+
+
+The _________ data dictionary table contains information regarding all constraints owned by the user.
+*- USER_CONSTRAINTS
+- USER_CONS_COLUMNS
+- USER_DEPENDENCIES
+- USER_ERRORS
+- USER_INDEXES
+
+
+The _________ data dictionary table contains information regarding all columns used in constraints, owned by the user.
+*- USER_CONS_COLUMNS
+- USER_DEPENDENCIES
+- USER_ERRORS
+- USER_INDEXES
+- USER_IND_COLUMNS
+
+
+The _________ data dictionary table contains information regarding all dependencies to and from a user's objects.
+*- USER_DEPENDENCIES
+- USER_ERRORS
+- USER_INDEXES
+- USER_IND_COLUMNS
+- USER OBJECTS
+
+
+
+The _________ data dictionary table contains information regarding all current errors on stored objects owned by the user.
+- USER_DEPENDENCIES
+*- USER_ERRORS
+- USER_INDEXES
+- USER_IND_COLUMNS
+- USER OBJECTS
+
+
+
+The _________ data dictionary table contains information regarding all indexes owned by the user.
+*- USER_INDEXES
+- USER_IND_COLUMNS
+- USER OBJECTS
+- USER_SEQUENCES
+- USER_SYNONYMS
+
+
+
+The _________ data dictionary table contains information regarding all columns used in indexes owned by the user.
+*- USER_IND_COLUMNS
+- USER OBJECTS
+- USER_SEQUENCES
+- USER_SYNONYMS
+- USER_TAB_COLUMNS
+
+
+
+
+The _________ data dictionary table contains information regarding all objects owned by the user.
+- USER_IND_COLUMNS
+*- USER OBJECTS
+- USER_SEQUENCES
+- USER_CATALOG
+- USER_TAB_COLUMNS
+
+
+
+
+The _________ data dictionary table contains information regarding all sequences owned by the user.
+- USER_SEQUENCES
+- USER_SYNONYMS
+- USER_TAB_COLUMNS
+- USER_TAB_PRIVS
+- USER_VIEWS
+
+
+The _________ data dictionary table contains information regarding all private synonyms owned by the user.
+- USER_SEQUENCES
+*- USER_SYNONYMS
+- USER_TAB_COLUMNS
+- USER_TAB_PRIVS
+- USER_VIEWS
+
+
+
+The _________ data dictionary table contains information regarding all columns in user's tables and views.
+- USER_SEQUENCES
+- USER_SYNONYMS
+*- USER_TAB_COLUMNS
+- USER_TAB_PRIVS
+- USER_VIEWS
+
+
+
+
+The _________ data dictionary table contains information regarding all grants on objects owned by the user.
+- USER_SEQUENCES
+- USER_SYNONYMS
+- USER_TAB_COLUMNS
+*- USER_TAB_PRIVS
+- USER_VIEWS
+
+
+
+
+The _________ data dictionary table contains information regarding all views owned by the user.
+- USER_SEQUENCES
+- USER_SYNONYMS
+- USER_TAB_COLUMNS
+- USER_TAB_PRIVS
+*- USER_VIEWS
+
+
+
+Data dictionary tables beginning with ____ or similar are dynamic performance views which track database activity in real time.
+*- $V
+- DBA
+- USER
+- ALL
+- CACHE$$
+
+
+Data dictionary tables beginning with ____ refer to objects in scope of the entire database.
+- $V
+*- DBA
+- USER
+- ALL
+- CACHE$$
+
+
+Data dictionary tables beginning with ____ refer to objects in scope of the current user's ownership.
+- $V
+- DBA
+*- USER
+- ALL
+- CACHE$$
+
+
+Data dictionary tables beginning with ____ refer to objects in scope of the current user's privileges, regardless of owner.
+- $V
+- DBA
+- USER
+*- ALL
+- CACHE$$
+
+
+The ________ dynamic performance view contains information regarding system parameters.
+- V$DATABASE
+*- V$PARAMETER
+- V$SESSION
+- V$RESERVED_WORDS
+- V$CATALOG
+
+
+The ________ dynamic performance view contains information regarding each user session, including active connections and login times.
+- V$DATABASE
+- V$PARAMETER
+*- V$SESSION
+- V$RESERVED_WORDS
+- V$CATALOG
+
+
+
+The ________ dynamic performance view contains information regarding usage of INDEX objects.
+- V$DATABASE
+- V$PARAMETER
+- V$SESSION
+*- V$OBJECT_USAGE
+- V$CATALOG
+
+
+The ________ dynamic performance view contains timezone names and abbreviations.
+- V$DATABASE
+- V$PARAMETER
+- V$SESSION
+*- V$TIMEZONE_NAMES
+- V$CATALOG
+
+
+
+In the USER_CONSTRAINTS data dictionary view, the CONSTRAINT_TYPE which maps to PRIMARY KEY IS...
+*- P
+- R
+- U
+- C
+- PK
+
+
+In the USER_CONSTRAINTS data dictionary view, the CONSTRAINT_TYPE which maps to FOREIGN KEY IS...
+- P
+*- R
+- U
+- C
+- F
+
+
+In the USER_CONSTRAINTS data dictionary view, the CONSTRAINT_TYPE which maps to UNQIUE IS...
+- P
+- R
+- U
+- C
+- UC
+
+
+In the USER_CONSTRAINTS data dictionary view, the CONSTRAINT_TYPE which maps to CHECK IS...
+- P
+- R
+- U
+*- C
+- NN
+
+
+
+In the USER_CONSTRAINTS data dictionary view, the CONSTRAINT_TYPE which maps to NOT NULL IS...
+- P
+- R
+- U
+*- C
+- NN
