@@ -1,0 +1,1229 @@
+A CONSTAINT can be applied to which of the below object types?
+
+Which of the following can not be instantiated with the reserved word CREATE?
+
+One of your report writers was testing some SQL logic in a report query and substituted another SELECT statement for one of the tables in the FROM clause. This is an example of what kind of subquery? (Choose all that apply.)
+
+You can use a subquery to solve which of the following tasks?
+
+You want to check whether customers placing an online order today placed any online orders in the previous week. What kind of subquery could you use to easily retrieve that list of customers?
+- A single-row subquery
+- A multiple-column subquery
+- A multiple-row subquery
+- A correlated subquery
+- A scalar subquery
+
+B, C, and D are correct. You are comparing two columns in the ORDERS table (CUSTOMER_ID and ORDER_DATE) with ORDER_DATE today to the same two columns in the ORDERS or ORDER_HISTORY table with ORDER_DATEs from last week. Either a multiple-column subquery using IN or a correlated subquery where the subquery references the same two columns in the parent query will work.
+
+Select the correct order for the following steps in which the Oracle engine processes a query with a correlated subquery:
+
+1. The WHERE clause is evaluated for the inner query.
+2. The query is parsed to check object existence and permissions.
+3. The WHERE clause is evaluated for the outer query.
+4. For each row in the outer query, return matching rows in the inner query.
+5. For each row in the inner query, return matching rows in the outer query.
+6. Repeat the process for each row in the inner or outer query.
+
+
+
+
+Your developer wrote a query to show who is boss and who is your boss's boss.
+
+select l1.employee_id low_id, l1.last_name low_last_name,
+   l2.employee_id med_id, l2.last_name med_last_name,
+   l3.employee_id high_id, l3.last_name high_last_name
+from hr.employees l1
+   left outer join hr.employees l2 on l1.manager_id=l2.employee_id
+      left outer join hr.employees l3 on l2.manager_id=l3.employee_id
+order by l1.last_name;
+
+This query is an extreme example of primarily what join type?
+
+What kinds of join types are valid when doing self-joins? 
+
+Your customer order entry system has the ORDERS and ORDER_ITEMS tables. You are getting customer complaints that they are not getting any items in their order because some orders have items in the ORDER_ITEMS table but have no corresponding parent row in the ORDERS table. What is the best way to construct the join clause to find order items with no parent order?
+
+�Examine the contents of the HR.EMPLOYEES table in the exhibit.
+
+You want to find out the manager for each employee, even if one doesn't have a manager. Which of the following queries would most efficiently accomplish the task?
+
+Which of the following are advantages of using the WITH clause (subquery factoring) in your SELECT statements? 
+
+Which of the following statements is true regarding the WITH clause?
+
+
+
+You have a SELECT query that checks to see whether any orders in the ORDERS table have a single line item in the order, even if the item had multiple quantities. Your query starts out like this:
+
+select order_id, order_date, order_total
+from oe.orders o
+where order_total =
+   (select quantity*unit_price
+    from oe.order_items oi
+    where oi.order_id = o.order_id);
+
+Under what circumstances would that query fail?
+
+
+
+You have a SELECT query that checks to see whether any orders in the ORDERS table has a single line item in the order, even if the item had multiple quantities. Your query starts out like this:
+
+01 select order_id, order_date, order_total
+02 from oe.orders o
+03 where order_total =
+04    (select quantity*unit_price
+05     from oe.order_items oi
+06     where oi.order_id = o.order_id);
+
+What is the best way to fix this query so that it produces the desired result but will not fail with an ORA-01427 error?
+
+An UPDATE statement can use a correlated subquery in which clauses of the UPDATE statement? 
+
+
+
+
+
+Consider the following DELETE statement against the HR.EMPLOYEES table:
+
+delete from hr.employees e
+where salary >
+   (select avg(salary)
+    from hr.employees cs
+    where e.department_id = cs.department_id);
+
+What kind of subquery is being used, and what will the DELETE statement accomplish?
+
+The EXISTS and NOT EXISTS operators are used in what clause of a SELECT statement, and what kind of join types are these?
+
+You want to find out which employees have placed orders on the web site within the last week. EMPLOYEE_ID is in the same domain as CUSTOMER_ID. Which of the following queries will give you that list?
+
+You have a report that contains daily orders from the OE.ORDERS table, but you only display the numeric SALES_REP_ID. Which of the following queries will return a 0 if the SALES_REP_ID is NULL with a LAST_NAME of “Not Here or No Rep” or otherwise will retrieve the last name of the sales representative from the HR.EMPLOYEES table?
+
+In your SELECT statement, you want to check to see whether the SALES_REP_ID is NULL and, if so, return a value of 0 instead of showing an empty report field. Which of the following function calls is the best way to provide that functionality?
+
+Which of the following SQL statements will fail because of mixed aggregation functions at the same level?
+
+Which of the following function calls will map state codes in the column STATE_CD from 'NY' to 'New York', 'CA' to 'California', and 'WI' to 'Wisconsin'; NULL values to 'Missing State Code'; and everything else to 'Other'?
+
+Your application has to clean up and convert free-form numeric, date, and character string data that flows into your data warehouse. Which of the following examples of a conversion function will not generate an error?
+
+You have a real-time application that collects timer data from sensors around your factory. The sensors return data to the accuracy of seconds, and some timers may go off in a few seconds or sometimes in a few days. When a sensor sends the data, it sends the time the sensor went off (SENS_DT) and how long the timer ran (SENS_SEC). Your reports need to show those two columns plus when the timer was started. Which of the following columns and expressions would you use in your SELECT statement?
+
+Identify the true statements regarding the TO_CHAR, TO_DATE, and TO_NUMBER single-row functions.
+
+You want to convert the current date and time to a string value that has the month, day, and year spelled out, and you want the string to be prefixed with “Today is: ”. Which of the following will perform that conversion correctly?
+
+
+
+
+Examine the two tables OE.CARD_SUIT and OE.CARD_RANK shown in the exhibit. The CARD_SUIT table contains four rows, one for each of the traditional playing card suits: spades, hearts, diamonds, clubs. The CARD_RANK table has thirteen rows, one for each rank: ace, two, three through jack, queen, and king.
+
+What query would you use to join the two tables to generate a standard 52-card deck?
+
+
+Take a look at the table design for the PORTS, SHIPS, and SHIP_CABINS tables in the exhibit.
+
+Your marketing department wants a daily report of what ship cabins will be available at each port. What kind of join (or joins) will you need between which of the tables in the exhibit?
+
+
+Which of the following scenarios would more easily be solved by using a self-join?
+
+What is one possible side effect of using a NATURAL JOIN to join two tables?
+
+Which of the following GROUP BY queries would potentially return a NULL value for one or more aggregated rows, depending on the data in the table?
+
+Which of the following sets of functions would not be considered analytic functions?
+
+Identify the true statements about Oracle query join types.
+
+
+
+Consider the following query that contains a HAVING clause:
+
+01 select order_mode, count(order_total), sum(order_total)
+02 from oe.orders
+03 where sales_rep_id = 161
+04 group by order_mode
+05 having sum(order_total) > 0 and min(order_date) > sysdate-1000;
+
+An error will be generated because of an error on which line of that statement?
+
+
+The HR user owns the tables EMPLOYEES and EMPLOYEES_NEW. Which statement or group of statements will most efficiently and correctly grant all DML privileges on those tables to all users, current users, and all future users?
+
+You are logged in as the OE user and want to give the HR user the capability to make changes to the ORDERS table. Which of the following commands will most efficiently accomplish that goal?
+
+The _______ command is an example of a system privilege, and _______ is an example of an object privilege.
+
+You want to give the user RJB unlimited disk space in the USERS tablespace. Which of the following commands will give RJB this capability?
+
+
+
+Consider the MERGE statement shown in the exhibit.
+The table ONTARIO_ORDERS has a row with a PO_NUM='CBS909' that already exists in WWA_INVOICES. What changes are made to the WWA_INVOICES table because of that row?
+
+Consider the MERGE statement shown in the exhibit. The table ONTARIO_ORDERS has a row with a PO_NUM='NBC1909' that already exists in WWA_INVOICES. What changes are made to the WWA_INVOICES table because of that row?
+
+For a multitable INSERT, the first keyword you specify is either _______ or _______, _______ is the default, the _______ clause is optional, and a _______ is at the end of the INSERT.
+
+A MERGE statement can perform INSERTs, UPDATEs, and DELETEs in one pass of the source data set. What are the special rules surrounding the DELETE option of a MERGE statement?
+
+
+
+
+As the DBA, you want to give other users SELECT access to all tables in the OE schema, so you create a role called OE_READ and run GRANT SELECT ON OE.<tablename> TO OE_READ for each table in the OE schema. Next, you run GRANT OE_READ TO HR.
+
+The next day, two things happen. The OE user creates a new table called ORDERS_ARCHIVE but accidentally drops ORDERS. OE then restores ORDERS from a backup.
+
+What must the DBA do next to ensure that the HR user can still SELECT from all tables owned by OE?
+
+
+
+
+
+As a DBA, you have run the following GRANT statements:
+
+GRANT SELECT,INSERT ON HR.EMPLOYEES TO BI;
+GRANT TRUNCATE ANY TABLE TO HR WITH ADMIN OPTION;
+GRANT SELECT ANY TABLE TO HR WITH ADMIN OPTION;
+
+The HR user then runs this:
+
+GRANT SELECT ON BI.TEMP_EMPLOYEES TO OE;
+GRANT TRUNCATE ANY TABLE TO BI;
+
+Finally, the DBA runs these commands:
+
+REVOKE TRUNCATE ANY TABLE FROM HR;
+REVOKE SELECT ANY TABLE FROM HR;
+
+What privileges do HR, BI, and OE have after all of these commands have been run?
+
+
+
+
+Since upgrading to Oracle Database 12c, you want to see what system privileges still exist in the CONNECT, RESOURCE, and DBA roles. Which data dictionary query would give you this information?
+
+
+
+
+
+You run the following sequence of commands:
+
+CREATE TABLE HR.EMPLOYEES_NEW AS
+   SELECT * FROM HR.EMPLOYEES;
+CREATE INDEX HR.EMPL_ID_PK ON HR.EMPLOYEES_NEW(EMPLOYEE_ID);
+DROP TABLE HR.EMPLOYEES_NEW PURGE;
+FLASHBACK TABLE HR.EMPLOYEES_NEW TO BEFORE DROP;
+
+What is the result after you run the FLASHBACK command?
+
+
+
+
+
+Here is the DDL for the table CUSTOMERS_NEW:
+
+CREATE TABLE "OE"."CUSTOMERS_NEW"
+   ("CUSTOMER_ID" NUMBER(6,0), 
+  	"CUST_FIRST_NAME" VARCHAR2(20 BYTE) NOT NULL, 
+   	"CUST_LAST_NAME" VARCHAR2(20 BYTE) NOT NULL, 
+	  "CREDIT_LIMIT" NUMBER(9,2), 
+	  "CUST_EMAIL" VARCHAR2(40 BYTE), 
+	  "ACCOUNT_MGR_ID" NUMBER(6,0), 
+	  "CUST_GEO_LOCATION" "MDSYS"."SDO_GEOMETRY" , 
+	  "DATE_OF_BIRTH" DATE, 
+	  "MARITAL_STATUS" VARCHAR2(20 BYTE), 
+	  "GENDER" VARCHAR2(1 BYTE), 
+    "INCOME_LEVEL" NUMBER(20), 
+	 CONSTRAINT "CUSTOMER_NEW_CREDIT_LIMIT_MAX" 
+                 CHECK (credit_limit <= 50000) ENABLE, 
+	 CONSTRAINT "CUSTOMER_NEW_ID_MIN" 
+         CHECK (customer_id > 0) ENABLE, 
+	 CONSTRAINT "CUSTOMERS_NEW_PK" 
+             PRIMARY KEY ("CUSTOMER_ID") USING INDEX);
+CREATE BITMAP INDEX "OE"."CUSTOMER_EMAIL_IDX_01" 
+   ON "OE"."CUSTOMERS_NEW"(INCOME_LEVEL);
+CREATE INDEX "OE"."CUSTOMER_EMAIL_IDX_02" 
+   ON "OE"."CUSTOMERS_NEW"(INCOME_LEVEL) INVISIBLE;
+
+You are testing the performance of each index, so after you populate the table and run the first set of tests, you run this next:
+
+ALTER INDEX "OE"."CUSTOMER_EMAIL_IDX_02" VISIBLE;
+
+What happens when you enable the other index?
+
+
+
+
+
+
+
+
+
+Here is the DDL for the table CUSTOMERS_NEW:
+
+CREATE TABLE "OE"."CUSTOMERS_NEW"
+   ("CUSTOMER_ID" NUMBER(6,0), 
+  	"CUST_FIRST_NAME" VARCHAR2(20 BYTE) NOT NULL, 
+   	"CUST_LAST_NAME" VARCHAR2(20 BYTE) NOT NULL, 
+	  "CREDIT_LIMIT" NUMBER(9,2), 
+	  "CUST_EMAIL" VARCHAR2(40 BYTE), 
+	  "ACCOUNT_MGR_ID" NUMBER(6,0), 
+	  "CUST_GEO_LOCATION" "MDSYS"."SDO_GEOMETRY" , 
+	  "DATE_OF_BIRTH" DATE, 
+	  "MARITAL_STATUS" VARCHAR2(20 BYTE), 
+	  "GENDER" VARCHAR2(1 BYTE), 
+    "INCOME_LEVEL" NUMBER(20), 
+	            CONSTRAINT "CUSTOMER_NEW_CREDIT_LIMIT_MAX" 
+                          CHECK (credit_limit <= 50000) ENABLE, 
+	            CONSTRAINT "CUSTOMER_NEW_ID_MIN" 
+                      CHECK (customer_id > 0) ENABLE, 
+	             CONSTRAINT "CUSTOMERS_NEW_PK" 
+                          PRIMARY KEY ("CUSTOMER_ID") USING INDEX);
+CREATE BITMAP INDEX "OE"."CUSTOMER_EMAIL_IDX_01" 
+   ON "OE"."CUSTOMERS_NEW"(INCOME_LEVEL);
+CREATE INDEX "OE"."CUSTOMER_EMAIL_IDX_02" 
+   ON "OE"."CUSTOMERS_NEW"(INCOME_LEVEL) INVISIBLE;
+
+
+After all three DDL statements are run, how many indexes exist on the CUSTOMERS_NEW table?
+
+
+
+
+
+You want to make the population of the ORDER_ID column less error prone so you create a sequence called ORDER_SEQ like this and manually insert a new order into the ORDERS table:
+
+create sequence OE.ORDER_SEQ start with 100 increment by 1 maxvalue 1000000;
+insert into oe.orders(order_id,order_date,customer_id)
+   values(oe.order_seq.currval,sysdate,19011);
+
+What will happen when you run the INSERT statement?
+
+
+
+You tried making updates to the OE.ORDERS and OE.ORDER_ITEMS tables indirectly via the view OE.ORDERS_ORDER_ITEMS, but you’re getting error messages that indicate the view is not updatable. Which of the following could be reasons why you can’t update those tables through the view?
+
+
+
+
+You attempt to re-create a view using the following DDL statement. However, you get at least one error message. What must you do to fix this statement?
+
+01 create view oe.orders_order_items as
+02    select order_id,order_date,customer_id,
+03       line_item_id,unit_price,quantity,order_total,
+04       order_total-unit_price*quantity
+05    from oe.orders
+06      natural join oe.order_items
+07    where order_date > sysdate-7;
+
+
+
+What is the main difference between a private synonym and a public synonym?
+
+Your SELECT statement uses a comparison operator of = with a subquery. What conditions will cause the query to fail with an error message?
+
+There is a continuous data feed coming from the online system, and each row needs to be stored in both the finance data mart and the enterprise data warehouse. Some rows may end up only in the data warehouse. What kind of DML statement would efficiently process these rows?
+
+You want to display information from data dictionary views that includes information specific to one or more nodes in a clustered (Real Application Clusters) database. Which of the following prefixes have that information? 
+
+
+
+Review the following SELECT statement:
+
+select customer_id, cust_last_name || ', ' || cust_first_name,
+   cust_email, gender, marital_status
+from oe.customers
+where gender='F'
+
+Which of the following ORDER BY clauses are valid?
+
+
+
+
+What is the primary disadvantage to using the “by position” approach in the ORDER BY clause of a SELECT statement?
+
+The ORDERS2017A table has 102 rows, and the ORDERS2017B table has 104 rows. ORDERS2017A has one row that ORDERS2017B does not have, and ORDERS2017B has three rows that ORDERS2017A does not have. How many rows will you get when you run this query?
+
+You are trying to reconcile two different historical copies of the ORDERS table, one called ORDERS2017A and one called ORDERS2017B. Each copy is supposed to contain all orders from 2017, but upon initial inspection, each of them has rows that are not in the other. What kind of query would you write to show the rows that are unique to each table?
+
+Identify the true statements regarding set operators.
+
+The Oracle set operators combine the results from two or more SELECT statements into a single result set. Which of the following set operators remove duplicate rows from the final result?
+
+Which of the following SQL statements is likely to result in an error?
+
+
+
+
+
+Examine the following SQL code:
+
+CREATE TABLE STUDENTS
+    ( STUDENT_ID     NUMBER(13) PRIMARY KEY,
+      F_NAME         VARCHAR2(25),
+      L_NAME         VARCHAR2(35) NOT NULL,
+      SSN            VARCHAR2(11) UNIQUE ,
+      STATUS         VARCHAR2(30));
+ALTER TABLE STUDENTS
+      SET UNUSED COLUMN SSN;
+
+What is the result of the ALTER TABLE statement at the end of the code listing?
+
+
+
+
+
+Examine the following SQL code:
+
+CREATE TABLE OFFICES (
+     OFFICE_ID     NUMBER(7) PRIMARY KEY,
+     ASSIGNMENT_NO NUMBER(8),
+     MANAGER_ID    NUMBER(11) NOT NULL,
+     REGION_NAME   VARCHAR2(15));
+CREATE PUBLIC SYNONYM OFC FOR OFFICES;
+CREATE VIEW OFF_VW AS
+     SELECT OFFICE_ID, MANAGER_ID, REGION_NAME FROM OFFICES;
+DROP   TABLE OFFICES;
+
+What is the result of the DROP TABLE statement at the end of the code listing?
+
+
+
+
+
+Examine the following SQL code:
+
+CREATE TABLE TRANSACTIONS
+     (  TRANS_ID     NUMBER(11)
+      , TRANS_ENTRY  TIMESTAMP WITH LOCAL TIME ZONE
+      , ENTERED_BY   NUMBER(11)
+      , STATUS       VARCHAR2(20) );
+ALTER TABLE TRANSACTIONS
+        SET UNUSED COLUMN ENTERED_BY;
+
+Which of the following statements will drop the unused columns?
+
+
+
+
+
+The following code is executed from within user DANNA:
+
+CREATE TABLE SCHOOLS
+     (  SCHOOL_ID      NUMBER(7) PRIMARY KEY
+      , NAME                  VARCHAR2(20)
+      , DEAN_ID            NUMBER(7));
+GRANT SELECT ON SCHOOLS TO PUBLIC;
+CREATE SYNONYM SCH FOR SCHOOLS;
+DROP TABLE SCHOOLS;
+
+Five minutes later, user DANNA executes the following:
+
+FLASHBACK TABLE SCHOOLS TO BEFORE DROP;
+
+What objects have been recovered?
+
+
+
+
+Which of the following are valid CREATE TABLE statements? 
+
+
+
+Examine the following SQL statement:
+
+SELECT NAME FROM (SELECT 'JOE' NAME FROM DUAL
+                                           UNION
+                                           SELECT 'MARY' PERSON FROM DUAL
+                                           MINUS
+                                          SELECT 'JOE' DIRECTOR FROM DUAL)
+UNION ALL
+SELECT PERSON FROM (SELECT 'MARY' PERSON FROM DUAL
+                                               UNION
+                                               SELECT 'LENNY' CLERK FROM DUAL);
+
+How many rows are returned by this statement?
+
+
+
+
+
+
+
+
+
+Next, examine the following SQL code:
+
+CREATE TABLE FIELD_STAFF AS
+  SELECT * FROM STAFF;
+
+This statement will create the FIELD_STAFF table with which of the following features?
+
+
+
+
+
+
+
+
+Examine the following SQL code (line numbers added):
+
+01   MERGE INTO STAFF S
+02   USING (SELECT INSTRUCTOR_ID, 'INSTRUCTOR' NEW_TITLE,
+03                                  FIRST_NAME, LAST_NAME, EMPNO
+04                  FROM   INSTRUCTORS) I
+05   ON    (S.EMPNO = I.EMPNO)
+06   WHEN MATCHED THEN UPDATE SET TITLE     = NEW_TITLE
+07   WHEN NOT MATCHED THEN INSERT (STAFF_ID, FIRSTNAME, LASTNAME)
+08                VALUES ((INSTRUCTOR_ID+1000), FIRST_NAME, LAST_NAME);
+
+Which of the following statements is true of the MERGE statement?
+
+
+
+
+Which of the following are true about multitable INSERT statements? 
+
+
+
+
+Now examine the following SQL statement:
+
+SELECT *
+FROM   CLASSES
+AS OF  TIMESTAMP (SELECT SYSTIMESTAMP - INTERVAL '0 0:12:00' DAY TO SECOND
+                                       FROM   DUAL);
+
+What is true of this statement?
+
+
+
+Match the descriptions on the left with the keywords and operators on the right:
+1. Cartesian                      a. CROSS
+2. Nonequijoin                  b. OUTER
+3. Full                                c. NATURAL
+4. Inner join                       d. >
+
+
+
+
+
+Next, match the SELECT statement with the type of join.
+1. Inner join
+2. Outer join
+3. Non-equijoin
+4. Cross-join
+
+a.  SELECT STORE_NAME, LAST_NAME
+          FROM STORES S JOIN EMPLOYEES E
+               ON S.STORE_ID > E.STORE_ID;
+b.  SELECT STORE_NAME, LAST_NAME
+          FROM STORES NATURAL JOIN EMPLOYEES;
+c.  SELECT STORE_NAME, LAST_NAME
+          FROM STORES, EMPLOYEES;
+d.  SELECT STORE_NAME, LAST_NAME
+          FROM STORES S RIGHT JOIN EMPLOYEES E
+               ON S.STORE_ID = E.STORE_ID;sq ~ 
+
+
+
+
+Examine the exhibit and then examine the following code:
+
+WITH
+  STAFF_STATISTICS AS (
+    SELECT   DEPARTMENT_ID, COUNT(STAFF_ID) CT
+    FROM     STAFF
+    GROUP BY DEPARTMENT_ID
+  ),
+  ADMIN_STATS AS (
+    SELECT DEPARTMENT_ID, CT
+    FROM   STAFF_STATISTICS
+    WHERE  DEPARTMENT_ID IN (SELECT DEPARTMENT_ID FROM DEPARTMENTS)
+  )
+SELECT I.LAST_NAME, A.CT
+FROM   ADMIN_STATS A JOIN INSTRUCTORS I
+     ON    A.DEPARTMENT_ID = I.DEPARTMENT_ID;
+
+Which of the following is true of the preceding code?
+
+
+
+
+
+You are tasked with creating a query that will show a list of instructors in the INSTRUCTORS table who have the same names as staff in the STAFF table. Which of the following queries will satisfy the requirement? 
+
+Scalar subqueries can be used for adding data to the database.t !A scalar subquery can be used in:
+
+Which of the following functions have the ability to return a column value or, if the value is NULL, a specified value other than NULL?
+
+You are tasked with producing a report that shows the names of the instructors in each department who have the highest pay rate. Which of the following are you least likely to use in creating your query?
+
+Which of the following comparison operators, when used in a SELECT statement’s WHERE clause with a subquery, require a single-row subquery?
+
+The engineering department instructors are said to teach longer classes than the rest of the school. You are tasked to challenge this claim and see whether you can identify any instructors who do not teach in the engineering department but who have classes that are as long as, if not longer than, any class taught by any of the instructors in engineering. Which of the following queries do you create?
+
+Identify the true statements about the CREATE SEQUENCE statement.
+
+
+
+
+Examine the exhibit and then examine the following SQL code:
+
+SELECT *
+FROM       INSTRUCTORS
+WHERE    EXISTS (SELECT DEPARTMENT_ID
+                                   FROM   DEPARTMENTS
+                                  WHERE  TITLE = 'Engineering');
+
+Which of the following describes this statement?
+
+
+
+
+Which of the following statements will remove all the rows from a table CUSTOMERS and cause an implicit commit to execute?
+
+
+
+
+
+
+
+You have two order-related tables, CUST_ORDER and ORDER_ITEMS, that look like this:
+
+CREATE TABLE CUST_ORDER (
+   ORD_ID      NUMBER NOT NULL PRIMARY KEY,
+   ORD_DT     DATE NOT NULL,
+   CUST_ID    NUMBER NOT NULL,
+   ORD_TOTAL    NUMBER(12,2));
+CREATE TABLE ORDER_ITEMS(
+   ORD_ITM_ID   NUMBER NOT NULL,
+   ORD_ID            NUMBER NOT NULL 
+      CONSTRAINT FK_ORD REFERENCES CUST_ORDER(ORD_ID)
+         ON DELETE CASCADE,
+   CAT_NUM       NUMBER,
+   ITM_PRC         NUMBER(10,2) NOT NULL,
+   ITM_QTY        NUMBER NOT NULL);
+
+Which statement is true regarding DELETE statements on those two tables?
+
+
+
+
+
+
+
+You have two order-related tables, CUST_ORDER and ORDER_ITEMS, that look like this, and you run the subsequent DML statements on these tables:
+
+CREATE TABLE CUST_ORDER (
+   ORD_ID      NUMBER NOT NULL PRIMARY KEY,
+   ORD_DT     DATE NOT NULL,
+   CUST_ID    NUMBER NOT NULL,
+   ORD_TOTAL    NUMBER(12,2));
+CREATE TABLE ORDER_ITEMS(
+   ORD_ITM_ID   NUMBER NOT NULL,
+   ORD_ID            NUMBER NOT NULL 
+      CONSTRAINT FK_ORD REFERENCES CUST_ORDER(ORD_ID)
+         ON DELETE CASCADE,
+   CAT_NUM       NUMBER,
+   ITM_PRC         NUMBER(10,2) NOT NULL,
+   ITM_QTY        NUMBER NOT NULL);
+INSERT INTO CUST_ORDER VALUES(101,SYSDATE,201);
+SAVEPOINT ORD;
+INSERT INTO ORDER_ITEMS VALUES(501,101,7001,12.95,2);
+INSERT INTO ORDER_ITEMS VALUES(502,101,7502,18.95,1);
+SAVEPOINT ITM;
+ALTER TABLE CUST_ORDER ADD (SHIP_STATUS   VARCHAR2(10));
+ROLLBACK TO ORD;
+COMMIT;
+
+Which statement is true regarding the number of rows remaining in each table?
+
+
+
+
+
+
+Your customer orders table was created like this:
+
+CREATE TABLE CUST_ORD
+(ORD_ID      NUMBER NOT NULL,
+ CUST_ID     NUMBER NOT NULL,
+ ORD_DT      DATE NOT NULL,
+ ORD_TOTAL    NUMBER(6,2),
+ SHIP_METH_CD   VARCHAR2(2));
+
+Which of the following INSERT statements into the CUST_ORD table will succeed?
+
+
+
+
+
+
+
+
+You have two order-related tables, CUST_ORDER and ORDER_ITEMS, that look like this:
+
+CREATE TABLE CUST_ORDER (
+   ORD_ID      NUMBER NOT NULL PRIMARY KEY,
+   ORD_DT     DATE NOT NULL,
+   CUST_ID    NUMBER NOT NULL,
+   ORD_TOTAL    NUMBER(12,2));
+CREATE TABLE ORDER_ITEMS(
+   ORD_ITM_ID   NUMBER NOT NULL,
+   ORD_ID            NUMBER NOT NULL 
+      CONSTRAINT FK_ORD REFERENCES CUST_ORDER(ORD_ID)
+         ON DELETE CASCADE,
+   CAT_NUM       NUMBER,
+   ITM_PRC         NUMBER(10,2) NOT NULL,
+   ITM_QTY        NUMBER NOT NULL);
+
+Which statements are true regarding UPDATE statements on those two tables?
+
+
+
+
+
+
+
+
+
+You run the following SELECT statement against the ORDERS table, but you get an error message:
+
+SELECT ORDER_ID,ORDER_DATE,CUSTOMER_ID
+    "CustNum",ORDER_TOTAL,SALES_REP_ID "RepNum"
+FROM OE.ORDERS
+WHERE "RepNum" IS NOT NULL
+ORDER BY "RepNum" NULLS LAST, ORDER_DATE DESC;
+
+What can you change to allow the query to run successfully?
+
+
+
+
+
+
+Review the table contents of a subset of the ORDERS table shown in the exhibit. Which of the following SELECT statements will return all orders for ORDER_ID values between 2355 and 2455 that were not placed by a sales representative in the most accurate and efficient way?
+
+Which of the following will cause an implicit ROLLBACK?
+
+View the ORDERS table in the exhibit. You want to return the ORDER_ID, ORDER_DATE, CUSTOMER_ID, ORDER_TOTAL, and SALES_REP_ID values and return the results in ascending order by SALES_REP_ID and then in descending order by ORDER_DATE, with the orders that have NULL values for SALES_REP_ID appearing last. Which of the following SELECT statements will give you the desired output?
+
+Which of the following SQL*Plus elements or commands will receive an input string from the user and store it in a SQL*Plus variable? 
+
+Your CUSTOMERS table has the columns CUSTOMER_ID, CUST_LAST_NAME, CUST_FIRST_NAME, and DATE_OF_BIRTH. You want to get the top 10 percent of the oldest customers but don’t mind getting more than 10 percent if there are customers with the same birthday. Which of the following queries will give you the desired output?
+
+In a WHERE clause, which of the following column references (identifiers) are allowed in a comparison expression?
+
+You want your SQL statements in a script to prompt the user for a SQL_ID only once, but you also want to reprompt the user in the same session if the script is run again. Which of the following scripts will accomplish that goal?
+
+
+
+
+
+
+Consider the following SELECT statement. The ORDER_DATE column is a TIMESTAMP, and SALES_REP_ID is a NUMBER.
+
+SELECT ORDER_ID, 
+   TO_CHAR(ORDER_DATE,'YYYY-MM-DD HH24:MI:SS'),
+   NVL(SALES_REP_ID,0)
+FROM OE.ORDERS;
+
+What kind of functions are TO_CHAR and NVL?
+
+
+
+
+
+
+
+
+You are running a query against the OE.ORDERS table to generate reminders for customers a month after the order date.
+
+SELECT ORDER_ID,CUSTOMER_ID,ORDER_DATE,
+   ADD_MONTHS(ORDER_DATE,1) CUST_REMIND_DATE
+FROM OE.ORDERS;
+
+For an ORDER_DATE of 2017-12-20 12.53.57.943814000 PM, what will be the value of CUST_REMIND_DATE in the output?
+
+
+
+
+
+
+
+Which pairs of clauses in a SELECT statement using the row limiting feature are mutually exclusive?
+
+
+
+
+You run the following SELECT statement, which includes a row limiting clause:
+
+SELECT CUSTOMER_ID, DATE_OF_BIRTH FROM OE.CUSTOMERS
+ORDER BY DATE_OF_BIRTH DESC
+OFFSET -5 ROWS FETCH FIRST 10 ROWS WITH TIES;
+
+What row set is returned by this query?
+
+
+
+
+Consider the following SQL statement:
+
+UPDATE EMPLOYEES SET SALARY = SALARY*1.25
+WHERE EMPLOYEE_ID=1;
+
+This statement would fall into what category of SQL statements?
+
+
+
+Which of the following is not a benefit of an entity-relationship diagram (ERD)?
+
+
+
+
+Examine the following SQL statements:
+
+CREATE USER PHIL IDENTIFIED BY RIVERS;
+GRANT CREATE SESSION, UNLIMITED TABLESPACE TO PHIL;
+CREATE ROLE QB;
+GRANT QB TO PHIL;
+GRANT CREATE TABLE TO QB;
+REVOKE CREATE TABLE FROM PHIL;
+
+You are now tasked to give user PHIL the ability to create a PRIMARY KEY constraint. Which of the following statements best describes the solution to this task?
+
+
+
+
+Examine the following SQL code:
+
+CREATE USER REGGIE IDENTIFIED BY WAYNE;
+GRANT CREATE SESSION, UNLIMITED TABLESPACE TO REGGIE;
+GRANT CREATE TABLE TO REGGIE;
+GRANT ALL PRIVILEGES TO REGGIE;
+REVOKE ALL PRIVILEGES FROM PUBLIC;
+
+What is the result of these statements?
+
+
+
+
+
+You’re collecting scientific data from astronomical events that requires date/time precision to the nearest 1 millionth of a second. Which of the following data type declarations will be suitable for those events?
+
+
+
+
+Consider the following sequence of DDL and DML commands:
+
+CREATE TABLE SHIP_MAINT
+        (SHIP_ID              NUMBER NOT NULL,
+         MAINT_DATE    DATE NOT NULL,
+         MAINT_CODE     NUMBER NOT NULL,
+         MAINT_DESC     VARCHAR2(250));
+INSERT INTO SHIP_MAINT VALUES(101,SYSDATE,15);
+INSERT INTO SHIP_MAINT(SHIP_ID,MAINT_DATE,MAINT_CODE,MAINT_DESC)
+         VALUES(115, '2-jun-2017',17, 'Propellers fell off again');
+INSERT INTO SHIP_MAINT VALUES(102, '1-JUN-2017');
+SELECT COUNT(*) FROM SHIP_MAINT;
+
+How many rows will you see in the output of the SELECT statement?
+
+
+
+
+Your nightly batch processing performs a combination of INSERT, UPDATE, and DELETE commands on several tables. What might be the best combination of DML commands you would use if most of the activity against the tables are INSERT and UPDATE operations?
+
+Which of them would be considered DDL statements?
+
+
+
+
+
+You have a table called EMPLOYEES_RETIRED, and it looks like this:
+
+01 CREATE TABLE EMPLOYEES_RETIRED (
+02           EMPLOYEE_ID                 NUMBER(6),
+03           FIRST_NAME                    VARCHAR2(20),
+04           LAST_NAME                     VARCHAR2(25) NOT NULL,
+05           RETIREMENT_PAY$        NUMBER(10,2),
+06           ONLINE_FLAG                  CHAR(1),
+07           ONLINE_TYPE                  NUMBER,
+08           "Nickname"                        VARCHAR2(15),
+09           WORK_HISTORY              CLOB,
+10           CONSTRAINT  EMPLOYEES_RETIRED PRIMARY KEY (EMPLOYEE_ID) );
+
+The legal department has determined that you should no longer maintain the “Nickname” column because of recent lawsuits, and they want to make that column unavailable as soon as possible, so you run this command:
+
+ALTER TABLE EMPLOYEES_RETIRED SET UNUSED COLUMN "Nickname";
+
+At some point you will reorganize the table and reclaim the space occupied by that column, but for now, making the column UNUSED will satisfy the request of the legal department.
+Which of the following is true regarding the state of the table and column after setting it to UNUSED?
+
+
+
+
+
+Identify the true statements regarding CHECK constraints.
+
+
+
+
+
+
+Which lines of the following CREATE TABLE statement will cause an error? (Choose all that apply.)
+
+01 CREATE TABLE EMPLOYEES_RETIRED (
+02          EMPLOYEE_ID                  NUMBER(6),
+03          FIRST_NAME                     VARCHAR2(20),
+04          LAST_NAME                      VARCHAR2(25) NOT NULL,
+05          RETIREMENT_PAY$         NUMBER(10,2),
+06          ONLINE                              CHAR(1),
+07          ONLINE_TYPE                   NUMBER,
+08          "Nickname"                         VARCHAR2(15),
+09          WORK_HISTORY              CLOB,
+10          CONSTRAINT  EMPLOYEES@RETIRED PRIMARY KEY (EMPLOYEE_ID) );
+
+
+
+
+
+Identify the true statements regarding data types in the following list.
+
+You need to remove all the rows from the DAILY_CUSTOMER_ORDERS table as quickly as possible without creating any UNDO and ensuring that the rows are not recoverable with a FLASHBACK command or retrievable from the recycle bin. Which of these commands is most appropriate?
+
+Which of the following commands will automatically execute a COMMIT statement?
+
+Any ______ statement performs a COMMIT.
+(DDL is the answer)
+
+
+
+
+
+You create and populate an external table with this command:
+
+CREATE TABLE SAMP_EXT_DP
+   ORGANIZATION EXTERNAL
+      (TYPE ORACLE_DATAPUMP
+       DEFAULT DIRECTORY EXT_EMP LOCATION(‘ID.DMP’))
+AS
+   SELECT 1 ID, ‘Fred’ NM FROM DUAL
+   UNION ALL
+   SELECT 2, ‘Barney’ FROM DUAL;
+
+Later in the day one of the users gets the error message shown in the exhibit when accessing the SAMP_EXT_DP table. What is a possible reason for this error message?
+
+
+
+
+
+
+Which of the following statements are true regarding external tables?
+
+You are tasked to produce a report that shows the number of students at each campus, in each status. Which of the following queries successfully performs this task?
+
+
+
+
+
+Examine the following data listing for a table STUDENTS:
+
+ROWNUM  ID  NAME      SCORE
+----------------  --  -----------     ------------
+                1   1   JONES
+                2   2   SMITH               20
+                3
+                4   3                              15
+                5   4   SIMPSON         25
+
+Note the presence of the pseudocolumn ROWNUM. Note that row 3 is completely NULL. Also note that the SCORE for JONES is NULL.
+Now examine the following SELECT statement:
+
+SELECT COUNT(*), AVG(SCORE)
+FROM   STUDENTS;
+
+What will be the result of this query?
+
+
+
+
+
+You are tasked with creating a query that will join the tables STAFF and DEPARTMENTS and produce output that shows a count of how many people on staff work in each department. However, some temporary departments have been set up for individuals, and these should be excluded. This means you need to omit any departments from your output list that have only one staff member in them. Which of the following SQL statements will accomplish the task?
+
+
+
+
+Examine the following SELECT statement:
+
+SELECT MOD(20,7)
+FROM DUAL;
+
+What is the result of the preceding statement?
+
+
+
+
+Examine the following SQL statement:
+
+SELECT TO_TIMESTAMP('MAY 01 11','MON DD RR') +
+                TO_YMINTERVAL('1-1') +
+                TO_DSINTERVAL(INTERVAL '75' MINUTE)
+FROM    DUAL;
+
+Which of the following is the result?
+
+
+
+
+
+Examine the following SQL code:
+SELECT TO_CHAR(ADD_MONTHS(TRUNC(TO_DATE('10-05-10','RR-MM-DD'),
+                                                                                 'YY'),
+                                                                 -1),
+                                     'Q')
+FROM DUAL;
+
+What is the result of this statement?
+
+
+
+
+Now examine the following SELECT statement (line numbers added):
+
+01  SELECT DEPARTMENT_ID, LAST_NAME
+02  FROM   INSTRUCTORS
+03  WHERE  VACATION < 14
+04      OR PAY_RATE < 60
+05    AND  DEPARTMENT_ID NOT IN (1,2,7);
+
+Which of the following is true for this statement?
+
+
+
+
+
+Examine the following SQL code:
+
+SELECT   *
+FROM     INSTRUCTORS
+ORDER BY LAST_NAME DESC, PAY_RATE ASC, VACATION;
+
+How will the rows in this query be sorted?
+
+
+
+
+Review the following SQL statements:
+
+CREATE TABLE INSTRUCTORS
+  (INSTRUCTOR_ID NUMBER,
+   EXEMPT          VARCHAR2(5),
+   VACATION      NUMBER,
+   PAY_RATE      NUMBER);
+INSERT INTO INSTRUCTORS VALUES (1, 'YES', NULL, 25);
+INSERT INTO INSTRUCTORS VALUES (2, NULL, NULL, NULL);
+UPDATE INSTRUCTORS
+       SET EXEMPT    = 'YES',
+       VACATION         = 15
+   WHERE  PAY_RATE > 20;
+
+What can be said of these statements?
+
+
+
+
+
+Examine the following data listing of a table COURSE_CATALOG:
+
+ID   Department          Course             Class
+---  ------------------      -----------------     ---------------
+  1  Business             Accounting         General Ledger
+  2  Business             Accounting         Accounts Payable
+  3  Business             Accounting         Accounts Receivable
+  4  Business             Finance              Ratios
+  5  Engineering        Systems             Design
+  6  Engineering        Systems             Administration
+  7  Engineering        Network             Testing
+
+You are tasked to examine a SQL query that shows only unique combinations of values of Department and Course. Which of the following SQL statements will perform the task?
+
+
+
+
+
+
+Examine the exhibit.
+
+You are tasked to write a query that will perform the following:
+  •Query the PAY_RATE for each instructor. PAY_RATE contains the annual salary for each instructor.
+  •Determine the base PAY_RATE if it were increased by 5 percent.
+  •Throw in a one-time annual bonus of $200 for the year.
+  •Show the monthly rate of pay for the increased annual PAY_RATE, including the once-per-year bonus.
+
+Which of the following queries will accomplish this task?
+
+
+
+
+
+
+
+Examine the following SQL code executed from within the user account ADMIN:
+
+CREATE TABLE REGIONS
+  (  REGION_ID           NUMBER(7)  PRIMARY KEY
+   , REGION_NAME    VARCHAR2(30)
+   , MANAGER_ID       NUMBER(11) NOT NULL);
+CREATE VIEW REGIONS_VW AS SELECT * FROM REGIONS;
+CREATE PUBLIC SYNONYM REG FOR ADMIN.REGIONS;
+DROP TABLE REGIONS;
+
+Which of the following statements correctly describes the results after the preceding statements are executed?
+
+
+
+
+
+
+Examine the exhibit and then examine the following SQL statement:
+
+UPDATE STUDENTS
+  SET REG_DATE          = TO_DATE('01-MAR-10','DD-MON-RR'),
+           SSN                       = 111222333344444
+WHERE STUDENT_ID = 101
+
+Which of the following is true for the preceding statement?
+
+
+
+
+Examine the following SQL statements (line numbers added):
+
+01   CREATE TABLE CLASSES
+02     (CLASS_ID      NUMBER(13) PRIMARY KEY,
+03      INSTRUCTOR_ID NUMBER(13)
+04     );
+05   INSERT INTO CLASSES VALUES (1,1);
+06   INSERT INTO CLASSES VALUES (2,2);
+
+Which of the following DELETE statements will delete the second of the two rows inserted in lines 5 and 6?
+
+
+
+
+
+Examine the following SQL code:
+
+CREATE TABLE STUDENTS
+  (  STUDENT_ID     NUMBER(13) PRIMARY KEY,
+     F_NAME              VARCHAR2(25),
+     L_NAME              VARCHAR2(35),
+     SSN                      VARCHAR2(11),
+     STATUS              VARCHAR2(30),
+     REG_DATE        TIMESTAMP
+  );
+CREATE SEQUENCE STUDENT_ID_SEQUENCE;
+
+Which of the following are valid INSERT statements for this table?
+
+
+
+
+
+
+Examine the following SQL code:
+
+
+CREATE TABLE REGIONS
+  (  REGION_ID            NUMBER(7) UNIQUE,
+     REGION_NAME    VARCHAR2(30),
+     MANAGER_ID       NUMBER(11)
+  );
+CREATE TABLE OFFICES
+  (  OFFICE_ID            NUMBER(11) PRIMARY KEY,
+     REGION_ID           NUMBER(11,2),
+     CONSTRAINT OFRE FOREIGN KEY (REGION_ID) REFERENCES REGIONS (REGION_ID)
+  );
+
+What will be the result of the preceding SQL statements?
+
+
+
+
+
+Examine the following SQL statements (line numbers added):
+
+01   COMMIT;
+02   SAVEPOINT POINT_A;
+03   CREATE TABLE CLASSES
+04     (CLASS_ID      NUMBER(13) PRIMARY KEY,
+05      INSTRUCTOR_ID NUMBER(13)
+06     );
+07   INSERT INTO CLASSES VALUES (1,1);
+08   INSERT INTO CLASSES VALUES (2,2);
+09   SAVEPOINT POINT_B;
+10   INSERT INTO CLASSES VALUES (3,3);
+11   ROLLBACK WORK TO POINT_A;
+12   INSERT INTO CLASSES VALUES (4,4);
+13   ROLLBACK WORK TO POINT_B;
+14   COMMIT;
+
+Which of the following statements correctly describes the result of the preceding statements?
+
+
+
+
+Examine the following SQL statement:
+
+CREATE TABLE INSTRUCTORS
+( ID                             NUMBER(20),
+  NAME                     VARCHAR2(30),
+  STATUS                 CHAR,
+  DEPARTMENT     NUMBER(7,-3),
+  OFFICE_HOURS  INTERVAL DAY TO SECOND,
+  START_DATE       TIMESTAMP WITH LOCAL TIME ZONE
+);
+
+Which of the following is true of the statement?
+
+
+
+
+
+Which of the following data types can be used with a PRIMARY KEY constraint?
+
+
+
+
+
+Examine the following SQL statement:
+
+CREATE TABLE INSTRUCTORS
+  (  INSTRUCTOR_ID    NUMBER(11) PRIMARY KEY,
+     EXEMPT                    VARCHAR2(5),
+     VACATION                NUMBER,
+     PAY_RATE                NUMBER(10,2),
+     DEPARTMENT_ID   NUMBER(11) NOT NULL,
+     FIRST_NAME           VARCHAR2(20),
+     LAST_NAME             VARCHAR2(30),
+     CONSTRAINT           PAY_RATE_NN NOT NULL (PAY_RATE),
+     CONSTRAINT           IN_CL_FK FOREIGN KEY (DEPARTMENT_ID)
+                                         REFERENCES DEPARTMENTS (DEPARTMENT_ID)
+  );
+
+What will be the result of an attempt to execute the SQL statement?
+
+
+
+
+
+
+
+
+
+
+

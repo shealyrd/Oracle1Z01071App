@@ -1,0 +1,154 @@
+Using DDL Statements:
+
+
+______ objects are those that can be owned by a user.
+- Schema
+- Nonschema
+
+_______ objects are those that cannot be owned by a user.
+- Schema
+- Nonschema
+
+Which of the following are true about USER objects?
+- A USER object can own itself
+- A USER object can be owned by another USER object
+* - A USER object is a nonschema object
+* - A USER object can own a PRIVATE SYNONYM
+
+A PUBLIC SYNONYM is owned by the special user account _______.
+- PUBLIC
+- DUAL
+- SYS
+- SYSTEM
+- INTERNAL
+
+Which of the following are true of UNQUOTED database object names?
+- Object names are case sensitive
+* - All database objects MUST have a name.
+* - Names can contain letters, '$', '_' or '#'.
+* - Object names MUST start with a letter.
+- Object names can contain spaces.
+
+Which of the following are true of QUOTED database object names?
+*- Quoted object names must always be referenced with their quotation marks.
+*- Quoted object names can contain spaces
+- Quoted object names MUST start with a letter.
+- Quoted object names cannot contain reserved words.
+*- Quoted object names are case-sensitive.
+
+A _______ is a logical boundry within the database which requires encompassing objects to have unique names.
+- NAMESPACE
+- SCHEMA
+- USER
+- DATABASE
+- CLUSTER
+
+Which two types of database objects occupying the same database share a namespace?
+* - USER
+* - ROLE
+- PUBLIC SYNONYM
+- TABLE
+- INDEX
+- CONSTRAINT
+
+______ objects do not share a namespace with any other type of objects.
+* - PUBLIC SYNONYM
+- TABLE
+- VIEW
+- SEQUENCE
+- PRIVATE SYNONYM
+
+Which of the following is true about namespaces?
+* - Objects in different namespaces can have the same name.
+- Schema objects of the same type in different schemas share the same namespace.
+* - In the entire database, every USER objects must have a unique name.
+- INDEX and CONSTRAINT objects in the same schema share the same namespace.
+
+
+
+CREATE TABLE my_table
+(
+	my_id NUMBER NOT NULL,
+	my_value NUMBER,
+	my_name VARCHAR2(10) DEFAULT 'RALPH',
+	CONSTRAINT my_pk PRIMARY_KEY (my_value)
+);
+
+How many CONSTRAINT objects are created with the above CREATE TABLE statement?
+- 0
+- 1
+* - 2
+- 3
+- 4
+
+
+Which of the following SQL*Plus commands will return formatted details about a given table?
+* - DESC
+- SHOW
+- DETAILS
+- EXPLAIN
+- HELP
+
+If 5.67 is entered into a column of type NUMBER(2), what value is stored?
+- 5.67
+* - 6 
+- 5.6
+- 5
+- 5.7
+- None; an exception is thrown.
+
+If 5.67 is entered into a column of type NUMBER(5,2), what value is stored?
+* - 5.67
+- 6 
+- 5.6
+- 5
+- 5.7
+- None; an exception is thrown.
+
+If 5.67 is entered into a column of type NUMBER, what value is stored?
+* - 5.67
+- 6 
+- 5.6
+- 5
+- 5.7
+- None; an exception is thrown.
+
+If 5.6789 is entered into a column of type NUMBER(5,2), what value is stored?
+- 5.6789
+- 6
+* - 5.68
+- 5.6
+- 5.67
+- None; an exception is thrown.
+
+
+If 5.67 is entered into a column of type NUMBER(4,1), what value is stored?
+- 5.67
+- 6
+* - 5.7
+- 5.6
+- 5
+- None; an exception is thrown.
+
+If 5.67 is entered into a column of type NUMBER(3,2), what value is stored?
+- 5.67
+- 6
+- 5.7
+- 5.6
+- 5
+- None; an exception is thrown.
+
+If 1050.67 is entered into a column of type NUMBER(5,-2), what value is stored?
+- 1100
+- 1050
+- 1050.67
+- 1000
+- 10
+- None; an exception is thrown.
+
+Which of the following datetime fields are stored in a DATE data type?
+* - YEAR
+* - SECOND
+* - MONTH
+- TIMEZONE_HOUR
+- MILLISECOND
