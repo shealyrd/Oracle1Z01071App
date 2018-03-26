@@ -73,6 +73,7 @@ When an object privilege is granted with the _________ option, then the recipien
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE USER USER_1 IDENTIFIED BY PASS1;
 GRANT CREATE SESSION TO USER_1;
 GRANT CREATE TABLE TO USER_1 WITH ADMIN OPTION;
@@ -82,6 +83,7 @@ CONNECT USER_1 / PASS1;
 GRANT CREATE TABLE TO USER_2;
 CONNECT SYSTEM / SYSPASS;
 REVOKE CREATE TABLE FROM USER_1;
+</div>
 
 Does USER_2 have the CREATE TABLE privilege?
 *- Yes
@@ -91,10 +93,12 @@ Does USER_2 have the CREATE TABLE privilege?
 
 Consider the following SQL:
 
+<div class = "code">
 1. CREATE USER USER_1 IDENTIFIED BY PASS1;
 2. GRANT CREATE SESSION TO USER_1;
 3. GRANT CREATE TABLE TO USER_1 WITH ADMIN OPTION;
 4. REVOKE ALL PRIVILEGES FROM USER_1;
+</div>
 
 At what line does the error occur?
 - 1
@@ -109,6 +113,7 @@ At what line does the error occur?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE USER USER_1 IDENTIFIED BY PASS1;
 GRANT CREATE SESSION TO USER_1;
@@ -119,6 +124,7 @@ CONNECT USER_1 / PASS1;
 GRANT SELECT ON SYSTEM.my_table TO USER_2;
 CONNECT SYSTEM / ORA123;
 REVOKE SELECT ON my_table FROM USER_1;
+</div>
 
 Does USER_2 have the SELECT ON my_table privilege?
 - Yes
@@ -138,10 +144,12 @@ Which of the following is true regarding system privileges vs object privileges?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE USER USER_1 IDENTIFIED BY PASS1;
 GRANT SELECT ON my_table TO USER_1;
 DROP TABLE my_table;
+</div>
 
 Does USER_1 have the SELECT ON my_table privilege?
 - Yes
@@ -214,13 +222,14 @@ Which of the following privileges is contained in the DBA role?
  
 Consider the following SQL:
 
+<div class = "code">
 CREATE ROLE my_role;
 GRANT CREATE TABLE TO my_role;
 CREATE USER USER_1 IDENTIFIED BY PASS1;
 GRANT CREATE TABLE TO USER_1;
 GRANT my_role TO USER_1;
 REVOKE CREATE TABLE FROM USER_1;
-
+</div>
 
 Does USER_1 have the CREATE TABLE privilege?
 - Yes
@@ -230,13 +239,14 @@ Does USER_1 have the CREATE TABLE privilege?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE ROLE my_role;
 GRANT CREATE TABLE TO my_role;
 CREATE USER USER_1 IDENTIFIED BY PASS1;
 GRANT CREATE TABLE TO USER_1;
 GRANT my_role TO USER_1;
 REVOKE my_role FROM USER_1;
-
+</div>
 
 Does USER_1 have the CREATE TABLE privilege?
 *- Yes

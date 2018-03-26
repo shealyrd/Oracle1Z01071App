@@ -8,10 +8,12 @@ Which of the following relational operators would be used in a non-equijoin?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT *
 FROM my_table_1 one
 INNER JOIN my_table_2 two
 ON one.my_data = two.my_data;
+</div>
 
 Which of the following keywords in the above statement can be removed?
 *- INNER
@@ -25,6 +27,7 @@ Which of the following keywords in the above statement can be removed?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -35,6 +38,7 @@ SELECT my_data
 FROM my_table_1
 JOIN my_table_2
 USING (my_data);
+</div>
 
 What is the result?
 - 1
@@ -47,6 +51,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER, my_data2 NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER, my_data2 NUMBER);
 
@@ -57,6 +62,7 @@ SELECT my_data2
 FROM my_table_1
 JOIN my_table_2
 USING (my_data);
+</div>
 
 What is the result?
 - 1
@@ -81,6 +87,7 @@ Which of the following is true about table aliases?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -91,6 +98,7 @@ SELECT my_data
 FROM my_table_1
 JOIN my_table_2
 USING (my_data);
+</div>
 
 What kind of join is this?
 *- Equijoin
@@ -136,6 +144,7 @@ An _________ is a join that connects on relational operators rather than exact d
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -148,6 +157,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 INNER JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 *- 1
@@ -163,6 +173,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -175,6 +186,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 *- 1
@@ -189,6 +201,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -201,6 +214,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 LEFT JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -212,6 +226,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -224,6 +239,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 LEFT OUTER JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -238,6 +254,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -250,6 +267,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 RIGHT JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -267,6 +285,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -280,6 +299,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 RIGHT JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -294,6 +314,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -307,6 +328,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 RIGHT JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -321,6 +343,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -333,6 +356,7 @@ SELECT COUNT(*)
 FROM my_table_1 a,
 my_table_2 b
 WHERE a.my_data = b.my_data;
+</div>
 
 What is the result?
 *- 1
@@ -346,6 +370,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -358,6 +383,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 FULL OUTER JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -372,6 +398,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -384,6 +411,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 FULL OUTER JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -399,6 +427,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -411,6 +440,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 FULL OUTER JOIN my_table_2 b
 ON a.my_data = b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -427,6 +457,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -439,6 +470,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 JOIN my_table_2 b
 USING(my_data);
+</div>
 
 What is the result?
 *- 1
@@ -454,6 +486,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -466,6 +499,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 JOIN my_table_2 b
 USING(a.my_data);
+</div>
 
 What is the result?
 - 1
@@ -482,6 +516,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_other_data NUMBER);
 
@@ -494,6 +529,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 JOIN my_table_2 b
 USING(my_data);
+</div>
 
 What is the result?
 - 1
@@ -507,6 +543,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -519,6 +556,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 JOIN my_table_2 b
 ON a.my_data < b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -534,6 +572,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -546,6 +585,7 @@ SELECT COUNT(*)
 FROM my_table_1 a
 FULL OUTER JOIN my_table_2 b
 ON a.my_data < b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -561,6 +601,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 
 INSERT INTO my_table VALUES (1);
@@ -571,6 +612,7 @@ SELECT *
 FROM my_table a
 JOIN my_table b
 ON a.my_data < b.my_data;
+</div>
 
 What is the result?
 - 1
@@ -583,6 +625,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 
 INSERT INTO my_table VALUES (1);
@@ -593,6 +636,7 @@ SELECT *
 FROM my_table a
 FULL OUTER JOIN my_table 
 ON a.my_data < b.my_data;
+</div>
 
 What is the result?
 *- 5
@@ -607,6 +651,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -619,7 +664,7 @@ SELECT COUNT(*)
 FROM my_table_1 a,
 my_table_2 b
 WHERE a.my_data = b.my_data(+);
-
+</div>
 
 What is the result?
 - 1
@@ -632,6 +677,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 
@@ -644,7 +690,7 @@ SELECT COUNT(*)
 FROM my_table_1 a,
 my_table_2 b
 WHERE a.my_data(+) < b.my_data;
-
+</div>
 
 What is the result?
 - 1
@@ -679,6 +725,7 @@ NATURAL joins are _________ by default.
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data_1 NUMBER, my_data_2 NUMBER);
 CREATE TABLE my_table_2 (my_data_1 NUMBER, my_other_data NUMBER);
 
@@ -690,6 +737,7 @@ INSERT INTO my_table_2 VALUES (4, 1);
 SELECT COUNT(*)
 FROM my_table_1 a
 NATURAL JOIN my_table_2 b;
+</div>
 
 What is the result?
 *- 1
@@ -705,6 +753,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data_1 NUMBER, my_data_2 NUMBER);
 CREATE TABLE my_table_2 (my_data_1 NUMBER, my_other_data NUMBER);
 
@@ -716,6 +765,7 @@ INSERT INTO my_table_2 VALUES (4, 1);
 SELECT COUNT(*)
 FROM my_table_1 a
 NATURAL LEFT JOIN my_table_2 b;
+</div>
 
 What is the result?
 - 1

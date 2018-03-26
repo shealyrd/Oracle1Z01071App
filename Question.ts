@@ -3,6 +3,7 @@ class Question{
     private question: string;
     private correctAnswerIndexes: boolean[] = new Array();
 	private category: QuestionCategory;
+	private id: number;
 	
     constructor(question: string, category: QuestionCategory){
         this.question = question;
@@ -30,6 +31,14 @@ class Question{
         return this.category;
     }
 	
+	getId(): number{
+        return this.id;
+    }
+	
+	setId(id: number){
+        this.id = id;
+    }
+	
     randomize() {
         var i = 0
             , j = 0
@@ -52,6 +61,7 @@ class Question{
 
 	static fromJSON(obj: any): Question{
 		var question: Question = new Question(obj.question, obj.category);
+		question.setId(obj.id);
 		for(var answerIDX in obj.answers){
 			var eachAnswer = obj.answers[answerIDX];
 			question.addAnswer(eachAnswer, obj.correctAnswerIndexes[answerIDX]);
@@ -62,14 +72,16 @@ class Question{
 	
 	static fromJSONArray(obj: any, category: QuestionCategory): Question[]{
 		var result = new Array();
-		for(var idx in obj){
-			var question = Question.fromJSON(obj[idx]);
-			if(category == QuestionCategory.ALL_TOPICS){
-				result.push(Question.fromJSON(obj[idx]));
-			}
-			else if(question.getCategory() == category){
-				result.push(Question.fromJSON(obj[idx]));
-			}
+        for (var idx in obj) {
+            if (obj[idx] != null) {
+                var question = Question.fromJSON(obj[idx]);
+                if(category == QuestionCategory.ALL_TOPICS){
+                    result.push(Question.fromJSON(obj[idx]));
+                }
+                else if(question.getCategory() == category){
+                    result.push(Question.fromJSON(obj[idx]));
+                }
+            }
 		}
 		return result;
 	}

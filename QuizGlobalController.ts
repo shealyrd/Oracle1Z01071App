@@ -15,36 +15,52 @@ class QuizGlobalController{
 		this.WIDTH = width;
 	}
 	
-    start() {
-        this.startMenuIFrame = document.createElement('iframe');
-        this.quizIFrame = document.createElement("iframe");
+    start(state?: QuizState) {
+		this.parentElement.ownerDocument.body.style.margin = "0px";
+        this.startMenuIFrame = this.parentElement.ownerDocument.createElement('iframe');
+        this.quizIFrame = this.parentElement.ownerDocument.createElement("iframe");
 
 		this.startMenuIFrame.scrolling = "no";
 		this.startMenuIFrame.frameBorder = "0";
 		this.startMenuIFrame.style["seamless"] = "seamless";
-        this.startMenuIFrame.style.overflow = "hidden";
+		
         this.startMenuIFrame.height = this.HEIGHT + "";
         this.startMenuIFrame.width = this.WIDTH + "";
         this.startMenuIFrame.style.margin = "0px";
-                
+        this.startMenuIFrame.style.padding = "0px";   
         this.quizIFrame.scrolling = "no";
 		this.quizIFrame.frameBorder = "0";
 		this.quizIFrame.style["seamless"] = "seamless";
-        this.quizIFrame.style.overflow = "hidden";
+        this.quizIFrame.style.overflow = "scroll";
         this.quizIFrame.height = this.HEIGHT + "";
         this.quizIFrame.width = this.WIDTH + "";
         this.quizIFrame.style.margin = "0px";
-        
+        this.quizIFrame.style.padding = "0px";   
         this.parentElement.appendChild(this.startMenuIFrame);
         this.parentElement.appendChild(this.quizIFrame);
 
-        setTimeout(() => {
-            this.startMenu = new QuizStartMenuContainer(this, this.startMenuIFrame.contentDocument.body, this.HEIGHT, this.WIDTH);
-            this.startMenu.initialize();
-        }, 10);
-	}
+		this.startMenuIFrame.contentDocument.body.style.margin = "0px";
+        this.quizIFrame.contentDocument.body.style.margin = "0px";
+		this.startMenuIFrame.contentDocument.body.style.padding = "0px";
+        this.quizIFrame.contentDocument.body.style.padding = "0px";
+		
+		if(state != null){
+			this.makeDivInvisible(this.startMenuIFrame);
+			this.quizContainer = new QuizHtmlContainer(this.quizIFrame.contentWindow.document.body, this.HEIGHT, this.WIDTH);
+			this.quizContainer.initializeWithQuizState(state);	
+			this.makeDivVisible(this.quizIFrame);
+		}
+		else{
+		    setTimeout(() => {
+				this.startMenu = new QuizStartMenuContainer(this, this.startMenuIFrame.contentDocument.body, this.HEIGHT, this.WIDTH);
+				this.startMenu.initialize();
+			}, 10);
+		}
 
-	gotoQuiz(id: string){
+	}
+	
+
+	gotoQuiz(id: string, state?: QuizState){
 		this.makeDivInvisible(this.startMenuIFrame);
 		
 		
@@ -52,11 +68,13 @@ class QuizGlobalController{
 		this.quizContainer = new QuizHtmlContainer(this.quizIFrame.contentWindow.document.body, this.HEIGHT, this.WIDTH);	
 		
 		if(id == "all-topics-button"){
-			this.quizContainer.initialize(QuestionCategory.ALL_TOPICS);
+			this.quizContainer.initializeWithCategory(QuestionCategory.ALL_TOPICS);
 		}
 		else{
-			var categoryStr = id.substring(5, 6);
-			this.quizContainer.initialize(+categoryStr);
+			var idx1 = id.indexOf("-", 0);
+            var idx2 = id.indexOf("-", idx1 + 1);
+            var categoryStr = id.substring(idx1 + 1, idx2);
+			this.quizContainer.initializeWithCategory(+categoryStr);
 		}
 		
 		this.makeDivVisible(this.quizIFrame);
@@ -79,5 +97,5 @@ class QuizGlobalController{
 
 }
 
-document.body.style.margin = "0";
-new QuizGlobalController(document.body, screen.height, screen.width).start();
+//document.body.style.margin = "0";
+//new QuizGlobalController(document.body, screen.height, screen.width).start();

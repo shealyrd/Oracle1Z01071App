@@ -1,6 +1,8 @@
 Consider the following SQL:
 
+<div class = "code">
 SELECT MOD(8,3) FROM DUAL;
+</div>
 
 What is the result?
 - 8
@@ -12,7 +14,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT REMAINDER(8,3) FROM DUAL;
+</div>
 
 What is the result?
 - 1
@@ -25,7 +29,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT SOUNDEX('Oracle') FROM DUAL;
+</div>
 
 What is the result?
 
@@ -49,7 +55,9 @@ The ______ function can be used to subtract months from a given date value.
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT SUBSTR('Oracle', 1, 2) FROM DUAL;
+</div>
 
 What is the result?
 *- Or
@@ -64,7 +72,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT LTRIM('Oracle', 'O') FROM DUAL;
+</div>
 
 What is the result?
 *- O
@@ -77,7 +87,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT LTRIM('12345', '3') FROM DUAL;
+</div>
 
 What is the result?
 - 2
@@ -90,7 +102,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRUNC(123.45) FROM DUAL;
+</div>
 
 What is the result?
 *- 123
@@ -103,7 +117,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(123.45, 1) FROM DUAL;
+</div>
 
 What is the result?
 *- 123.5
@@ -118,7 +134,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT DB_NAME FROM DATABASES WHERE DB_NAME = SOUNDEX('Oracle');
+</div>
 
 Which of the following is a possible result from this query?
 - Oracle
@@ -132,7 +150,9 @@ Which of the following is a possible result from this query?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT DB_NAME FROM DATABASES WHERE SOUNDEX(DB_NAME) = SOUNDEX('Oracle');
+</div>
 
 Which of the following is a possible result from this query?
 *- Oracle
@@ -145,7 +165,9 @@ Which of the following is a possible result from this query?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT MONTHS_BETWEEN('01-JAN-17', '01-DEC-17') FROM DUAL;
+</div>
 
 What is the result?
 *- -11
@@ -157,7 +179,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT LAST_DAY('01-JAN-17') FROM DUAL;
+</div>
 
 What is the result?
 *- 31-JAN-17
@@ -178,7 +202,9 @@ The ______ function takes a VARCHAR parameter and capitalizes only the first let
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT INITCAP('oracle') FROM DUAL;
+</div>
 
 What is the result?
 *- Oracle
@@ -293,6 +319,7 @@ The _____ function converts a string to its lowercase representation.
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
 
 INSERT INTO my_table VALUES ('my_data', 1);
@@ -301,6 +328,7 @@ INSERT INTO my_table VALUES ('MY_DATA', 2);
 SELECT COUNT(*)
 FROM my_table
 WHERE my_column = UPPER('my_data');
+</div>
 
 
 What is the result?
@@ -316,7 +344,7 @@ What is the result?
 
 Consider the following SQL:
 
-
+<div class = "code">
 CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
 
 INSERT INTO my_table VALUES ('my_data', 1);
@@ -325,6 +353,7 @@ INSERT INTO my_table VALUES ('MY_DATA', 2);
 SELECT COUNT(*)
 FROM my_table
 WHERE UPPER(my_column) = UPPER('my_data');
+</div>
 
 
 What is the result?
@@ -339,7 +368,7 @@ What is the result?
 
 Consider the following SQL:
 
-
+<div class = "code">
 CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
 
 INSERT INTO my_table VALUES ('my_data', 1);
@@ -348,6 +377,7 @@ INSERT INTO my_table VALUES ('MY_DATA', 2);
 SELECT COUNT(*)
 FROM my_table
 WHERE LOWER(my_column) = 'my_data';
+</div>
 
 
 What is the result?
@@ -360,6 +390,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
 
 INSERT INTO my_table VALUES ('My_data', 1);
@@ -368,6 +399,7 @@ INSERT INTO my_table VALUES ('MY_DATA', 2);
 SELECT COUNT(*) 
 FROM my_table
 WHERE INITCAP(my_column) = 'My_data';
+</div>
 
 What is the result?
 *- 0
@@ -379,6 +411,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_column VARCHAR2(10), id NUMBER);
 
 INSERT INTO my_table VALUES ('Mydata', 1);
@@ -387,6 +420,7 @@ INSERT INTO my_table VALUES ('MYDATA', 2);
 SELECT COUNT(*)
 FROM my_table
 WHERE INITCAP(my_column) = 'Mydata';
+</div>
 
 What is the result?
 - 0
@@ -398,7 +432,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT INITCAP('ellison''s') FROM DUAL;
+</div>
 
 What is the result?
 *- Ellison'S
@@ -411,7 +447,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT RPAD('my_text', 3, '.') FROM DUAL;
+</div>
 
 What is the result?
 *- my_
@@ -424,7 +462,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT LPAD('txt', 5, '.') FROM DUAL;
+</div>
 
 What is the result?
 *- ..txt
@@ -436,7 +476,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT LTRIM('...txt', '.') FROM DUAL;
+</div>
 
 What is the result?
 - ..txt
@@ -450,7 +492,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT RTRIM('...txt', '.') FROM DUAL;
+</div>
 
 What is the result?
 *- ...txt
@@ -463,7 +507,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRIM( TRAILING '.' FROM '...txt') FROM DUAL;
+</div>
 
 What is the result?
 *- ...txt
@@ -476,7 +522,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRIM( LEADING '.' FROM '...txt') FROM DUAL;
+</div>
 
 What is the result?
 - ...txt
@@ -490,7 +538,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT INSTR('my_data', 'my') FROM DUAL;
+</div>
 
 What is the result?
 *- 1
@@ -503,7 +553,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT INSTR('data data', 'data', 1, 2) FROM DUAL;
+</div>
 
 What is the result?
 
@@ -517,7 +569,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT INSTR('data data', 'data', 7, 2) FROM DUAL;
+</div>
 
 What is the result?
 
@@ -530,7 +584,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT SUBSTR('my_data', 2) FROM DUAL;
+</div>
 
 What is the result?
 *- y_data
@@ -543,7 +599,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT SUBSTR('my_data', 1) FROM DUAL;
+</div>
 
 What is the result?
 - y_data
@@ -558,7 +616,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT SUBSTR('my_data', 0) FROM DUAL;
+</div>
 
 What is the result?
 - y_data
@@ -571,7 +631,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT SUBSTR('my_data', 100) FROM DUAL;
+</div>
 
 What is the result?
 - my_data
@@ -584,7 +646,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT CEIL(1.2) FROM DUAL;
+</div>
 
 What is the result?
 *- 2
@@ -598,7 +662,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT FLOOR(1.2) FROM DUAL;
+</div>
 
 What is the result?
 - 2
@@ -612,7 +678,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(1.234, 2) FROM DUAL;
+</div>
 
 What is the result?
 *- 1.23
@@ -624,7 +692,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(1.2345, 3) FROM DUAL;
+</div>
 
 What is the result?
 *- 1.235
@@ -636,7 +706,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(567.89, -1) FROM DUAL;
+</div>
 
 What is the result?
 *- 570
@@ -649,7 +721,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRUNC(123.456, 1) FROM DUAL;
+</div>
 
 What is the result?
 *- 123.4
@@ -661,7 +735,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRUNC(123.456, -1) FROM DUAL;
+</div>
 
 What is the result?
 *- 120
@@ -685,7 +761,9 @@ The ________ function takes in two numbers, n1 and n2, and determines the multip
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT REMAINDER(11, 4) FROM DUAL;
+</div>
 
 What is the result?
 *- -1
@@ -698,7 +776,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT REMAINDER(14, 4) FROM DUAL;
+</div>
 
 What is the result?
 *- -2
@@ -712,7 +792,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT REMAINDER(17, 5) FROM DUAL;
+</div>
 
 What is the result?
 *- 2
@@ -728,7 +810,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT MOD(17, 5) FROM DUAL;
+</div>
 
 What is the result?
 *- 2
@@ -741,7 +825,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT MOD(15, 1) FROM DUAL;
+</div>
 
 What is the result?
 *- 0
@@ -765,7 +851,9 @@ The ______ function returns the current time and date of the operating system on
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(TO_DATE('30-DEC-2016'), 'MM') FROM DUAL;
+</div>
 
 What is the result?
 *- 01-JAN-2017
@@ -778,7 +866,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(TO_DATE('15-DEC-2016'), 'MM') FROM DUAL;
+</div>
 
 What is the result?
 - 01-JAN-2017
@@ -790,7 +880,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(TO_DATE('14-DEC-2016'), 'MM') FROM DUAL;
+</div>
 
 What is the result?
 - 01-JAN-2017
@@ -803,7 +895,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(TO_DATE('16-DEC-2016'), 'MM') FROM DUAL;
+</div>
 
 What is the result?
 *- 01-JAN-2017
@@ -817,7 +911,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(TO_DATE('14-DEC-2016'), 'RR') FROM DUAL;
+</div>
 
 What is the result?
 *- 01-JAN-2017
@@ -831,7 +927,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(TO_DATE('01-JAN-2017'), 'RR') FROM DUAL;
+</div>
 
 What is the result?
 *- 01-JAN-2017
@@ -844,7 +942,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRUNC(TO_DATE('30-DEC-2016'), 'RR') FROM DUAL;
+</div>
 
 What is the result?
 - 01-JAN-2017
@@ -858,7 +958,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TRUNC(TO_DATE('30-DEC-2016'), 'MM') FROM DUAL;
+</div>
 
 What is the result?
 - 01-JAN-2017
@@ -870,7 +972,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT NEXT_DAY(TO_DATE('30-DEC-2016'), 'SATURDAY') FROM DUAL;
+</div>
 
 Knowing '30-DEC-2016' was a Friday, what is the result?
 - 01-JAN-2017
@@ -885,7 +989,9 @@ Knowing '30-DEC-2016' was a Friday, what is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT LAST_DAY(TO_DATE('29-DEC-2016')) FROM DUAL;
+</div>
 
 What is the result?
 - 01-JAN-2017
@@ -898,7 +1004,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ADD_MONTHS(TO_DATE('30-DEC-2016'), 1) FROM DUAL;
+</div>
 
 What is the result?
 *- 30-JAN-2017
@@ -911,7 +1019,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ADD_MONTHS(TO_DATE('30-DEC-2016'), -1) FROM DUAL;
+</div>
 
 What is the result?
 *- 30-NOV-2016
@@ -924,7 +1034,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ADD_MONTHS(TO_DATE('31-DEC-2016'), -1) FROM DUAL;
+</div>
 
 What is the result?
 *- 30-NOV-2016
@@ -937,7 +1049,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT MONTHS_BETWEEN(TO_DATE('31-DEC-2016'), TO_DATE('31-DEC-2017')) FROM DUAL;
+</div>
 
 What is the result?
 *- -12
@@ -950,7 +1064,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT MONTHS_BETWEEN(TO_DATE('31-DEC-2017'), TO_DATE('31-DEC-2016')) FROM DUAL;
+</div>
 
 What is the result?
 - -12
@@ -962,7 +1078,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT ROUND(MONTHS_BETWEEN(TO_DATE('30-NOV-2017'), TO_DATE('15-NOV-2017')), 1) FROM DUAL;
+</div>
 
 What is the result?
 *- 0.5
@@ -975,7 +1093,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT NUMTOYMINTERVAL(13, 'MONTH') FROM DUAL;
+</div>
 
 What is the result?
 *- 1-1
@@ -989,7 +1109,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT NUMTOYMINTERVAL(13, 'YEAR') FROM DUAL;
+</div>
 
 What is the result?
 - 1-1
@@ -1004,6 +1126,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER, id NUMBER);
 
 INSERT INTO my_table VALUES (1, 1);
@@ -1017,6 +1140,7 @@ SELECT ANALYTICS FROM (
     FROM my_table
 ) 
 WHERE MY_ROW = 4;
+</div>
 
 What is the result?
 *- 10
@@ -1030,6 +1154,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER, id NUMBER);
 
 INSERT INTO my_table VALUES (1, 1);
@@ -1045,6 +1170,7 @@ SELECT ANALYTICS FROM (
     FROM my_table
 )
 WHERE MY_ROW = 5;
+</div>
 
 What is the result?
 *- 9
@@ -1059,6 +1185,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER, id NUMBER);
 
 INSERT INTO my_table VALUES (1, 1);
@@ -1075,6 +1202,7 @@ SELECT ANALYTICS FROM (
     FROM my_table
 )
 WHERE MY_ROW = 3;
+</div>
 
 What is the result?
 *- 9
@@ -1088,6 +1216,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER, id NUMBER);
 
 INSERT INTO my_table VALUES (1, 1);
@@ -1101,6 +1230,7 @@ SELECT ANALYTICS FROM (
         LAG(my_data) OVER (PARTITION BY ID ORDER BY id) as ANALYTICS
     FROM my_table
 ) WHERE MY_ROW = 2;
+</div>
 
 What is the result?
 - 5
@@ -1114,6 +1244,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER, id NUMBER);
 
 INSERT INTO my_table VALUES (1, 1);
@@ -1127,6 +1258,7 @@ SELECT ANALYTICS FROM (
         LEAD(my_data) OVER (PARTITION BY ID ORDER BY id) as ANALYTICS
     FROM my_table
 ) WHERE MY_ROW = 3;
+</div>
 
 What is the result?
 *- 5

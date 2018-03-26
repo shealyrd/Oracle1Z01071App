@@ -14,12 +14,13 @@ class QuizHtmlContainer {
 
     headerHeightPercent: number = 8;
     bodyMarginLeftPercent: number = 2;
+	headerHeightConfig: number = 5;
     questionFontSizePercent: number = 5;
     questionMarginTopPercent: number = 3;
     questionMarginBottomPercent: number = 3;
-    answerFontSizePercent: number = 2;
+    answerFontSizePercent: number = 5;
     answerBoxSizeHeightPercent: number = 3;
-    answerBoxSizeWidthPercent: number = 40;
+    answerBoxSizeWidthPercent: number = 92;
     answerMarginPercent: number = 1;
     buttonWidthPercent: number = 4;
 
@@ -39,7 +40,7 @@ class QuizHtmlContainer {
         this.WIDTH = width;
     }
 
-    initialize(category: QuestionCategory) {
+    initialize() {
         this.initializeContainer();
 
         this.parentElement.appendChild(this.containerElement);
@@ -47,10 +48,7 @@ class QuizHtmlContainer {
         this.initializeHeader();
         this.initializeCSS();
         this.containerElement.appendChild(this.headerElement);
-		
-		this.questions = Question.fromJSONArray(QuestionDatabase, category);
-		
-		Algorithms.shuffle(this.questions);
+
 
         this.initializeBody();
         this.initializeQuestion();
@@ -62,7 +60,7 @@ class QuizHtmlContainer {
         this.initializeUnderAnswerContainer();
 
         this.bodyElement.appendChild(this.questionElement);
-        this.answerContainer = document.createElement("div");
+        this.answerContainer = this.parentElement.ownerDocument.createElement("div");
 
         for (var i = 0; i < this.answerChoices.length; i++) {
             this.answerContainer.appendChild(this.answerChoices[i]);
@@ -81,49 +79,94 @@ class QuizHtmlContainer {
 
         this.containerElement.appendChild(this.bodyElement);
 
+        //set question font size after rendering
+		
+		/*var fontSize;
+		if(this.currentQuestion().getQuestion().includes("<br />")){
+			var maxLine = this.getMaxLineInString(this.currentQuestion().getQuestion());
+			fontSize = this.getFontSize(maxLine, +this.questionElement.offsetWidth);
+		}
+		else{
+			fontSize = this.getHeightPxFromPercent(this.questionFontSizePercent) + "px";
+		}	
+	
+        this.questionElement.style.fontSize = fontSize + "px";*/
     }
 
+	initializeWithCategory(category: QuestionCategory){
+		this.questions = Question.fromJSONArray(QuestionDatabase, category);
+		Algorithms.shuffle(this.questions);
+		this.initialize();
+	}
+
+	initializeWithQuizState(state: QuizState){
+		this.questions = state.getQuestions();
+		this.isShowingAnswers = state.isShowingAnswers();
+		this.currentQuestionIndex = state.getCurrentQuestionIndex();
+		this.initialize();
+		this.areAnswersSelected = state.getSelectedAnswers();
+		if(this.isShowingAnswers){
+			this.changeSubmitToNext();
+			this.revealAnswers();
+			this.showTextResult();
+		}
+		else{
+			for(var idx in this.answerChoices){
+				if (this.hasAnswerSelected(this.answerChoices[idx])) {
+					this.setAnswerSelected(this.answerChoices[idx]);
+				}
+				else {
+					this.unselectAnswer(this.answerChoices[idx]);
+				}
+			}	
+		}
+	}
+
+	
     currentQuestion(): Question{
         return this.questions[this.currentQuestionIndex];
     }
 
     initializeContainer() {
-        this.containerElement = document.createElement("div");
+        this.containerElement = this.parentElement.ownerDocument.createElement("div");
     }
 
     initializeHeader() {
-        this.headerElement = document.createElement("div");
+        this.headerElement = this.parentElement.ownerDocument.createElement("div");
         this.headerElement.id = "header-element";
         this.headerElement.style.width = "100%";
-        this.headerElement.style.height = this.getHeightPxFromPercent(5) + "px";
+        this.headerElement.style.height = this.getHeightPxFromPercent(this.headerHeightConfig) + "px";
         this.headerElement.style.background = "#0275d8";
         this.headerElement.style.boxShadow = "3px 3px 5px rgba(0, 0, 0, 0.25)";
     }
 
 
     initializeBody() {
-        this.bodyElement = document.createElement("div");
+        this.bodyElement = this.parentElement.ownerDocument.createElement("div");
         this.bodyElement.style.marginTop = "0 px";
-        this.bodyElement.style.marginLeft = this.getHeightPxFromPercent(this.bodyMarginLeftPercent) + "px";
+        this.bodyElement.style.marginLeft = this.getWidthPxFromPercent(this.bodyMarginLeftPercent) + "px";
+		this.bodyElement.style.overflow = "scroll";
+        this.bodyElement.style.height = (this.HEIGHT - this.getHeightPxFromPercent(this.headerHeightConfig)) + "px";
     }
 
     initializeUnderAnswerContainer() {
-        this.underAnswersContainer = document.createElement("div");
-        this.underAnswersContainer.style.width = this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) + "px";
+        this.underAnswersContainer = this.parentElement.ownerDocument.createElement("div");
+        this.underAnswersContainer.style.width = this.getWidthPxFromPercent(this.answerBoxSizeWidthPercent) + "px";
         this.underAnswersContainer.style.marginTop = "0 px";
-        this.underAnswersContainer.style.marginLeft = this.getHeightPxFromPercent(this.bodyMarginLeftPercent) + "px";
+        this.underAnswersContainer.style.marginLeft = this.getWidthPxFromPercent(this.bodyMarginLeftPercent) + "px";
     }
 
     initializeNextButton() {
-        this.nextButton = document.createElement("div");
+        this.nextButton = this.parentElement.ownerDocument.createElement("div");
         this.nextButton.className = "downOnClick";
         this.nextButton.id = "next-button";
         this.nextButton.style.marginTop = "0 px";
+		this.nextButton.style.marginBottom = "10%";
         this.nextButton.style.font = "Helvetica";
         this.nextButton.style.color = "white";
-        this.nextButton.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
+        this.nextButton.style.fontSize = this.getRootPxFromPercent(this.answerFontSizePercent) + "px";
         //this.nextButton.style.marginLeft = (this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) - (this.getHeightPxFromPercent(this.buttonWidthPercent))) -  + "px";
-        this.nextButton.style.width = this.getHeightPxFromPercent(this.buttonWidthPercent) + "px";
+        //this.nextButton.style.width = this.getHeightPxFromPercent(this.buttonWidthPercent + 2) + "px";
         this.nextButton.style.verticalAlign = "middle";
         this.nextButton.style.paddingLeft = this.getHeightPxFromPercent(1) + "px";
         this.nextButton.style.paddingRight = this.getHeightPxFromPercent(1) + "px";
@@ -149,7 +192,7 @@ class QuizHtmlContainer {
     }
 
     initializePrevButton() {
-        this.previousButton = document.createElement("div");
+        this.previousButton = this.parentElement.ownerDocument.createElement("div");
         this.previousButton.className = "downOnClick";
         this.previousButton.style.marginTop = "0 px";
         this.previousButton.style.font = "Helvetica";
@@ -178,16 +221,16 @@ class QuizHtmlContainer {
 
 
     initializeSubmitButton() {
-        this.submitButton = document.createElement("div");
+        this.submitButton = this.parentElement.ownerDocument.createElement("div");
         this.submitButton.className = "downOnClick";
         this.submitButton.id = "submit-button";
         this.submitButton.style.marginTop = "0 px";
         this.submitButton.style.font = "Helvetica";
         this.submitButton.style.color = "white";
-        this.submitButton.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
-        this.submitButton.style.width = this.getHeightPxFromPercent(this.buttonWidthPercent + 1.5) + "px";
+        this.submitButton.style.fontSize = this.getRootPxFromPercent(this.answerFontSizePercent) + "px";
+        //this.submitButton.style.width = this.getHeightPxFromPercent(this.buttonWidthPercent + 5) + "px";
         this.submitButton.style.verticalAlign = "middle";
-        this.submitButton.style.paddingLeft = this.getHeightPxFromPercent(1) + "px";
+        //this.submitButton.style.paddingLeft = this.getHeightPxFromPercent(1) + "px";
         this.submitButton.style.paddingRight = this.getHeightPxFromPercent(1) + "px";
         //this.submitButton.style.marginLeft = ((this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) - (this.getHeightPxFromPercent(this.buttonWidthPercent + 1.5)/2)- this.getHeightPxFromPercent(this.bodyMarginLeftPercent))  + "px");
         this.submitButton.style.paddingTop = this.getHeightPxFromPercent(1) + "px";
@@ -206,31 +249,37 @@ class QuizHtmlContainer {
             return () => {
                 htmlContainer.revealAnswers();
                 htmlContainer.changeSubmitToNext();
-                htmlContainer.makeDivVisible(htmlContainer.resultText);
                 htmlContainer.isShowingAnswers = true;
-                if (htmlContainer.areSelectedAnswersCorrect()) {
-                    htmlContainer.resultText.innerHTML = "Correct!";
-                }
-                else {
-                    htmlContainer.resultText.innerHTML = "Incorrect!";
-                }
+				htmlContainer.showTextResult();
 
             }
         }(this.submitButton, this));
     }
 
+	showTextResult(){
+		this.makeDivVisible(this.resultText);
+		if (this.areSelectedAnswersCorrect()) {
+			this.resultText.style.color = "#095d34";
+			this.resultText.innerHTML = "Correct!";
+		}
+		else {
+			this.resultText.style.color = " #cc1100";
+			this.resultText.innerHTML = "Incorrect!";
+		}	
+	}	
 
     initializeQuestion() {
-        this.questionElement = document.createElement("div");
+        this.questionElement = this.parentElement.ownerDocument.createElement("div");
         this.questionElement.style.font = "Helvetica";
-        this.questionElement.style.fontSize = this.getHeightPxFromPercent(this.questionFontSizePercent) + "px";
+		this.questionElement.style.overflow = "auto";
+        this.questionElement.style.fontSize = this.getRootPxFromPercent(this.questionFontSizePercent) + "px";
         this.questionElement.style.marginTop = this.getHeightPxFromPercent(this.questionMarginTopPercent) + "px";
         this.questionElement.style.marginBottom = this.getHeightPxFromPercent(this.questionMarginBottomPercent) + "px";
         this.questionElement.innerHTML = this.currentQuestion().getQuestion();
     }
 
     initializeResultText() {
-        this.resultText = document.createElement("div");
+        this.resultText = this.parentElement.ownerDocument.createElement("div");
         this.resultText.style.font = "Helvetica";
         this.resultText.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
         // this.resultText.style.marginTop = this.getHeightPxFromPercent(this.questionMarginTopPercent) + "px";
@@ -239,24 +288,25 @@ class QuizHtmlContainer {
         this.resultText.style.display = "inline-block";
         this.resultText.style.cssFloat = "left";
         this.resultText.style.marginLeft = this.getHeightPxFromPercent(1) + "px";
-        this.resultText.style.fontWeight = "bold";
+        this.resultText.style.fontWeight = "1000";
+        
     }
 
     initializeAnswers() {
         this.answerChoices = new Array();
         this.areAnswersSelected = new Array();
         for (var i = 0; i < this.currentQuestion().getAnswers().length; i++) {
-            var answerChoice = document.createElement("div");
+            var answerChoice = this.parentElement.ownerDocument.createElement("div");
             answerChoice.className = "downOnClick";
             answerChoice.style.font = "Helvetica";
-            answerChoice.style.fontSize = this.getHeightPxFromPercent(this.answerFontSizePercent) + "px";
-            answerChoice.style.marginTop = this.getHeightPxFromPercent(this.answerMarginPercent) + "px";
-            answerChoice.style.marginBottom = this.getHeightPxFromPercent(this.answerMarginPercent) + "px";
+            answerChoice.style.fontSize = this.getRootPxFromPercent(this.answerFontSizePercent) + "px";
+            answerChoice.style.marginTop = this.getRootPxFromPercent(this.answerMarginPercent) + "px";
+            answerChoice.style.marginBottom = this.getRootPxFromPercent(this.answerMarginPercent) + "px";
             answerChoice.style.background = "aliceblue";
             answerChoice.style.verticalAlign = "middle";
-            answerChoice.style.width = this.getHeightPxFromPercent(this.answerBoxSizeWidthPercent) + "px";
-            answerChoice.style.paddingLeft = this.getHeightPxFromPercent(2) + "px";
-            answerChoice.style.paddingRight = this.getHeightPxFromPercent(1) + "px";
+            answerChoice.style.width = this.getWidthPxFromPercent(this.answerBoxSizeWidthPercent) + "px";
+            answerChoice.style.paddingLeft = this.getWidthPxFromPercent(2) + "px";
+            answerChoice.style.paddingRight = this.getWidthPxFromPercent(1) + "px";
             answerChoice.style.paddingTop = this.getHeightPxFromPercent(1) + "px";
             answerChoice.style.paddingBottom = this.getHeightPxFromPercent(1) + "px";
             answerChoice.style.borderRadius = "5px";
@@ -275,7 +325,7 @@ class QuizHtmlContainer {
                 }
             }(answerChoice, this));
             answerChoice.innerHTML = this.currentQuestion().getAnswers()[i];
-            var newDiv = document.createElement("div");
+            var newDiv = this.parentElement.ownerDocument.createElement("div");
             newDiv.style.cssFloat = "right";
             answerChoice.appendChild(newDiv);
             this.areAnswersSelected[this.answerChoices.length] = false;
@@ -336,7 +386,7 @@ class QuizHtmlContainer {
     }
 
     getHeaderHeight(): number{
-        return document.getElementById("header-element").clientHeight;
+        return this.parentElement.ownerDocument.getElementById("header-element").clientHeight;
     }
 
     getHeightPxFromPercent(percent: number): number{
@@ -347,7 +397,20 @@ class QuizHtmlContainer {
         return this.WIDTH * (percent/100);
     }
 
+    getRootPxFromPercent(percent: number): number{
+        return Math.sqrt(this.HEIGHT * this.WIDTH) * (percent/100);
+    }
+
     renderCurrentQuestion(){
+		/*var fontSize;
+		if(this.currentQuestion().getQuestion().includes("<br />")){
+			var maxLine = this.getMaxLineInString(this.currentQuestion().getQuestion());
+			fontSize = this.getFontSize(maxLine, +this.questionElement.offsetWidth);
+		}
+		else{
+			fontSize = this.getHeightPxFromPercent(this.questionFontSizePercent) + "px";
+		}	
+		this.questionElement.style.fontSize = fontSize + "px";*/
         this.questionElement.innerHTML = this.currentQuestion().getQuestion();
         this.answerContainer.innerHTML = "";
         this.initializeAnswers();
@@ -360,7 +423,7 @@ class QuizHtmlContainer {
         var numQuestions = this.questions.length;
         var newIndex: number;
         if(this.currentQuestionIndex == (numQuestions - 1)){
-            newIndex = this.questions.length - 1;
+            newIndex = 0;
         }
         else{
             newIndex = this.currentQuestionIndex + 1;
@@ -398,18 +461,75 @@ class QuizHtmlContainer {
     revealAnswers(){
         for (var i = 0; i < this.answerChoices.length; i++){
             if (this.isAnswerCorrect(this.answerChoices[i])) {
-                this.setAnswerRightDivInnerHTML(this.answerChoices[i], "c");
-                this.answerChoices[i].style.background = "#69F0AE";
-                this.answerChoices[i].style.border = "1px solid black";
+                if (this.areAnswersSelected[i]) {
+                    this.setAnswerRightDivInnerHTML(this.answerChoices[i], "\u2713");
+                    this.answerChoices[i].style.background = "#69F0AE";
+                    this.answerChoices[i].style.border = "1px solid black";
+                }
+                else {
+                    this.answerChoices[i].style.background = "#b9f8da";
+                    this.answerChoices[i].style.border = "1px solid black";
+                }
+
             }
-            else{
-                this.setAnswerRightDivInnerHTML(this.answerChoices[i], "x");
-                this.answerChoices[i].style.background = "#FF8A80";
-                this.answerChoices[i].style.border = "1px solid black";
+            else {
+                if (this.areAnswersSelected[i]) {
+                    this.setAnswerRightDivInnerHTML(this.answerChoices[i], "X");
+                    this.answerChoices[i].style.background = "#FF8A80";
+                    this.answerChoices[i].style.border = "1px solid black";
+                }
+                else {
+                    this.answerChoices[i].style.background = "#ffd0cc";
+                    this.answerChoices[i].style.border = "1px solid black";
+                }
+
             }
         }
     }
-
+	
+	getMaxLineInString(text: string): string
+	{
+		var lines = text.split('<br />');
+		var maxLine: string = null;
+		for(var i in lines){
+			var eachLine = lines[i];
+			if(maxLine == null){
+				maxLine = eachLine;
+			}
+			else{
+				if(eachLine.length > maxLine.length){
+					maxLine = eachLine;
+				}	
+			}	
+		}
+		return maxLine;
+	}
+	
+	getVisualLength(text: string, fontSize: number)
+	{
+		var ruler = this.parentElement.ownerDocument.createElement('span');
+		ruler.style.visibility = 'hidden';
+		ruler.style.whiteSpace = 'nowrap';
+		ruler.style.display = "inline";
+		ruler.style.fontSize = fontSize + "px";
+		this.parentElement.appendChild(ruler);
+		ruler.innerHTML = text;
+		var result = ruler.offsetWidth;
+		ruler.style.display = "none";
+		ruler.parentNode.removeChild(ruler);
+		return result;
+	}
+	
+	getFontSize(text: string, width: number) {
+		var interWidth = width;
+		var vl = this.getVisualLength(text, interWidth);
+		while (vl > width) {
+			interWidth = interWidth / 1.1;
+			vl = this.getVisualLength(text, interWidth);
+		}
+		return interWidth;
+	};
+	
     isAnswerCorrect(answerElement: HTMLElement){
         var answerIndex: number;
         for (var i = 0; i < this.answerChoices.length; i++){
@@ -429,7 +549,18 @@ class QuizHtmlContainer {
         var cssElement = this.parentElement.ownerDocument.createElement('style');
         var cssText = "";
         cssText += ".downOnClick:active {transform: translateY(2px);}";
+        cssText += ".code {font-family: courier; border: 1px solid black; background-color: white; overflow: auto; overflow-x: scroll; width: 95%; white-space: nowrap;}";
         cssElement.innerHTML = cssText;
         this.parentElement.ownerDocument.getElementsByTagName('head')[0].appendChild(cssElement);
     }
+	
+	exportState(): QuizState{
+		var state: QuizState = new QuizState();
+		state.questions = this.questions;
+		state.currentSelectedIndex = this.currentQuestionIndex;
+		state.selectedAnswers = this.areAnswersSelected;
+		state.showingAnswers = this.isShowingAnswers;
+		
+		return state;
+	}	
 }

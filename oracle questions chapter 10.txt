@@ -1,10 +1,12 @@
 Consider the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table 
 2. (my_data NUMBER);
 3. CREATE VIEW my_view AS
 4. SELECT my_data + 1
 5. FROM my_table;
+</div>
 
 At what line number is the syntax error?
 - 1
@@ -18,12 +20,14 @@ At what line number is the syntax error?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE VIEW my_view AS
 SELECT my_data + 1
 FROM my_table;
 INSERT INTO my_table VALUES (1);
 SELECT COUNT(*) FROM my_view;
+</div>
 
 What is the result?
 - 1
@@ -35,12 +39,14 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE VIEW my_view AS
 SELECT my_data + 1 as my_data
 FROM my_table;
 INSERT INTO my_table VALUES (1);
 SELECT MAX(my_data) FROM my_view;
+</div>
 
 What is the result?
 - 1
@@ -53,11 +59,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE VIEW my_view AS
 SELECT my_data FROM my_table;
 INSERT INTO my_view VALUES (1);
 SELECT MAX(my_data) FROM my_view;
+</div>
 
 What is the result?
 *- 1
@@ -71,12 +79,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE VIEW my_view AS
 SELECT my_data FROM my_table;
 INSERT INTO my_view VALUES (1);
 SELECT MAX(my_data) FROM my_table;
-
+</div>
 
 What is the result?
 - 1
@@ -89,11 +98,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER NOT NULL);
 CREATE VIEW my_view AS
 SELECT my_data FROM my_table;
 INSERT INTO my_view VALUES (NULL);
 SELECT MAX(my_data) FROM my_view;
+</div>
 
 What is the result?
 - 1
@@ -106,12 +117,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE VIEW my_view AS
 SELECT DISTINCT my_data FROM my_table;
 INSERT INTO my_view VALUES (1);
 SELECT MAX(my_data) FROM my_table;
-
+</div>
 
 What is the result?
 - 1
@@ -134,12 +146,14 @@ In which of the following situations will you be prevented from perfroming DML o
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE VIEW my_view AS
 SELECT my_data,
 my_data + 1 as calc FROM my_table;
 INSERT INTO my_view (my_data) VALUES (5);
 SELECT MAX(my_data) FROM my_table;
+</div>
 
 What is the result?
 *- 5
@@ -204,11 +218,13 @@ The __________ option when creating a SEQUENCE object indicates that the counter
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE SEQUENCE my_seq
 MAXVALUE 10
 START WITH 5
 INCREMENT BY -1;
 SELECT my_seq.nextval FROM DUAL;
+</div>
 
 What is the result?
 *- 5
@@ -221,11 +237,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE SEQUENCE my_seq
 MAXVALUE 10
 START WITH 5
 INCREMENT BY -1;
 SELECT my_seq.currval FROM DUAL;
+</div>
 
 What is the result?
 - 5
@@ -237,6 +255,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE SEQUENCE my_seq
 MAXVALUE 10
@@ -244,6 +263,7 @@ START WITH 5
 INCREMENT BY -1;
 INSERT INTO my_table VALUES (my_seq.nextval);
 SELECT my_seq.nextval FROM DUAL;
+</div>
 
 What is the result?
 - 5
@@ -256,6 +276,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data NUMBER);
 CREATE SEQUENCE my_seq
 MAXVALUE 10
@@ -263,6 +284,7 @@ START WITH 5
 INCREMENT BY -1;
 INSERT INTO my_table VALUES (my_seq.nextval);
 SELECT my_seq.currval FROM DUAL;
+</div>
 
 What is the result?
 *- 5
@@ -300,9 +322,11 @@ When an index is set to INVISIBLE...
 
 Does the following code execute successfully?
 
+<div class = "code">
 1. CREATE TABLE my_table (my_data NUMBER);
 2. CREATE INDEX my_idx_1 ON my_table(my_data) INVISIBLE;
 3. CREATE INDEX my_idx_2 ON my_table(my_data) VISIBLE;
+</div>
 
 - Yes, it completes successfully.
 - No, it fails on line 1.

@@ -130,6 +130,8 @@ If 5.67 is entered into a column of type NUMBER(4,1), what value is stored?
 - 5
 - None; an exception is thrown.
 
+
+/*
 If 5.67 is entered into a column of type NUMBER(3,2), what value is stored?
 - 5.67
 - 6
@@ -145,6 +147,7 @@ If 1050.67 is entered into a column of type NUMBER(5,-2), what value is stored?
 - 1000
 - 10
 - None; an exception is thrown.
+*/
 
 Which of the following datetime fields are stored in a DATE data type?
 * - YEAR

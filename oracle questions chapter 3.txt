@@ -85,11 +85,13 @@ Which of the following is true about the INSERT INTO... VALUES... statement?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id NUMBER PRIMARY KEY,
 3.  my_data NUMBER);
 4. INSERT INTO my_table (my_id) VALUES (1);
 5. INSERT INTO my_table (my_data) VALUES (1);
+</div>
 
 Which of the following is true?
 - Execution will fail at line 4.
@@ -102,11 +104,13 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id NUMBER,
 3.  my_data NUMBER);
 4. INSERT INTO my_table (my_id) VALUES ('1');
 5. INSERT INTO my_table (my_data) VALUES (1);
+</div>
 
 Which of the following is true?
 - Execution will fail at line 4.
@@ -120,10 +124,12 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. INSERT INTO my_table (my_id) VALUES ('1');
 4. INSERT INTO my_table (my_id) VALUES (1);
+</div>
 
 Which of the following is true?
 - Execution will fail at line 3.
@@ -135,9 +141,11 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE CHECK (my_id IN (1,2)));
 3. INSERT INTO my_table VALUES ('1');
+</div>
 
 Which of the following is true?
 - Execution will fail at line 3.
@@ -149,9 +157,11 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. INSERT INTO my_table (1);
+</div>
 
 Which of the following is true?
 *- Execution will fail at line 3.
@@ -165,11 +175,13 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 4. INSERT INTO my_table (my_id) VALUES (NULL);
 5. INSERT INTO my_table (my_id) VALUES (NULL);
 6. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 - Execution will fail at line 4.
@@ -200,6 +212,7 @@ Which of the following types of SQL statements can be reverted with a ROLLBACK c
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. INSERT INTO my_table (my_id) VALUES ('A');
@@ -207,6 +220,7 @@ Consider attempting to execute the following SQL:
 5. INSERT INTO my_table (my_id) VALUES ('B');
 6. ROLLBACK;
 7. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -220,6 +234,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE USER my_user IDENTIFIED BY my_pass;
 2. CREATE TABLE my_table
 3. (my_id CHAR UNIQUE);
@@ -228,6 +243,7 @@ Consider attempting to execute the following SQL:
 6. ROLLBACK;
 7. INSERT INTO my_table (my_id) VALUES ('A');
 8. CREATE USER my_user IDENTIFIED BY my_pass;
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -240,6 +256,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. INSERT INTO my_table (my_id) VALUES ('A');
@@ -247,6 +264,7 @@ Consider attempting to execute the following SQL:
 5. ROLLBACK;
 6. INSERT INTO my_table (my_id) VALUES ('A');
 7. ROLLBACK;
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -260,6 +278,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. INSERT INTO my_table (my_id) VALUES ('A');
@@ -267,6 +286,7 @@ Consider attempting to execute the following SQL:
 5. ROLLBACK;
 6. INSERT INTO my_table (my_id) VALUES ('A');
 7. COMMIT;
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -278,6 +298,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. CREATE TABLE my_table2
@@ -287,6 +308,7 @@ Consider attempting to execute the following SQL:
 7. TRUNCATE TABLE my_table;
 8. ROLLBACK;
 9. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -301,12 +323,14 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. INSERT INTO my_table (my_id) VALUES ('A');
 4. TRUNCATE TABLE nonexistant_table;
 5. ROLLBACK;
 6. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -318,6 +342,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. CREATE TABLE my_table2
@@ -326,7 +351,7 @@ Consider attempting to execute the following SQL:
 6. ALTER TABLE my_table2 ADD my_id2 CHAR;
 7. ROLLBACK;
 8. INSERT INTO my_table (my_id) VALUES ('A');
-
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -339,6 +364,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. CREATE TABLE my_table2
@@ -348,6 +374,7 @@ Consider attempting to execute the following SQL:
 7. ROLLBACK TO MARK1;
 8. ALTER TABLE my_table2 ADD my_id2 CHAR;
 9. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 *- Execution will complete successfully.
@@ -360,6 +387,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. CREATE TABLE my_table2
@@ -369,6 +397,7 @@ Consider attempting to execute the following SQL:
 7. ALTER TABLE my_table2 ADD my_id2 CHAR;
 8. ROLLBACK TO MARK1;
 9. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -381,6 +410,7 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. SAVEPOINT MARK1;
@@ -388,6 +418,7 @@ Consider attempting to execute the following SQL:
 5. TRUNCATE TABLE nonexistant_table;
 6. ROLLBACK TO MARK1;
 7. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 - Execution will complete successfully.
@@ -402,12 +433,14 @@ Which of the following is true?
 
 Consider attempting to execute the following SQL:
 
+<div class = "code">
 1. CREATE TABLE my_table
 2. (my_id CHAR UNIQUE);
 3. SAVEPOINT MARK1;
 4. INSERT INTO my_table (my_id) VALUES ('A');
 5. ROLLBACK TO MARK1;
 6. INSERT INTO my_table (my_id) VALUES ('A');
+</div>
 
 Which of the following is true?
 *- Execution will complete successfully.
@@ -418,7 +451,7 @@ Which of the following is true?
 
 
 
-
+<div class = "code">
 CREATE TABLE my_table
 (
 	my_id NUMBER,
@@ -426,6 +459,7 @@ CREATE TABLE my_table
 	my_val VARCHAR(10)
 );
 INSERT INTO my_table VALUES (1, "Bryce", 1234);
+</div>
 
 Which of the following is true?
 *- Execution will complete successfully
@@ -434,7 +468,7 @@ Which of the following is true?
 - Execution will fail due to constraint violation
 
 
-
+<div class = "code">
 CREATE TABLE my_table
 (
 	my_id NUMBER,
@@ -442,6 +476,7 @@ CREATE TABLE my_table
 	my_val VARCHAR(10)
 );
 INSERT INTO my_table (1, 'Bryce', 1234);
+</div>
 
 Which of the following is true?
 - Execution will complete successfully
@@ -450,7 +485,7 @@ Which of the following is true?
 - Execution will fail due to constraint violation
 
 
-
+<div class = "code">
 CREATE TABLE my_table
 (
 	my_id NUMBER PRIMARY KEY,
@@ -459,6 +494,7 @@ CREATE TABLE my_table
 );
 INSERT INTO my_table VALUES (1, 'Bryce', 1234);
 INSERT INTO my_table VALUES (2, 'Don', 1234);
+</div>
 
 Which of the following is true?
 *- Execution will complete successfully

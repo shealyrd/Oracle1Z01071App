@@ -1,6 +1,8 @@
 Consider the following SQL:
 
+<div class = "code">
 SELECT 'TRUE' FROM DUAL WHERE ________;
+</div>
 
 What could be inserted into the WHERE clause to make this statement return 'TRUE'?
 - '1' > '2'
@@ -14,7 +16,9 @@ What could be inserted into the WHERE clause to make this statement return 'TRUE
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 'TRUE' FROM DUAL WHERE ________;
+</div>
 
 What could be inserted into the WHERE clause to make this statement return 'TRUE'?
 - '2' > 10
@@ -28,7 +32,9 @@ What could be inserted into the WHERE clause to make this statement return 'TRUE
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TO_NUMBER('$100.00', '$999.99') FROM DUAL;
+</div>
 
 What is the result?
 *- 100
@@ -40,7 +46,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TO_NUMBER('$100.00', '999.99') FROM DUAL;
+</div>
 
 What is the result?
 *- 100
@@ -54,11 +62,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TO_CHAR('100.00', '$999.99') FROM DUAL;
+</div>
 
 What is the result?
 - 100
-- $100.00
+*- $100.00
 - 999
 - $999
 - Execution fails.
@@ -66,7 +76,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TO_CHAR(TO_DATE('30-DEC-2016'), '"Day: " DAY " Month: " MONTH " Year: "  RRRR') FROM DUAL;
+</div>
 
 What is the result?
 
@@ -80,7 +92,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TO_CHAR(TO_DATE('30-DEC-2016'), '"Day: " DD " Month: " MONTH " Year: "  RRRR') FROM DUAL;
+</div>
 
 What is the result?
 
@@ -94,7 +108,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT TO_CHAR(TO_DATE('30-DEC-2016'), '"Day: " DD " Month: " MON " Year: "  RRRR') FROM DUAL;
+</div>
 
 What is the result?
 
@@ -107,12 +123,14 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 
     CASE 'my_data1'
     WHEN 'my_data1' THEN '1'
     WHEN 'my_data2' THEN '2'
     END
 FROM DUAL;
+</div>
 
 What is the result?
 
@@ -127,12 +145,14 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 
     CASE 'my_data1'
     WHEN 'my_data1' THEN '1'
     WHEN 'my_data2' THEN '2'
     END AS "my_data2"
 FROM DUAL;
+</div>
 
 What is the result?
 
@@ -148,12 +168,14 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 
     DECODE('my_data1', 
     'my_data1', 1,
     'my_data2', 2,
     3)
 FROM DUAL;
+</div>
 
 What is the result?
 
@@ -167,11 +189,13 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 
     DECODE(NULL, 
     NULL, 1,
     2)
 FROM DUAL;
+</div>
 
 What is the result?
 
@@ -184,7 +208,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 1 + NULL FROM DUAL;
+</div>
 
 What is the result?
 
@@ -198,7 +224,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT 1 + NVL(NULL, 0) FROM DUAL;
+</div>
 
 What is the result?
 
@@ -214,6 +242,7 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 CREATE TABLE my_table (my_data1 NUMBER, my_data2 NUMBER);
 
 INSERT INTO my_table VALUES (1, 1);
@@ -222,6 +251,7 @@ INSERT INTO my_table VALUES (1, 2);
 SELECT COUNT(*) 
 FROM my_table
 WHERE NULLIF(my_data1, my_data2) IS NULL;
+</div>
 
 What is the result?
 
@@ -237,7 +267,9 @@ What is the result?
 
 Consider the following SQL:
 
+<div class = "code">
 SELECT NULLIF(3, 4) FROM DUAL;
+</div>
 
 What is the result?
 - 0

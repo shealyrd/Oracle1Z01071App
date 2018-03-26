@@ -43,6 +43,7 @@ Which of the following is true about using set operators in a SELECT statement?
 
 Consider the following SQL statement:
 
+<div class = "code">
 CREATE TABLE my_table_1 (my_data NUMBER);
 CREATE TABLE my_table_2 (my_data NUMBER);
 INSERT INTO my_table_1 VALUES (1);
@@ -53,7 +54,7 @@ SELECT COUNT(*) FROM
 ((SELECT * FROM my_table_1)
 INTERSECT
 (SELECT * FROM my_table_2));
-
+</div>
 
 What is the result?
 *- 1

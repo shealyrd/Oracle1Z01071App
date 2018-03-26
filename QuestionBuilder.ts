@@ -1,27 +1,35 @@
 class QuestionBuilder{
     parentElement: HTMLElement;
     questionField: HTMLElement;
+	categoryDropDown: HTMLElement;
     answersField: HTMLElement;
     addAnswerButton: HTMLElement;
     compileQuestionButton: HTMLElement;
     outputArea: HTMLElement;
-
+    clearButton: HTMLElement;
+	
     constructor(parentElement: HTMLElement) {
         this.parentElement = parentElement;
     }
 
     initialize() {
         this.questionField = this.createQuestionField();
+		this.categoryDropDown = this.createCategoryDropDown();
         this.answersField = this.createAnswersField();
         this.addAnswerButton = this.createAddAnswerButton();
         this.compileQuestionButton = this.createCompileQuestionButton();
         this.outputArea = this.createOutputArea();
-
+		this.clearButton = this.createClearButton();
+		
         this.parentElement.appendChild(this.questionField);
+        this.parentElement.appendChild(document.createElement('br'));
+		this.parentElement.appendChild(this.categoryDropDown);
         this.parentElement.appendChild(document.createElement('br'));
         this.parentElement.appendChild(this.answersField);
         this.parentElement.appendChild(document.createElement('br'));
         this.parentElement.appendChild(this.addAnswerButton);
+        this.parentElement.appendChild(document.createElement('br'));
+		this.parentElement.appendChild(this.clearButton);
         this.parentElement.appendChild(document.createElement('br'));
         this.parentElement.appendChild(this.compileQuestionButton);
         this.parentElement.appendChild(document.createElement('br'));
@@ -51,6 +59,28 @@ class QuestionBuilder{
         compileButton.onclick = () => { var q = this.getQuestionFromInputs(); this.setOutputText(JSON.stringify(q));};
 		return compileButton;
     }
+	
+	createClearButton() {
+        var compileButton = document.createElement('button');
+        compileButton.innerHTML = "Clear";
+        compileButton.onclick = () => 
+		{ 
+			this.answersField.innerHTML = "";
+		};
+		return compileButton;
+    }
+	
+	createCategoryDropDown() {
+        var catergoryDropDown = document.createElement('select');
+        for(var each in QuestionCategory){
+			if(isNaN(Number(each))){
+				var eachOption = document.createElement('option');
+				eachOption.innerHTML = each;
+				catergoryDropDown.appendChild(eachOption);
+			}
+		}
+		return catergoryDropDown;
+    }
     
     createAddAnswerButton() {
         var addAnswerButton = document.createElement('button');
@@ -64,6 +94,7 @@ class QuestionBuilder{
         var answerField = document.createElement('textarea');
         answerField.rows = 5;
         answerField.cols = 100;
+		answerField.className = "answer-element";
         var isCorrect = document.createElement('input');
         isCorrect.type = "checkbox";
         answerFieldContainer.appendChild(answerField);
@@ -81,7 +112,8 @@ class QuestionBuilder{
 
     getQuestionFromInputs(): Question{
         var questionString = (<HTMLTextAreaElement>this.questionField.children[0]).value;
-        var newQuestion: Question = new Question(questionString);
+        var category = (<HTMLSelectElement> this.categoryDropDown).options[(<HTMLSelectElement> this.categoryDropDown).selectedIndex].innerHTML;
+        var newQuestion: Question = new Question(questionString, QuestionCategory[category]);
         var answerChildren = this.answersField.children; 
         for (var i = 0; i < answerChildren.length; i++){
             if (i % 2 == 1) {
@@ -94,10 +126,14 @@ class QuestionBuilder{
     } 
 
     setOutputText(text: string) {
-        (<HTMLInputElement>this.outputArea).value = text;
+		var result = text;
+		result = result.split("\\n").join("<br />");
+		//result = result.replace("\t","   ");
+        (<HTMLInputElement>this.outputArea).value = result;
     }
 
 }
 
-var q = new QuestionBuilder(document.body);
-q.initialize();
+//new QuestionBuilder().initialize();
+
+
